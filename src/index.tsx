@@ -3,10 +3,13 @@ import { render } from 'react-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { Theme } from './theme';
 
 render(
   <React.StrictMode>
-    <App />
+    <Theme>
+      <App />
+    </Theme>
   </React.StrictMode>,
   document.getElementById('root')
 );
