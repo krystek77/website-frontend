@@ -4,10 +4,12 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { Theme } from './theme';
+import { GlobalStyles } from './global-styles';
 
 render(
   <React.StrictMode>
     <Theme>
+      <GlobalStyles />
       <App />
     </Theme>
   </React.StrictMode>,

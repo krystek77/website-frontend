@@ -1,5 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+
 const theme = {
   colors: {
     primary: '#3d4e6f',
@@ -9,8 +10,8 @@ const theme = {
     dark_secondary: '#8e0500',
     light_secondary: '#d63933',
     dark: '#2e2e2e',
-    light: '#e2e2e2',
-    medium: '#f7f7f7',
+    light: '#f7f7f7',
+    medium: '#e2e2e2',
     warnning: '#dfc614',
     green: '#008e6e',
     gray: '#393838',
@@ -18,10 +19,12 @@ const theme = {
   },
   padding: '0.5rem',
   margin: '0.5rem',
-  normal_font: '300',
-  bold_font: '600',
+  normal_font: '200',
+  bold_font: '400',
+  transform: 'all .3s ease-out',
 };
 
+export type ThemeType = typeof theme;
 export const Theme: React.FC = ({ children }) => {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
