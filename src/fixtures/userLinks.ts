@@ -10,9 +10,10 @@ export const userLinks = [
   {
     id: 1,
     url: ROUTES.SIGNIN,
+    label: 'zaloguj',
     text: FaSignInAlt,
   },
-  { id: 2, url: ROUTES.SIGNOUT, text: FaSignOutAlt },
-  { id: 3, url: ROUTES.USER, text: FaUserAlt },
-  { id: 4, url: ROUTES.CART, text: FaShoppingCart },
+  { id: 2, url: ROUTES.SIGNOUT, label: 'wyloguj', text: FaSignOutAlt },
+  { id: 3, url: ROUTES.USER, label: 'konto', text: FaUserAlt },
+  { id: 4, url: ROUTES.CART, label: 'koszyk', text: FaShoppingCart },
 ];

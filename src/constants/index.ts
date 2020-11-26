@@ -1,2 +1,3 @@
 import * as ROUTES from './routes';
-export { ROUTES };
+import { MENU } from './enums';
+export { ROUTES, MENU };
