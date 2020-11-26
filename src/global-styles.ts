@@ -6,7 +6,12 @@ import WebFont from 'webfontloader';
 if (typeof window !== 'undefined') {
   WebFont.load({
     google: {
-      families: ['Oswald', 'Open sans', 'sans-serif'],
+      families: [
+        'Oswald:200,300,400,600,700',
+        'Open sans:300,400,600,700,800',
+        'Lato:300,400,700,900',
+        'sans-serif',
+      ],
     },
   });
 }
@@ -17,10 +22,9 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
     }
     html {
         color:${({ theme }) => theme.colors.dark};
-        background-color:${({ theme }) => theme.colors.light};
+        background-color:#ffffff;
         font-size:62.5%;
         font-weight:${({ theme }) => theme.normal_font};
-        font-family:'Open sans',sans-serif;
     }
     body {
         width:100%;
@@ -29,21 +33,26 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
         -moz-user-select:none;
         -ms-user-select:none;
         -webkit-user-select: none;
+        font-family:'Lato',sans-serif;
     }
      a{
+        font-weight:${({ theme }) => theme.normal_font};
         text-decoration:none;
         font-size:1.6rem;
-        font-family:'Oswald',sans-serif;
-        transform: ${({ theme }) => theme.transform};
+        font-family:'Lato',sans-serif;
+        transition: ${({ theme }) => theme.transition};
+        white-space: nowrap;
     }
-    a:hover {
-        
+    a:hover {  
+        color: ${({ theme }) => theme.colors.light_secondary};
     }
     a:focus{
-
+        
+        color: ${({ theme }) => theme.colors.dark_secondary};
     }
     a:active{
-
+        
+        color: ${({ theme }) => theme.colors.dark_secondary};
     }
 
     h1,h2,h3,h4,h5,h6 {
@@ -51,7 +60,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
         margin-top:0;
         margin-bottom:0;
         text-transform:capitalize;
-        font-family:'Oswald',sans-serif;
+        font-family:'Open sans',sans-serif;
         line-height:1.6;
     }
     h1 {
