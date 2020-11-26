@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { Link as ReactRouterLink } from 'react-router-dom';
+import { BREAKPOINT } from '../../../constants';
 export const Container = styled.div`
   padding-top: ${({ theme }) => `${theme.padding}rem`};
   padding-bottom: ${({ theme }) => `${theme.padding}rem`};
@@ -31,7 +32,10 @@ export const Logo = styled(ReactRouterLink)`
   }
 `;
 export const Navigation = styled.nav`
-  display: flex;
+  display: none;
+  @media (min-width: ${BREAKPOINT.LARGE}) {
+    display: flex;
+  }
 `;
 export const Hamburger = styled.button`
   font-size: 3rem;
@@ -51,6 +55,9 @@ export const Hamburger = styled.button`
   }
   &:active {
     color: ${({ theme }) => theme.colors.dark_primary};
+  }
+  @media (min-width: ${BREAKPOINT.LARGE}) {
+    display: none;
   }
 `;
 export const Label = styled.span<{ id: string }>`
