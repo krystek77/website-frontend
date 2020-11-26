@@ -1,3 +1,4 @@
 import { pageLinks } from './pageLinks';
 import { userLinks } from './userLinks';
-export { pageLinks, userLinks };
+import { socialLinks } from './socialLinks';
+export { pageLinks, userLinks, socialLinks };
