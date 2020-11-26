@@ -3,12 +3,12 @@ import { ThemeProvider } from 'styled-components';
 
 const theme = {
   colors: {
-    primary: '#3d4e6f',
-    dark_primary: '#2a364d',
-    light_primary: '#63718b',
-    secondary: '#cc0800',
-    dark_secondary: '#8e0500',
-    light_secondary: '#d63933',
+    secondary: '#009fe3',
+    dark_secondary: '#006f9e',
+    light_secondary: '#33b2e8',
+    primary: '#cc0800',
+    dark_primary: '#8e0500',
+    light_primary: '#d63933',
     dark: '#2e2e2e',
     light: '#f7f7f7',
     medium: '#e2e2e2',
@@ -17,11 +17,11 @@ const theme = {
     gray: '#393838',
     gray_lighter: '#424242',
   },
-  padding: '0.5rem',
-  margin: '0.5rem',
-  normal_font: '200',
-  bold_font: '400',
-  transform: 'all .3s ease-out',
+  padding: '0.5',
+  margin: '0.5',
+  normal_font: '300',
+  bold_font: '700',
+  transition: 'all .3s ease-out',
 };
 
 export type ThemeType = typeof theme;
