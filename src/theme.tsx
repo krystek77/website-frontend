@@ -22,10 +22,6 @@ const theme = {
   normal_font: '300',
   bold_font: '700',
   transition: 'all .3s ease-out',
-  breakpoint_small: '576px',
-  breakpoint_medium: '768px',
-  breakpoint_large: '992px',
-  breakpoint_xlarge: '1200px',
 };
 
 export type ThemeType = typeof theme;
