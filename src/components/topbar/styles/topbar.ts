@@ -9,13 +9,15 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
   position: fixed;
   width: 100%;
+  max-height: 45px;
+  overflow: hidden;
   z-index: 1;
 `;
 export const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 `;
 export const Logo = styled(ReactRouterLink)`
   color: ${({ theme }) => theme.colors.light};
