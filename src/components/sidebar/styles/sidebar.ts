@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-export const Container = styled.div`
+export const Container = styled.aside`
   position: fixed;
   top: 45px;
   left: 0;
