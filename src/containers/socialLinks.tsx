@@ -16,9 +16,18 @@ export const SocialLinksContainer: React.FC<ISocialLinksContainer> = ({
         {socialLinks.map((item) => {
           return (
             <List.Item key={item.id} menu={menu}>
-              <List.Link to={item.url} menu={menu}>
+              <List.Label id={`${item.label}_${menu}`}>{item.label}</List.Label>
+              <List.RegularLink
+                url={item.url}
+                menu={menu}
+                title={item.label}
+                aria-label={item.label}
+                aria-labelledby={`${item.label}_${menu}`}
+                rel='noopener noreferrer'
+                target='_blank'
+              >
                 {withComponent(item.text)}
-              </List.Link>
+              </List.RegularLink>
             </List.Item>
           );
         })}

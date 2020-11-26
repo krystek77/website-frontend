@@ -1,13 +1,14 @@
 import React from 'react';
 import { pageLinks } from '../fixtures';
 import { List } from '../components';
+import { MENU } from '../constants';
 
 interface IPageLinksContainer {
   menu?: string | undefined;
 }
 
 export const PageLinksContainer: React.FC<IPageLinksContainer> = ({
-  menu = 'horizontal',
+  menu = MENU.MENU_H,
 }) => {
   return (
     <List>
@@ -15,7 +16,14 @@ export const PageLinksContainer: React.FC<IPageLinksContainer> = ({
         {pageLinks.map((item) => {
           return (
             <List.Item key={item.id} menu={menu}>
-              <List.Link to={item.url} menu={menu}>
+              <List.Label id={`${item.label}_${menu}`}>{item.label}</List.Label>
+              <List.Link
+                to={item.url}
+                menu={menu}
+                title={item.label}
+                aria-label={item.label}
+                aria-labelledby={`${item.label}_${menu}`}
+              >
                 {item.text}
               </List.Link>
             </List.Item>

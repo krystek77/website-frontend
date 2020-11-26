@@ -16,7 +16,14 @@ export const UserLinksContainer: React.FC<IUserLinksContainer> = ({
         {userLinks.map((item) => {
           return (
             <List.Item key={item.id} menu={menu}>
-              <List.Link to={item.url} menu={menu}>
+              <List.Label id={`${item.label}_${menu}`}>{item.label}</List.Label>
+              <List.Link
+                to={item.url}
+                menu={menu}
+                title={item.label}
+                aria-label={item.label}
+                aria-labelledby={`${item.label}_${menu}`}
+              >
                 {withComponent(item.text)}
               </List.Link>
             </List.Item>
