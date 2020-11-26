@@ -1,4 +1,10 @@
 import { PageLinksContainer } from './pageLinks';
 import { UserLinksContainer } from './userLinks';
 import { SocialLinksContainer } from './socialLinks';
-export { PageLinksContainer, UserLinksContainer, SocialLinksContainer };
+import { TopbarContainer } from './topbar';
+export {
+  PageLinksContainer,
+  UserLinksContainer,
+  SocialLinksContainer,
+  TopbarContainer,
+};
