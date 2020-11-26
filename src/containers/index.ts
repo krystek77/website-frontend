@@ -1,2 +1,3 @@
 import { PageLinksContainer } from './pageLinks';
-export { PageLinksContainer };
+import { UserLinksContainer } from './userLinks';
+export { PageLinksContainer, UserLinksContainer };

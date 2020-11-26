@@ -7,3 +7,8 @@ export const FINANCE = '/finansowanie';
 export const NEWS_EVENTS = '/wiadomosci-i-wydarzenia';
 export const ABOUT_US = '/o-nas';
 export const CONTACT = '/kontakt';
+
+export const SIGNIN = '/zaloguj';
+export const SIGNOUT = '';
+export const USER = '/user';
+export const CART = '/cart';

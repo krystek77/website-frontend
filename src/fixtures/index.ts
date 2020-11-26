@@ -1,2 +1,3 @@
 import { pageLinks } from './pageLinks';
-export { pageLinks };
+import { userLinks } from './userLinks';
+export { pageLinks, userLinks };
