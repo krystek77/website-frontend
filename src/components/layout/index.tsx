@@ -1,5 +1,6 @@
 import React from 'react';
-import { TopbarContainer, SidebarContainer } from '../../containers';
+import { TopbarContainer } from '../../containers';
+const SidebarContainer = React.lazy(() => import('../../containers/sidebar'));
 
 export const Layout: React.FC = ({ children }) => {
   const [toggleSidebar, setToggleSidebar] = React.useState<boolean>(false);
