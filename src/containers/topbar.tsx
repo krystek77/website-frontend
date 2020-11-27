@@ -1,23 +1,17 @@
 import React from 'react';
-import { Topbar, CompanyLogo } from '../components';
-import { ROUTES, MENU } from '../constants';
-import { PageLinksContainer, UserLinksContainer } from '../containers';
+import { Topbar } from '../components';
+import { LOGO, MENU } from '../constants';
+import {
+  PageLinksContainer,
+  UserLinksContainer,
+  CompanyLogoContainer,
+} from '../containers';
 import { HiMenuAlt2 } from 'react-icons/hi';
 
 export const TopbarContainer = () => {
   return (
     <Topbar>
-      <CompanyLogo>
-        <CompanyLogo.Label id='home'>Strona główna</CompanyLogo.Label>
-        <CompanyLogo.Logo
-          to={ROUTES.HOME}
-          title='Strona główna'
-          aria-label='Strona główna'
-          aria-labelledby='home'
-        >
-          LOGO
-        </CompanyLogo.Logo>
-      </CompanyLogo>
+      <CompanyLogoContainer logo={LOGO.TOPBAR} />
       <Topbar.Navigation>
         <PageLinksContainer menu={MENU.MENU_H} />
         <UserLinksContainer menu={MENU.MENU_USER_H} />
