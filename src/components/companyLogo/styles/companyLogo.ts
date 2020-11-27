@@ -1,11 +1,24 @@
 import styled from 'styled-components/macro';
 import { Link as ReactRouterLink } from 'react-router-dom';
-export const Container = styled.div``;
-export const Inner = styled.div``;
-export const Logo = styled(ReactRouterLink)`
+import { LOGO } from '../../../constants';
+export const Container = styled.div<{ logo?: string }>`
+  ${({ logo, theme }) =>
+    logo === LOGO.SIDEBAR &&
+    `
+     margin-bottom: ${theme.margin * 6}rem;
+  `};
+`;
+export const Inner = styled.div<{ logo?: string }>``;
+export const Logo = styled(ReactRouterLink)<{ logo?: string }>`
   color: ${({ theme }) => theme.colors.light};
   font-weight: 600;
-
+  ${({ logo, theme }) =>
+    logo === LOGO.SIDEBAR &&
+    `
+      font-weight:${theme.bold_font};
+      font-size:3rem;
+      color: ${theme.colors.dark};
+  `};
   &:hover {
     color: ${({ theme }) => theme.colors.dark_primary};
   }

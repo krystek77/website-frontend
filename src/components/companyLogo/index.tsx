@@ -7,21 +7,34 @@ interface IComponayLogo {
     ['aria-label']: string;
     ['aria-labelledby']: string;
     to: string;
+    logo?: string;
   }>;
   Label: React.FC<{ id: string }>;
 }
-export const CompanyLogo: React.FC & IComponayLogo = ({
+export const CompanyLogo: React.FC<{ logo?: string }> & IComponayLogo = ({
   children,
   ...restProps
 }) => {
+  const { logo } = restProps;
   return (
-    <Container {...restProps}>
-      <Inner {...restProps}>{children}</Inner>
+    <Container logo={logo} {...restProps}>
+      <Inner logo={logo} {...restProps}>
+        {children}
+      </Inner>
     </Container>
   );
 };
-CompanyLogo.Logo = function CompanyLogoLogo({ children, to, ...restProps }) {
-  return <Logo to={to}>{children}</Logo>;
+CompanyLogo.Logo = function CompanyLogoLogo({
+  children,
+  to,
+  logo,
+  ...restProps
+}) {
+  return (
+    <Logo to={to} logo={logo}>
+      {children}
+    </Logo>
+  );
 };
 
 CompanyLogo.Label = function CompanyLogoLabel({ children, ...restProps }) {
