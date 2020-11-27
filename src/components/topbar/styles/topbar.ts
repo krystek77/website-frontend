@@ -8,6 +8,8 @@ export const Container = styled.div`
   padding-right: ${({ theme }) => `${theme.padding * 2.5}rem`};
   background-color: ${({ theme }) => theme.colors.primary};
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   max-height: 45px;
   overflow: hidden;
