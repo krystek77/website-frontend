@@ -8,7 +8,8 @@ export const Container = styled.aside<{ toggleSidebar: boolean }>`
   box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.3);
   z-index: 1;
   transform: translateX(-100%);
-  transition: transform 1s ease-out;
+  transition: transform 0.5s ease-out;
+  background-color: ${({ theme }) => theme.colors.light};
   ${({ toggleSidebar }) => toggleSidebar && `transform:translateX(0)`};
   @media (min-width: ${BREAKPOINT.LARGE}) {
     display: none;
