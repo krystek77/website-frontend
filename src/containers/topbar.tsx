@@ -1,5 +1,5 @@
 import React from 'react';
-import { Topbar } from '../components';
+import { Topbar, CompanyLogo } from '../components';
 import { ROUTES, MENU } from '../constants';
 import { PageLinksContainer, UserLinksContainer } from '../containers';
 import { HiMenuAlt2 } from 'react-icons/hi';
@@ -7,15 +7,17 @@ import { HiMenuAlt2 } from 'react-icons/hi';
 export const TopbarContainer = () => {
   return (
     <Topbar>
-      <Topbar.Label id='home'>Strona główna</Topbar.Label>
-      <Topbar.Logo
-        to={ROUTES.HOME}
-        title='Strona główna'
-        aria-label='Strona główna'
-        aria-labelledby='home'
-      >
-        LOGO
-      </Topbar.Logo>
+      <CompanyLogo>
+        <CompanyLogo.Label id='home'>Strona główna</CompanyLogo.Label>
+        <CompanyLogo.Logo
+          to={ROUTES.HOME}
+          title='Strona główna'
+          aria-label='Strona główna'
+          aria-labelledby='home'
+        >
+          LOGO
+        </CompanyLogo.Logo>
+      </CompanyLogo>
       <Topbar.Navigation>
         <PageLinksContainer menu={MENU.MENU_H} />
         <UserLinksContainer menu={MENU.MENU_USER_H} />
