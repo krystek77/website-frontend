@@ -4,9 +4,13 @@ import { Container, Inner, Title } from './styles/sidebar';
 interface ISidebar {
   Title: React.FC;
 }
-export const Sidebar: React.FC & ISidebar = ({ children }) => {
+export const Sidebar: React.FC<{ showSidebar: boolean }> & ISidebar = ({
+  children,
+  ...restProps
+}) => {
+  const { showSidebar } = restProps;
   return (
-    <Container>
+    <Container showSidebar={showSidebar}>
       <Inner>{children}</Inner>
     </Container>
   );

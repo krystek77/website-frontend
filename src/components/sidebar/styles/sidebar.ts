@@ -1,12 +1,14 @@
 import styled from 'styled-components/macro';
-export const Container = styled.aside`
+export const Container = styled.aside<{ showSidebar: boolean }>`
   position: fixed;
   top: 45px;
-  left: 0;
   height: calc(100vh - 45px);
   width: 300px;
   box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.3);
   z-index: 1;
+  transform: translateX(-100%);
+  transition: transform 1s ease-out;
+  ${({ showSidebar }) => showSidebar && `transform:translateX(0)`};
 `;
 export const Inner = styled.div`
   height: 100%;

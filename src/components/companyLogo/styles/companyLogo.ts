@@ -1,14 +1,20 @@
 import styled from 'styled-components/macro';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { LOGO } from '../../../constants';
-export const Container = styled.div<{ logo?: string }>`
+export const Container = styled.div<{ logo?: string; showSidebar: boolean }>`
   ${({ logo, theme }) =>
     logo === LOGO.SIDEBAR &&
     `
      margin-bottom: ${theme.margin * 6}rem;
   `};
+  ${({ logo, showSidebar, theme }) =>
+    logo === LOGO.TOPBAR &&
+    showSidebar &&
+    `
+     display:none;
+  `};
 `;
-export const Inner = styled.div<{ logo?: string }>``;
+export const Inner = styled.div<{ logo?: string; showSidebar: boolean }>``;
 export const Logo = styled(ReactRouterLink)<{ logo?: string }>`
   color: ${({ theme }) => theme.colors.light};
   font-weight: 600;

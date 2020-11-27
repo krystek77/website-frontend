@@ -11,16 +11,11 @@ interface IComponayLogo {
   }>;
   Label: React.FC<{ id: string }>;
 }
-export const CompanyLogo: React.FC<{ logo?: string }> & IComponayLogo = ({
-  children,
-  ...restProps
-}) => {
-  const { logo } = restProps;
+export const CompanyLogo: React.FC<{ logo?: string; showSidebar: boolean }> &
+  IComponayLogo = ({ children, ...restProps }) => {
   return (
-    <Container logo={logo} {...restProps}>
-      <Inner logo={logo} {...restProps}>
-        {children}
-      </Inner>
+    <Container {...restProps}>
+      <Inner {...restProps}>{children}</Inner>
     </Container>
   );
 };

@@ -18,6 +18,7 @@ interface ITopbar {
   Hamburger: React.FC<{
     type: 'button';
     title: string;
+    onClick: () => void;
     ['aria-label']: string;
     ['aria-labelledby']: string;
   }>;

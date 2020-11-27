@@ -2,11 +2,7 @@ import React from 'react';
 import { Layout } from '../components';
 
 export const HomePage = () => {
-  return (
-    <Layout>
-      <h1>Home Page</h1>
-    </Layout>
-  );
+  return <Layout>HOME PAGE</Layout>;
 };
 
 export default HomePage;

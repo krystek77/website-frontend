@@ -49,6 +49,7 @@ export const Hamburger = styled.button`
   border: none;
   outline: none;
   background-color: transparent;
+  margin-left: auto;
   &:hover {
     color: ${({ theme }) => theme.colors.dark_primary};
   }
