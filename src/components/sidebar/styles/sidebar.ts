@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { BREAKPOINT } from '../../../constants';
 export const Container = styled.aside<{ toggleSidebar: boolean }>`
   position: fixed;
   top: 45px;
@@ -9,6 +10,9 @@ export const Container = styled.aside<{ toggleSidebar: boolean }>`
   transform: translateX(-100%);
   transition: transform 1s ease-out;
   ${({ toggleSidebar }) => toggleSidebar && `transform:translateX(0)`};
+  @media (min-width: ${BREAKPOINT.LARGE}) {
+    display: none;
+  }
 `;
 export const Inner = styled.div`
   height: 100%;
