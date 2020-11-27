@@ -4,10 +4,10 @@ import { ROUTES, LOGO } from '../constants';
 
 export const CompanyLogoContainer: React.FC<{
   logo?: string;
-  showSidebar?: boolean;
-}> = ({ logo = LOGO.TOPBAR, showSidebar = true }) => {
+  toggleSidebar?: boolean;
+}> = ({ logo = LOGO.TOPBAR, toggleSidebar = true }) => {
   return (
-    <CompanyLogo logo={logo} showSidebar={showSidebar}>
+    <CompanyLogo logo={logo} toggleSidebar={toggleSidebar}>
       <CompanyLogo.Label id='home'>Strona główna</CompanyLogo.Label>
       <CompanyLogo.Logo
         to={ROUTES.HOME}

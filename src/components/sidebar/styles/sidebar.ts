@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-export const Container = styled.aside<{ showSidebar: boolean }>`
+export const Container = styled.aside<{ toggleSidebar: boolean }>`
   position: fixed;
   top: 45px;
   height: calc(100vh - 45px);
@@ -8,7 +8,7 @@ export const Container = styled.aside<{ showSidebar: boolean }>`
   z-index: 1;
   transform: translateX(-100%);
   transition: transform 1s ease-out;
-  ${({ showSidebar }) => showSidebar && `transform:translateX(0)`};
+  ${({ toggleSidebar }) => toggleSidebar && `transform:translateX(0)`};
 `;
 export const Inner = styled.div`
   height: 100%;

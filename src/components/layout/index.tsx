@@ -2,19 +2,19 @@ import React from 'react';
 import { TopbarContainer, SidebarContainer } from '../../containers';
 
 export const Layout: React.FC = ({ children }) => {
-  const [showSidebar, setShowSidebar] = React.useState<boolean>(false);
+  const [toggleSidebar, setToggleSidebar] = React.useState<boolean>(false);
   React.useEffect(() => {
     window.addEventListener('resize', function () {
-      setShowSidebar(false);
+      setToggleSidebar(false);
     });
   });
   return (
     <React.Fragment>
       <TopbarContainer
-        showSidebar={showSidebar}
-        setShowSidebar={setShowSidebar}
+        toggleSidebar={toggleSidebar}
+        setToggleSidebar={setToggleSidebar}
       />
-      <SidebarContainer showSidebar={showSidebar} />
+      <SidebarContainer toggleSidebar={toggleSidebar} />
       {children}
     </React.Fragment>
   );

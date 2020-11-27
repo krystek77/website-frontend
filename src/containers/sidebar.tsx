@@ -8,9 +8,9 @@ import {
 } from '../containers';
 import { MENU, LOGO } from '../constants';
 
-export const SidebarContainer = ({ showSidebar = false }) => {
+export const SidebarContainer = ({ toggleSidebar = false }) => {
   return (
-    <Sidebar showSidebar={showSidebar}>
+    <Sidebar toggleSidebar={toggleSidebar}>
       <CompanyLogoContainer logo={LOGO.SIDEBAR} />
       <PageLinksContainer menu={MENU.MENU_V} />
       <UserLinksContainer menu={MENU.MENU_USER_H} />

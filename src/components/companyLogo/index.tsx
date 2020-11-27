@@ -11,7 +11,7 @@ interface IComponayLogo {
   }>;
   Label: React.FC<{ id: string }>;
 }
-export const CompanyLogo: React.FC<{ logo?: string; showSidebar: boolean }> &
+export const CompanyLogo: React.FC<{ logo?: string; toggleSidebar: boolean }> &
   IComponayLogo = ({ children, ...restProps }) => {
   return (
     <Container {...restProps}>

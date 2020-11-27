@@ -9,17 +9,17 @@ import {
 import { HiMenuAlt2, HiMenuAlt3 } from 'react-icons/hi';
 
 interface ITopbarContainer {
-  showSidebar: boolean;
-  setShowSidebar: (showSidebar: boolean) => void;
+  toggleSidebar: boolean;
+  setToggleSidebar: (toggleSidebar: boolean) => void;
 }
 export const TopbarContainer: React.FC<ITopbarContainer> = ({
-  showSidebar = true,
-  setShowSidebar,
+  toggleSidebar = true,
+  setToggleSidebar,
   ...restProps
 }) => {
   return (
     <Topbar>
-      <CompanyLogoContainer logo={LOGO.TOPBAR} showSidebar={showSidebar} />
+      <CompanyLogoContainer logo={LOGO.TOPBAR} toggleSidebar={toggleSidebar} />
       <Topbar.Navigation>
         <PageLinksContainer menu={MENU.MENU_H} />
         <UserLinksContainer menu={MENU.MENU_USER_H} />
@@ -30,9 +30,9 @@ export const TopbarContainer: React.FC<ITopbarContainer> = ({
         title='Show or hide navigation'
         aria-label='Show or hide navigation'
         aria-labelledby='hamburger'
-        onClick={() => setShowSidebar(!showSidebar)}
+        onClick={() => setToggleSidebar(!toggleSidebar)}
       >
-        {showSidebar ? <HiMenuAlt3 /> : <HiMenuAlt2 />}
+        {toggleSidebar ? <HiMenuAlt3 /> : <HiMenuAlt2 />}
       </Topbar.Hamburger>
     </Topbar>
   );
