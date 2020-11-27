@@ -1,7 +1,9 @@
 import React from 'react';
-import { Container, Inner } from './styles/sidebar';
+import { Container, Inner, Title } from './styles/sidebar';
 
-interface ISidebar {}
+interface ISidebar {
+  Title: React.FC;
+}
 export const Sidebar: React.FC & ISidebar = ({ children }) => {
   return (
     <Container>
@@ -10,4 +12,7 @@ export const Sidebar: React.FC & ISidebar = ({ children }) => {
   );
 };
 
+Sidebar.Title = function SidebarTitle({ children, ...restProps }) {
+  return <Title {...restProps}>{children}</Title>;
+};
 export default Sidebar;
