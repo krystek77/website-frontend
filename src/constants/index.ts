@@ -1,3 +1,3 @@
 import * as ROUTES from './routes';
-import { MENU, BREAKPOINT } from './enums';
-export { ROUTES, MENU, BREAKPOINT };
+import { MENU, BREAKPOINT, LOGO } from './enums';
+export { ROUTES, MENU, BREAKPOINT, LOGO };
