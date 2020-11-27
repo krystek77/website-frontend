@@ -8,12 +8,12 @@ export const CompanyLogoContainer: React.FC<{
 }> = ({ logo = LOGO.TOPBAR, toggleSidebar = true }) => {
   return (
     <CompanyLogo logo={logo} toggleSidebar={toggleSidebar}>
-      <CompanyLogo.Label id='home'>Strona główna</CompanyLogo.Label>
+      <CompanyLogo.Label id={`${logo}_home`}>Strona główna</CompanyLogo.Label>
       <CompanyLogo.Logo
         to={ROUTES.HOME}
         title='Strona główna'
         aria-label='Strona główna'
-        aria-labelledby='home'
+        aria-labelledby={`${logo}_home`}
         logo={logo}
       >
         LOGO

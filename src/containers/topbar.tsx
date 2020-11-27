@@ -22,7 +22,7 @@ export const TopbarContainer: React.FC<ITopbarContainer> = ({
       <CompanyLogoContainer logo={LOGO.TOPBAR} toggleSidebar={toggleSidebar} />
       <Topbar.Navigation>
         <PageLinksContainer menu={MENU.MENU_H} />
-        <UserLinksContainer menu={MENU.MENU_USER_H} />
+        <UserLinksContainer menu={MENU.MENU_USER_H} logo={LOGO.TOPBAR} />
       </Topbar.Navigation>
       <Topbar.Label id='hamburger'>Show or hide navigation</Topbar.Label>
       <Topbar.Hamburger

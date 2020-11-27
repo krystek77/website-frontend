@@ -5,10 +5,12 @@ import { withComponent } from '../hoc';
 
 interface IUserLinksContainer {
   menu?: string | undefined;
+  logo: string;
 }
 
 export const UserLinksContainer: React.FC<IUserLinksContainer> = ({
   menu = 'horizontal',
+  logo,
 }) => {
   return (
     <List>
@@ -16,13 +18,15 @@ export const UserLinksContainer: React.FC<IUserLinksContainer> = ({
         {userLinks.map((item) => {
           return (
             <List.Item key={item.id} menu={menu}>
-              <List.Label id={`${item.label}_${menu}`}>{item.label}</List.Label>
+              <List.Label id={`${item.label}_${menu}_${logo}`}>
+                {item.label}
+              </List.Label>
               <List.Link
                 to={item.url}
                 menu={menu}
                 title={item.label}
                 aria-label={item.label}
-                aria-labelledby={`${item.label}_${menu}`}
+                aria-labelledby={`${item.label}_${menu}_${logo}`}
               >
                 {withComponent(item.text)}
               </List.Link>
