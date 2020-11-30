@@ -86,6 +86,8 @@ export const Title = styled.span`
   }
 `;
 export const ActionLinkButton = styled(ReactRouterLink)`
+  position: relative;
+  z-index: 10;
   display: block;
   width: max-content;
   font-family: 'Open sans';
@@ -124,23 +126,27 @@ export const ControlPanel = styled.div`
   bottom: 1.5rem;
   left: 0;
   width: 100%;
-  text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  @media (min-width: ${BREAKPOINT.LARGE}) {
+    justify-content: flex-end;
+    padding-right: ${({ theme }) => `${theme.margin * 6}rem`};
+  }
 `;
 export const ControlButton = styled.button<{ img: string; active: boolean }>`
   outline: none;
   cursor: pointer;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  width: 80px;
-  height: 40px;
+  width: 70px;
+  height: 30px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border: none;
+  border: 1px solid black;
+  /* border: none; */
   border-radius: 0.4rem;
 
   ${({ theme, img, active }) => `
