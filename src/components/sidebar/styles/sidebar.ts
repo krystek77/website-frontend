@@ -6,7 +6,7 @@ export const Container = styled.aside<{ toggleSidebar: boolean }>`
   height: calc(100vh - 45px);
   width: 300px;
   box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.3);
-  z-index: 1;
+  z-index: 100;
   transform: translateX(-100%);
   transition: transform 0.5s ease-out;
   background-color: ${({ theme }) => theme.colors.light};
