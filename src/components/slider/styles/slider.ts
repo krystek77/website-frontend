@@ -143,29 +143,46 @@ export const ControlPanel = styled.div`
     padding-right: ${({ theme }) => `${theme.margin * 6}rem`};
   }
 `;
-export const ControlButton = styled.button<{ img: string; active: boolean }>`
+export const ControlButton = styled.button<{ img?: string; active: boolean }>`
+  font-size: 1.4rem;
+  text-transform: lowercase;
   outline: none;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  width: 70px;
-  height: 30px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border: 1px solid black;
-  /* border: none; */
-  border-radius: 0.4rem;
+  border: none;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
 
-  ${({ theme, img, active }) => `
-    background-image: url(../assets/images/${
-      img === '' ? 'defaultSideBtn' : img
-    }.webP);
+  cursor: pointer;
+  ${({ theme, active }) => `
+    padding:${theme.padding * 2}rem ${theme.padding * 3}rem;
+    margin-right:${theme.margin * 1}rem;
+    margin-bottom:${theme.margin * 2}rem;
+    background-color: ${theme.colors.medium};
+    transition: ${theme.transition};
     &:hover {
-      
+      transform:scaleY(1.2);
+        transform-origin:bottom;
+        background-color: ${theme.colors.light};
+        color:${theme.colors.dark_primary};
     }
-    ${active && `transform:scaleY(1.2);transform-origin:bottom`}
-  `}
+    ${
+      active &&
+      `transform:scaleY(1.2);
+        transform-origin:bottom;
+        background-color: ${theme.colors.light};
+        color:${theme.colors.dark_primary};
+      `
+    };
+    &:focus {
+      transform:scaleY(1.2);
+        transform-origin:bottom;
+        background-color: ${theme.colors.light};
+        color:${theme.colors.dark_primary};
+    }
+
+  `};
+  @media (min-width: ${BREAKPOINT.LARGE}) {
+    margin-bottom: 0;
+  }
 `;
 export const List = styled.ul`
   margin-bottom: ${({ theme }) => `${theme.margin * 6}rem`};

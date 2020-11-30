@@ -6,6 +6,7 @@ export const slider = [
     description: '',
     route: '',
     buttonImg: 'flex-control',
+    buttonLabel: 'XControl FLEX',
     backgroundImg: 'bg_xcontrolflex',
     list: [
       { id: '1', text: 'The most intuitive & user-friendly laundry control' },
@@ -31,6 +32,7 @@ export const slider = [
     description: '',
     route: '',
     buttonImg: '',
+    buttonLabel: 'Nowe Bariery higieny',
     backgroundImg: 'bg_new_barrier',
     list: [
       { id: '1', text: 'Dostępna już od 36 kg' },
@@ -45,6 +47,7 @@ export const slider = [
       'Vivamus suscipit tortor eget felis porttitor volutpat. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     route: '',
     buttonImg: '',
+    buttonLabel: 'MOP',
     backgroundImg: 'bg_mop',
     list: [],
   },
@@ -56,6 +59,7 @@ export const slider = [
       'Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.',
     route: '',
     buttonImg: '',
+    buttonLabel: 'I-TRACE',
     backgroundImg: 'bg_itrace',
     list: [],
   },
@@ -67,6 +71,7 @@ export const slider = [
       'Vivamus suscipit tortor eget felis porttitor volutpat. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     route: '',
     buttonImg: '',
+    buttonLabel: 'Nowe suszarki TX',
     backgroundImg: 'bg_new_tx',
     list: [
       { id: '1', text: 'nowy design pasujący do FX-80' },

@@ -24,7 +24,7 @@ interface ISlider {
   ControlButton: React.FC<{
     active: boolean;
     type: 'button';
-    img: string;
+    img?: string;
     onClick: () => void;
     title: string;
     ['aria-label']: string;
@@ -75,8 +75,11 @@ Slider.List = function SliderList({ ...restProps }) {
 Slider.ControlPanel = function SliderControlPanel({ children }) {
   return <ControlPanel>{children}</ControlPanel>;
 };
-Slider.ControlButton = function SliderControlButton({ ...restProps }) {
-  return <ControlButton {...restProps} />;
+Slider.ControlButton = function SliderControlButton({
+  children,
+  ...restProps
+}) {
+  return <ControlButton {...restProps}>{children}</ControlButton>;
 };
 Slider.Title = function SliderTitle({ children }) {
   return <Title>{children}</Title>;
