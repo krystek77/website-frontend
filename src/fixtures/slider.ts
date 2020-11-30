@@ -31,18 +31,21 @@ export const slider = [
     description: '',
     route: '',
     buttonImg: '',
-    backgroundImg: '',
-    list: [],
+    backgroundImg: 'bg_new_barrier',
+    list: [
+      { id: '1', text: 'Dostępna już od 36 kg' },
+      { id: '2', text: 'Technologia monitorowania procesu prania TRACE-TECH' },
+    ],
   },
   {
     id: '3',
     direction: 'row',
-    title: 'Maszyny zaprojektowane do prania mopów',
+    title: 'Odkryj jakość czyszczenia z dedy',
     description:
       'Vivamus suscipit tortor eget felis porttitor volutpat. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     route: '',
     buttonImg: '',
-    backgroundImg: '',
+    backgroundImg: 'bg_mop',
     list: [],
   },
   {
@@ -64,7 +67,7 @@ export const slider = [
       'Vivamus suscipit tortor eget felis porttitor volutpat. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     route: '',
     buttonImg: '',
-    backgroundImg: 'new_tx',
+    backgroundImg: 'bg_new_tx',
     list: [
       { id: '1', text: 'nowy design pasujący do FX-80' },
       { id: '2', text: 'załadunek 9 kg' },

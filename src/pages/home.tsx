@@ -8,23 +8,23 @@ export const HomePage = () => {
     slider[randomNumber(0, slider.length - 1)].id
   );
 
-  // React.useEffect(() => {
-  //   const id = setInterval(() => {
-  //     const indexActiveSlide = slider.findIndex(
-  //       (item) => item.id === activeSlide
-  //     );
-  //     const length = slider.length;
-  //     if (indexActiveSlide + 1 < length) {
-  //       const idNextSlide = slider[indexActiveSlide + 1].id;
-  //       setActiveSlide(idNextSlide);
-  //     } else {
-  //       setActiveSlide(slider[0].id);
-  //     }
-  //   }, 5000);
-  //   return () => {
-  //     clearInterval(id);
-  //   };
-  // }, [activeSlide]);
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      const indexActiveSlide = slider.findIndex(
+        (item) => item.id === activeSlide
+      );
+      const length = slider.length;
+      if (indexActiveSlide + 1 < length) {
+        const idNextSlide = slider[indexActiveSlide + 1].id;
+        setActiveSlide(idNextSlide);
+      } else {
+        setActiveSlide(slider[0].id);
+      }
+    }, 5000);
+    return () => {
+      clearInterval(id);
+    };
+  }, [activeSlide]);
 
   return (
     <Layout>
