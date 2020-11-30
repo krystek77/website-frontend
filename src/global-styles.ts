@@ -34,7 +34,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
         -ms-user-select:none;
         -webkit-user-select: none;
         font-family:'Lato',sans-serif;
-        overflow: hidden;
+        overflow-x: hidden;
     }
      a{
         font-weight:${({ theme }) => theme.normal_font};
