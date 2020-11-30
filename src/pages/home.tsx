@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Slider } from '../components';
+import { Layout, Slider, Decorator } from '../components';
 import { slider } from '../fixtures';
 import { randomNumber } from '../utils';
 
@@ -8,23 +8,23 @@ export const HomePage = () => {
     slider[randomNumber(0, slider.length - 1)].id
   );
 
-  React.useEffect(() => {
-    const id = setInterval(() => {
-      const indexActiveSlide = slider.findIndex(
-        (item) => item.id === activeSlide
-      );
-      const length = slider.length;
-      if (indexActiveSlide + 1 < length) {
-        const idNextSlide = slider[indexActiveSlide + 1].id;
-        setActiveSlide(idNextSlide);
-      } else {
-        setActiveSlide(slider[0].id);
-      }
-    }, 5000);
-    return () => {
-      clearInterval(id);
-    };
-  }, [activeSlide]);
+  // React.useEffect(() => {
+  //   const id = setInterval(() => {
+  //     const indexActiveSlide = slider.findIndex(
+  //       (item) => item.id === activeSlide
+  //     );
+  //     const length = slider.length;
+  //     if (indexActiveSlide + 1 < length) {
+  //       const idNextSlide = slider[indexActiveSlide + 1].id;
+  //       setActiveSlide(idNextSlide);
+  //     } else {
+  //       setActiveSlide(slider[0].id);
+  //     }
+  //   }, 5000);
+  //   return () => {
+  //     clearInterval(id);
+  //   };
+  // }, [activeSlide]);
 
   return (
     <Layout>
@@ -52,10 +52,14 @@ export const HomePage = () => {
                       >
                         Zobacz więcej
                       </Slider.ActionLinkButton>
+                      <Decorator top='0px' left='0px' pattern='010110010' />
+                      <Decorator bottom='0px' right='0px' pattern='000010111' />
                     </Slider.Panel>
-                    <Slider.Panel
-                      backgroundImg={item.backgroundImg}
-                    ></Slider.Panel>
+                    <Slider.Panel backgroundImg={item.backgroundImg}>
+                      <Decorator top='0px' left='0px' pattern='111110000' />
+                      <Decorator bottom='0px' left='0px' pattern='000010111' />
+                      <Decorator top='50%' right='0px' pattern='011011001' />
+                    </Slider.Panel>
                   </Slider.Slide>
                 )
               );
