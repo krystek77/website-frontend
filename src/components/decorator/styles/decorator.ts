@@ -21,7 +21,8 @@ export const Inner = styled.div`
   grid-gap: 0.1rem;
 `;
 export const Square = styled.div<{ bgColor: string }>`
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.2rem;
   background-color: ${({ bgColor }) => bgColor};
 `;
