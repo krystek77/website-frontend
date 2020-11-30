@@ -206,6 +206,16 @@ export const List = styled.ul`
     }
   }
 `;
+export const Image = styled.div`
+  margin-top: -60px;
+  max-width: 450px;
+  height: auto;
+  margin-bottom: ${({ theme }) => `${theme.margin * 2}rem`};
+  img {
+    display: block;
+    max-width: 100%;
+  }
+`;
 export const Label = styled.span<{ id: string }>`
   display: none;
   visibility: hidden;

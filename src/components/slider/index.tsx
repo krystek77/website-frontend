@@ -7,6 +7,7 @@ import {
   Panel,
   Description,
   List,
+  Image,
   ControlPanel,
   ControlButton,
   Title,
@@ -20,6 +21,7 @@ interface ISlider {
   Panel: React.FC<{ backgroundImg?: string }>;
   List: React.FC<{ list?: Array<{ id: string; text: string }> }>;
   Description: React.FC<{ description: string }>;
+  Image: React.FC<{ contentImg: string; alt?: string }>;
   ControlPanel: React.FC;
   ControlButton: React.FC<{
     active: boolean;
@@ -83,6 +85,14 @@ Slider.ControlButton = function SliderControlButton({
 };
 Slider.Title = function SliderTitle({ children }) {
   return <Title>{children}</Title>;
+};
+Slider.Image = function SliderImage({ children, ...restProps }) {
+  const { contentImg } = restProps;
+  return contentImg ? (
+    <Image>
+      <img src={`../assets/images/${contentImg}.webP`} alt={contentImg} />
+    </Image>
+  ) : null;
 };
 Slider.ActionLinkButton = function SliderActionLinkButton({
   children,
