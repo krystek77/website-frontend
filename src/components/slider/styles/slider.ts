@@ -96,6 +96,14 @@ export const ActionLinkButton = styled(ReactRouterLink)`
   border-radius: 0.4rem;
   outline: none;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 1);
+  @media (min-width: ${BREAKPOINT.LARGE}) {
+    width: 200px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+  }
 
   ${({ theme }) => `
     background-color:${theme.colors.dark_secondary};

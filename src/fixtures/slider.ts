@@ -40,7 +40,7 @@ export const slider = [
   {
     id: '3',
     direction: 'row',
-    title: 'Odkryj jakość czyszczenia z dedy',
+    title: 'Odkryj jakość czyszczenia mopów z dedykowanymi rozwiązaniami',
     description:
       'Vivamus suscipit tortor eget felis porttitor volutpat. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     route: '',
