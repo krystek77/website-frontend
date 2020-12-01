@@ -220,6 +220,15 @@ export const Image = styled.div`
     max-width: 100%;
   }
 `;
+export const Published = styled.p`
+  font-family: 'Oswald';
+  margin-bottom: 2rem;
+  font-weight: 500;
+  span {
+    margin-right: 1rem;
+    font-weight: 300;
+  }
+`;
 export const Label = styled.span<{ id: string }>`
   display: none;
   visibility: hidden;

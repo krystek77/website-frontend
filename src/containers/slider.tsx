@@ -63,12 +63,16 @@ export const SliderContainer: React.FC = () => {
             slider_list: Array<{ id: number; text: string }>;
             description: string | null;
             buttonLabel: string;
+            published_at: string;
           }) => {
             return (
               item.id === activeSlide && (
                 <Slider.Slide key={item.id} direction={item.direction}>
                   <Slider.Panel>
                     <Slider.Title>{item.title}</Slider.Title>
+                    <Slider.Published>
+                      {item.published_at.slice(0, 10)}
+                    </Slider.Published>
                     <Slider.Label id={item.title.replace(' ', '')}>
                       {item.title}
                     </Slider.Label>

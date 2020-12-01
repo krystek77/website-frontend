@@ -13,6 +13,7 @@ import {
   ControlButton,
   Title,
   ActionLinkButton,
+  Published,
   Label,
 } from './styles/slider';
 
@@ -42,6 +43,7 @@ interface ISlider {
     ['aria-label']: string;
     ['aria-labelledby']: string;
   }>;
+  Published: React.FC;
   Label: React.FC<{ id: string }>;
 }
 
@@ -109,6 +111,14 @@ Slider.ActionLinkButton = function SliderActionLinkButton({
 }) {
   const { to } = restProps;
   return <ActionLinkButton to={to}>{children}</ActionLinkButton>;
+};
+Slider.Published = function SliderPublished({ children }) {
+  return (
+    <Published>
+      <span>Opublikowano:</span>
+      {children}
+    </Published>
+  );
 };
 Slider.Label = function SliderLabel({ children, ...restProps }) {
   return <Label {...restProps}>{children}</Label>;
