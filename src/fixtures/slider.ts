@@ -48,7 +48,7 @@ export const slider = [
     description: '',
     route: '',
     buttonImg: '',
-    contentImg: 'ctx_mop',
+    contentImg: 'ctx_mop3',
     buttonLabel: 'MOP',
     backgroundImg: 'bg_mop',
     list: [

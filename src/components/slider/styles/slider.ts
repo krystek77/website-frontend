@@ -74,7 +74,7 @@ export const Description = styled.p`
   }
 `;
 export const Title = styled.span`
-  font-size: 4rem;
+  font-size: 3rem;
   font-family: 'Lato';
   text-transform: uppercase;
   line-height: 1.1;
@@ -190,7 +190,7 @@ export const List = styled.ul`
   li {
     padding-left: ${({ theme }) => `${theme.margin * 6}rem`};
     font-family: 'Lato';
-    font-size: 2.2rem;
+    font-size: 2rem;
     position: relative;
     margin-bottom: ${({ theme }) => `${theme.margin * 2}rem`};
     &::after {
@@ -208,7 +208,7 @@ export const List = styled.ul`
 `;
 export const Image = styled.div`
   margin-top: -60px;
-  max-width: 450px;
+  max-width: 350px;
   height: auto;
   margin-bottom: ${({ theme }) => `${theme.margin * 2}rem`};
   img {
