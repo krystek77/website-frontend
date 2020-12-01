@@ -52,7 +52,7 @@ export const Panel = styled.div<{ backgroundImg?: string }>`
     ${
       backgroundImg === ''
         ? `background-color:${theme.colors.dark};color:${theme.colors.light};`
-        : `background-image: url(../assets/images/${backgroundImg}.webP);color:${theme.colors.dark};`
+        : `background-image: url(${backgroundImg});color:${theme.colors.dark};`
     };
   `}
   @media (min-width: ${BREAKPOINT.LARGE}) {
@@ -63,14 +63,16 @@ export const Panel = styled.div<{ backgroundImg?: string }>`
     `}
   }
 `;
-export const Description = styled.p`
-  font-size: 2.2rem;
-  line-height: 1.2;
-  margin-bottom: ${({ theme }) => `${theme.margin * 6}rem`};
-  @media (min-width: ${BREAKPOINT.LARGE}) {
-    max-width: 640px;
-    font-size: 2.4rem;
-    line-height: 1.3;
+export const Description = styled.div`
+  p {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: ${({ theme }) => `${theme.margin * 6}rem`};
+    @media (min-width: ${BREAKPOINT.LARGE}) {
+      max-width: 640px;
+      font-size: 2.4rem;
+      line-height: 1.3;
+    }
   }
 `;
 export const Title = styled.span`
@@ -188,21 +190,23 @@ export const List = styled.ul`
   margin-bottom: ${({ theme }) => `${theme.margin * 6}rem`};
   align-self: flex-start;
   li {
-    padding-left: ${({ theme }) => `${theme.margin * 6}rem`};
-    font-family: 'Lato';
-    font-size: 2rem;
-    position: relative;
-    margin-bottom: ${({ theme }) => `${theme.margin * 2}rem`};
-    &::after {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      width: 12px;
-      height: 12px;
-      background-color: ${({ theme }) => theme.colors.dark_secondary};
-      display: block;
-      content: '';
+    p {
+      padding-left: ${({ theme }) => `${theme.margin * 6}rem`};
+      font-family: 'Lato';
+      font-size: 2rem;
+      position: relative;
+      margin-bottom: ${({ theme }) => `${theme.margin * 2}rem`};
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 12px;
+        height: 12px;
+        background-color: ${({ theme }) => theme.colors.dark_secondary};
+        display: block;
+        content: '';
+      }
     }
   }
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import {
   Container,
   Inner,
@@ -19,9 +20,11 @@ interface ISlider {
   Wrapper: React.FC;
   Slide: React.FC<{ direction: string }>;
   Panel: React.FC<{ backgroundImg?: string }>;
-  List: React.FC<{ list?: Array<{ id: string; text: string }> }>;
-  Description: React.FC<{ description: string }>;
-  Image: React.FC<{ contentImg: string; alt?: string }>;
+  List: React.FC<{ list?: Array<{ id: number; text: string }> }>;
+  Description: React.FC<{ description: string | null }>;
+  Image: React.FC<{
+    contentImage: { url: string; alternativeText?: string };
+  }>;
   ControlPanel: React.FC;
   ControlButton: React.FC<{
     active: boolean;
@@ -58,10 +61,12 @@ Slider.Slide = function SliderSlide({ children, ...restProps }) {
 Slider.Panel = function SliderPanel({ children, ...restProps }) {
   return <Panel {...restProps}>{children}</Panel>;
 };
-Slider.Description = function SliderDescription({ children, ...restProps }) {
+Slider.Description = function SliderDescription({ ...restProps }) {
   const { description } = restProps;
   return description ? (
-    <Description {...restProps}>{children}</Description>
+    <Description {...restProps}>
+      <ReactMarkdown>{description}</ReactMarkdown>
+    </Description>
   ) : null;
 };
 Slider.List = function SliderList({ ...restProps }) {
@@ -69,7 +74,11 @@ Slider.List = function SliderList({ ...restProps }) {
   return list && list.length > 0 ? (
     <List>
       {list.map((item) => {
-        return <li key={item.id}>{item.text}</li>;
+        return (
+          <li key={item.id}>
+            <ReactMarkdown>{item.text}</ReactMarkdown>
+          </li>
+        );
       })}
     </List>
   ) : null;
@@ -87,10 +96,10 @@ Slider.Title = function SliderTitle({ children }) {
   return <Title>{children}</Title>;
 };
 Slider.Image = function SliderImage({ children, ...restProps }) {
-  const { contentImg } = restProps;
-  return contentImg ? (
+  const { contentImage } = restProps;
+  return contentImage ? (
     <Image>
-      <img src={`../assets/images/${contentImg}.webP`} alt={contentImg} />
+      <img src={contentImage.url} alt={contentImage.alternativeText} />
     </Image>
   ) : null;
 };
