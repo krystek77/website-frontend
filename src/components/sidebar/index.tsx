@@ -19,4 +19,7 @@ export const Sidebar: React.FC<{ toggleSidebar: boolean }> & ISidebar = ({
 Sidebar.Title = function SidebarTitle({ children, ...restProps }) {
   return <Title {...restProps}>{children}</Title>;
 };
-export default Sidebar;
+export const MemoizedSidebar: React.FC<{ toggleSidebar: boolean }> = React.memo(
+  Sidebar
+);
+export default MemoizedSidebar;

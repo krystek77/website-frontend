@@ -45,5 +45,5 @@ Topbar.Label = function TopbarLabel({ children, ...restProps }) {
 Topbar.Hamburger = function TopbarHamburger({ children, ...restProps }) {
   return <Hamburger {...restProps}>{children}</Hamburger>;
 };
-
-export default Topbar;
+export const MemoizedTopbar: React.FC = React.memo(Topbar);
+export default MemoizedTopbar;

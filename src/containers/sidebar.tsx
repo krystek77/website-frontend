@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidebar } from '../components';
+import { MemoizedSidebar } from '../components';
 import {
   PageLinksContainer,
   UserLinksContainer,
@@ -8,14 +8,19 @@ import {
 } from '../containers';
 import { MENU, LOGO } from '../constants';
 
-export const SidebarContainer = ({ toggleSidebar = false }) => {
+export const SidebarContainer: React.FC<{ toggleSidebar: boolean }> = ({
+  toggleSidebar = false,
+}) => {
   return (
-    <Sidebar toggleSidebar={toggleSidebar}>
+    <MemoizedSidebar toggleSidebar={toggleSidebar}>
       <CompanyLogoContainer logo={LOGO.SIDEBAR} />
       <PageLinksContainer menu={MENU.MENU_V} />
       <UserLinksContainer menu={MENU.MENU_USER_H} logo={LOGO.SIDEBAR} />
       <SocialLinksContainer menu={MENU.MENU_SOCIAL_H} />
-    </Sidebar>
+    </MemoizedSidebar>
   );
 };
-export default SidebarContainer;
+export const MemoizedSidebarContainer: React.FC<{
+  toggleSidebar: boolean;
+}> = React.memo(SidebarContainer);
+export default MemoizedSidebarContainer;
