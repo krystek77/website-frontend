@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ROUTES } from './constants';
+import { Spinner } from './components';
 const HomePage = React.lazy(() => import('./pages/home'));
 const ProductsPage = React.lazy(() => import('./pages/products'));
 const TechnologyPage = React.lazy(() => import('./pages/technology'));
@@ -14,7 +15,7 @@ const ContactPage = React.lazy(() => import('./pages/contact'));
 export const App = () => {
   return (
     <Router>
-      <React.Suspense fallback={<div>Loading page</div>}>
+      <React.Suspense fallback={<Spinner>Loading data ...</Spinner>}>
         <Switch>
           <Route path={ROUTES.PRODUCTS}>
             <ProductsPage />
