@@ -4,6 +4,7 @@ import { SocialLinksContainer } from './socialLinks';
 import { TopbarContainer } from './topbar';
 import { SidebarContainer, MemoizedSidebarContainer } from './sidebar';
 import { CompanyLogoContainer } from './companyLogo';
+import { SliderContainer } from './slider';
 export {
   PageLinksContainer,
   UserLinksContainer,
@@ -12,4 +13,5 @@ export {
   SidebarContainer,
   MemoizedSidebarContainer,
   CompanyLogoContainer,
+  SliderContainer,
 };
