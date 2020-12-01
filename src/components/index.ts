@@ -5,6 +5,7 @@ import { Sidebar, MemoizedSidebar } from './sidebar';
 import { CompanyLogo } from './companyLogo';
 import { Slider } from './slider';
 import { Decorator } from './decorator';
+import { Spinner } from './spinner';
 export {
   Layout,
   List,
@@ -15,4 +16,5 @@ export {
   CompanyLogo,
   Slider,
   Decorator,
+  Spinner,
 };
