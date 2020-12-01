@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout } from '../components';
-import { SliderContainer } from '../containers';
+const SliderContainer = React.lazy(() => import('../containers/slider'));
 
 export const HomePage = () => {
   return (
