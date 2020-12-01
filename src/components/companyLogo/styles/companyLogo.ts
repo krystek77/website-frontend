@@ -29,7 +29,7 @@ export const Logo = styled(ReactRouterLink)<{ logo?: string }>`
     color: ${({ theme }) => theme.colors.dark_primary};
   }
   &:focus {
-    color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.dark_primary};
   }
   &:active {
     color: ${({ theme }) => theme.colors.dark_primary};

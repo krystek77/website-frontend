@@ -5,6 +5,7 @@ import {
   Wrapper,
   Item,
   Link,
+  NavLink,
   RegularLink,
   Label,
 } from './styles/list';
@@ -17,6 +18,14 @@ interface IList {
     ['aria-labelledby']: string;
     to: string;
     menu: string;
+  }>;
+  NavLink: React.FC<{
+    title: string;
+    ['aria-label']: string;
+    ['aria-labelledby']: string;
+    to: string;
+    menu: string;
+    activeClassName: string;
   }>;
   RegularLink: React.FC<{
     title: string;
@@ -50,6 +59,14 @@ List.Link = function ListLink({ children, to, ...restProps }) {
     <Link to={to} {...restProps}>
       {children}
     </Link>
+  );
+};
+
+List.NavLink = function ListNavLink({ children, to, ...restProps }) {
+  return (
+    <NavLink to={to} {...restProps}>
+      {children}
+    </NavLink>
   );
 };
 

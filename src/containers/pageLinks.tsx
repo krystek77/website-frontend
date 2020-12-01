@@ -17,15 +17,16 @@ export const PageLinksContainer: React.FC<IPageLinksContainer> = ({
           return (
             <List.Item key={item.id} menu={menu}>
               <List.Label id={`${item.label}_${menu}`}>{item.label}</List.Label>
-              <List.Link
+              <List.NavLink
                 to={item.url}
                 menu={menu}
                 title={item.label}
                 aria-label={item.label}
                 aria-labelledby={`${item.label}_${menu}`}
+                activeClassName='active'
               >
                 {item.text}
-              </List.Link>
+              </List.NavLink>
             </List.Item>
           );
         })}

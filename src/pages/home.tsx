@@ -20,7 +20,7 @@ export const HomePage = () => {
       } else {
         setActiveSlide(slider[0].id);
       }
-    }, 5000);
+    }, 10000);
     return () => {
       clearInterval(id);
     };
@@ -40,6 +40,7 @@ export const HomePage = () => {
                       <Slider.Label id={item.title.replace(' ', '')}>
                         {item.title}
                       </Slider.Label>
+                      <Slider.Image contentImg={item.contentImg} />
                       <Slider.List list={item.list} />
                       <Slider.Description description={item.description}>
                         {item.description}
@@ -53,7 +54,7 @@ export const HomePage = () => {
                         Zobacz więcej
                       </Slider.ActionLinkButton>
                       <Decorator top='0px' left='0px' pattern='010110010' />
-                      <Decorator bottom='0px' right='0px' pattern='000010111' />
+                      {/* <Decorator bottom='0px' right='0px' pattern='000010111' /> */}
                     </Slider.Panel>
                     <Slider.Panel backgroundImg={item.backgroundImg}>
                       <Decorator top='0px' left='0px' pattern='111110000' />
@@ -79,9 +80,10 @@ export const HomePage = () => {
                     title={item.title}
                     aria-label={item.title}
                     aria-labelledby={item.id}
-                    img={item.buttonImg}
                     active={item.id === activeSlide}
-                  />
+                  >
+                    {item.buttonLabel}
+                  </Slider.ControlButton>
                 </React.Fragment>
               );
             })}
