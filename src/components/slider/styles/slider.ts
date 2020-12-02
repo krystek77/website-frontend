@@ -4,6 +4,7 @@ import { BREAKPOINT } from '../../../constants';
 export const Container = styled.div`
   margin-top: 45px;
   position: relative;
+  background-color: #eaeaea;
 `;
 export const Inner = styled.div`
   width: 100%;
