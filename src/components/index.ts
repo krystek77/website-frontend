@@ -6,6 +6,7 @@ import { CompanyLogo } from './companyLogo';
 import { Slider } from './slider';
 import { Decorator } from './decorator';
 import { Spinner } from './spinner';
+import { Jumbotron } from './jumbotron';
 export {
   Layout,
   List,
@@ -17,4 +18,5 @@ export {
   Slider,
   Decorator,
   Spinner,
+  Jumbotron,
 };
