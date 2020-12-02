@@ -41,6 +41,7 @@ export const Pane = styled.div<{ background?: string }>`
 export const Title = styled.h3`
   width: 100%;
   text-transform: uppercase;
+  font-weight: 500;
 
   ${({ theme }) => `
     color:${theme.colors.light_secondary};
