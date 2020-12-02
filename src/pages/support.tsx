@@ -1,9 +1,8 @@
 import React from 'react';
-import { Layout } from '../components';
 
 export const SupportPage = () => {
   return (
-    <Layout>
+    <React.Fragment>
       <main style={{ marginTop: '45px', padding: '2rem' }}>
         <h1>Support Page</h1>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint nihil
@@ -11,7 +10,7 @@ export const SupportPage = () => {
         explicabo placeat, deserunt nisi, repellat accusamus ut sit soluta.
         Minima, officiis voluptates.
       </main>
-    </Layout>
+    </React.Fragment>
   );
 };
 

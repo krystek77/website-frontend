@@ -1,10 +1,9 @@
 import React from 'react';
-import { Layout } from '../components';
 const SliderContainer = React.lazy(() => import('../containers/slider'));
 
 export const HomePage = () => {
   return (
-    <Layout>
+    <React.Fragment>
       <SliderContainer />
       <main>
         <h1>Home Page</h1>
@@ -13,7 +12,7 @@ export const HomePage = () => {
         explicabo placeat, deserunt nisi, repellat accusamus ut sit soluta.
         Minima, officiis voluptates.
       </main>
-    </Layout>
+    </React.Fragment>
   );
 };
 
