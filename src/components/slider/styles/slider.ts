@@ -221,7 +221,7 @@ export const Image = styled.div`
   }
 `;
 export const Published = styled.p`
-  font-family: 'Oswald';
+  font-family: 'Fira Code';
   margin-bottom: 2rem;
   font-weight: 500;
   span {

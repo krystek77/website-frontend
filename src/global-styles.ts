@@ -10,6 +10,7 @@ if (typeof window !== 'undefined') {
         'Oswald:200,300,400,600,700',
         'Open sans:300,400,600,700,800',
         'Lato:300,400,700,900',
+        'Fira Code:300,400,500,600,700',
         'sans-serif',
       ],
     },
