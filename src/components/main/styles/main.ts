@@ -1,8 +1,9 @@
 import styled from 'styled-components/macro';
 export const Container = styled.main`
-  ${({ theme }) => `
+  width: 100%;
+  /* ${({ theme }) => `
     padding: ${theme.padding * 3}rem ${theme.padding * 4}rem;
-  `}
+  `} */
 `;
 export const Inner = styled.div`
   width: 100%;

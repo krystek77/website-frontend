@@ -1,18 +1,18 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import {
   WrapperLink,
   Pane,
   Title,
   Description,
-  ButtonLink,
+  Button,
   Label,
 } from './styles/jumbotron';
 interface IJumbotron {
-  Pane: React.FC;
+  Pane: React.FC<{ background?: string }>;
   Title: React.FC;
-  Description: React.FC;
-  ButtonLink: React.FC<{
-    to: string;
+  Description: React.FC<{ description: string | null }>;
+  Button: React.FC<{
     title: string;
     ['aria-label']: string;
     ['aria-labelledby']: string;
@@ -40,22 +40,16 @@ Jumbotron.Pane = function JumbotronPane({ children, ...restProps }) {
 Jumbotron.Title = function JumbotronTitle({ children, ...restProps }) {
   return <Title {...restProps}>{children}</Title>;
 };
-Jumbotron.Description = function JumbotronDescription({
-  children,
-  ...restProps
-}) {
-  return <Description {...restProps}>{children}</Description>;
+Jumbotron.Description = function JumbotronDescription({ ...restProps }) {
+  const { description } = restProps;
+  return description ? (
+    <Description>
+      <ReactMarkdown>{description}</ReactMarkdown>
+    </Description>
+  ) : null;
 };
-Jumbotron.ButtonLink = function JumbotronButtonLink({
-  children,
-  to,
-  ...restProps
-}) {
-  return (
-    <ButtonLink to={to} {...restProps}>
-      {children}
-    </ButtonLink>
-  );
+Jumbotron.Button = function JumbotronButton({ children, ...restProps }) {
+  return <Button {...restProps}>{children}</Button>;
 };
 Jumbotron.Label = function JumbotronLabel({ children, ...restProps }) {
   return <Label {...restProps}>{children}</Label>;
