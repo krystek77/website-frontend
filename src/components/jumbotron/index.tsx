@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import {
+  Container,
+  Inner,
   WrapperLink,
   Pane,
   Title,
@@ -9,6 +11,8 @@ import {
   Label,
 } from './styles/jumbotron';
 interface IJumbotron {
+  Container: React.FC<{ page?: string }>;
+  Inner: React.FC<{ page?: string }>;
   Pane: React.FC<{ background?: string }>;
   Title: React.FC;
   Description: React.FC<{ description: string | null }>;
@@ -34,6 +38,12 @@ export const Jumbotron: React.FC<{
   );
 };
 
+Jumbotron.Container = function JumbotronContainer({ children, ...restProps }) {
+  return <Container {...restProps}>{children}</Container>;
+};
+Jumbotron.Inner = function JumbotronContainer({ children, ...restProps }) {
+  return <Inner {...restProps}>{children}</Inner>;
+};
 Jumbotron.Pane = function JumbotronPane({ children, ...restProps }) {
   return <Pane {...restProps}>{children}</Pane>;
 };

@@ -1,6 +1,14 @@
 import styled from 'styled-components/macro';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { BREAKPOINT } from '../../../constants';
+export const Container = styled.section`
+  background-color: #161616;
+  width: 100%;
+`;
+export const Inner = styled.div`
+  max-width: 1140px;
+  margin: 0 auto;
+`;
 export const WrapperLink = styled(ReactRouterLink)`
   display: flex;
   flex-direction: column;
@@ -48,14 +56,16 @@ export const Title = styled.h3`
     margin-bottom: ${theme.margin * 4}rem;
   `}
 `;
-export const Description = styled.p`
-  font-size: 1.8rem;
-  text-decoration: none;
-  white-space: normal;
-  ${({ theme }) => `
+export const Description = styled.div`
+  p {
+    font-size: 1.8rem;
+    text-decoration: none;
+    white-space: normal;
+    ${({ theme }) => `
     color:${theme.colors.medium};
     margin-bottom:${theme.margin * 10}rem;
   `}
+  }
 `;
 export const Button = styled.button`
   display: block;
