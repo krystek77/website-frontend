@@ -5,6 +5,7 @@ import { TopbarContainer } from './topbar';
 import { SidebarContainer, MemoizedSidebarContainer } from './sidebar';
 import { CompanyLogoContainer } from './companyLogo';
 import { SliderContainer } from './slider';
+import { JumbotronContainer } from './jumbotron';
 export {
   PageLinksContainer,
   UserLinksContainer,
@@ -14,4 +15,5 @@ export {
   MemoizedSidebarContainer,
   CompanyLogoContainer,
   SliderContainer,
+  JumbotronContainer,
 };
