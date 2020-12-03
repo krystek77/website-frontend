@@ -1,6 +1,7 @@
 import { HomePage } from './home';
 import { ProductsPage } from './products';
 import { TechnologyPage } from './technology';
+import { BusinessDetailsPage } from './businessDetails';
 import { BusinessPage } from './business';
 import { SupportPage } from './support';
 import { FinancePage } from './finance';
@@ -11,6 +12,7 @@ export {
   HomePage,
   ProductsPage,
   TechnologyPage,
+  BusinessDetailsPage,
   BusinessPage,
   SupportPage,
   FinancePage,
