@@ -50,6 +50,7 @@ export const Title = styled.h3`
   width: 100%;
   text-transform: uppercase;
   font-weight: 500;
+  text-align: left;
 
   ${({ theme }) => `
     color:${theme.colors.light_secondary};

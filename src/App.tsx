@@ -25,7 +25,7 @@ export const App = () => {
             <Route path={ROUTES.TECHNOLOGY}>
               <TechnologyPage />
             </Route>
-            <Route path={ROUTES.YOUR_BUSINESS_ID}>
+            <Route path={ROUTES.YOUR_BUSINESS_SLUG}>
               <BusinessDetialsPage />
             </Route>
             <Route path={ROUTES.YOUR_BUSINESS}>

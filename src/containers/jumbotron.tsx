@@ -27,27 +27,28 @@ export const JumbotronContainer: React.FC<{ page?: string }> = ({
             title: string;
             Description: string;
             image: { url: string };
+            slug: string;
           }) => {
             const { image } = item;
             return (
               <React.Fragment key={item.id}>
-                <Jumbotron.Label id='goscinnosc'>{item.title}</Jumbotron.Label>
+                <Jumbotron.Label id={item.slug}>{item.title}</Jumbotron.Label>
                 <Jumbotron
-                  to={`${ROUTES.YOUR_BUSINESS}/${item.id}`}
+                  to={`${ROUTES.YOUR_BUSINESS}/${item.slug}`}
                   title={item.title}
                   aria-label={item.title}
-                  aria-labelledby='goscinnosc'
+                  aria-labelledby={item.slug}
                 >
                   <Jumbotron.Pane>
                     <Jumbotron.Title>{item.title}</Jumbotron.Title>
                     <Jumbotron.Description description={item.Description} />
-                    <Jumbotron.Label id='goscinnosc_btn'>
+                    <Jumbotron.Label id={`${item.slug}_btn`}>
                       Dowiedz się więcej
                     </Jumbotron.Label>
                     <Jumbotron.Button
                       title={item.title}
                       aria-label={item.title}
-                      aria-labelledby='goscinnosc_btn'
+                      aria-labelledby={`${item.slug}_btn`}
                     >
                       Zobacz więcej
                     </Jumbotron.Button>

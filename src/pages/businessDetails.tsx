@@ -7,7 +7,7 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
   return (
     <React.Fragment>
       <main style={{ marginTop: '45px', padding: '2rem' }}>
-        <h1>Business Details - {match.params.id}</h1>
+        <h2>Gościnność - slug: {match.params.slug}</h2>
         <Paragraph>
           As experts in healthcare laundry solutions, Primus offers a uniquely
           comprehensive and innovative range of hygienic barrier

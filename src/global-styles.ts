@@ -60,10 +60,11 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
     h1,h2,h3,h4,h5,h6 {
         font-weight:${({ theme }) => theme.bold_font};
         margin-top:0;
-        margin-bottom:0;
+        margin-bottom:2rem;
         text-transform:capitalize;
         font-family:'Open sans',sans-serif;
         line-height:1.6;
+        text-align:center;
     }
     h1 {
         font-size:3.2rem;
