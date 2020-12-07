@@ -3,6 +3,7 @@ import React from 'react';
 type Item = {
   id: number;
   title: string;
+  subtitle: string;
   Description: string;
   image: { url: string; alternativeText: string };
   slug: string;
