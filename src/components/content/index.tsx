@@ -1,7 +1,26 @@
 import React from 'react';
-import { Container, Inner } from './styles/content';
+import {
+  Container,
+  Inner,
+  Main,
+  Aside,
+  TitleLink,
+  Label,
+} from './styles/content';
 
-export const Content: React.FC<{ page?: string }> = ({
+interface IContent {
+  Main: React.FC;
+  Aside: React.FC;
+  TitleLink: React.FC<{
+    to: string;
+    title: string;
+    ['aria-label']: string;
+    ['aria-labelledby']: string;
+  }>;
+  Label: React.FC<{ id: string }>;
+}
+
+export const Content: React.FC<{ page?: string }> & IContent = ({
   children,
   page,
   ...restProps
@@ -14,4 +33,22 @@ export const Content: React.FC<{ page?: string }> = ({
     </Container>
   );
 };
+
+Content.Main = function ContentMain({ children, ...restProps }) {
+  return <Main {...restProps}>{children}</Main>;
+};
+Content.Aside = function ContentMain({ children, ...restProps }) {
+  return <Aside {...restProps}>{children}</Aside>;
+};
+Content.TitleLink = function ContentTitleLink({ children, to, ...restProps }) {
+  return (
+    <TitleLink to={to} {...restProps}>
+      {children}
+    </TitleLink>
+  );
+};
+Content.Label = function ContentLabel({ children, ...restProps }) {
+  return <Label {...restProps}>{children}</Label>;
+};
+
 export default Content;
