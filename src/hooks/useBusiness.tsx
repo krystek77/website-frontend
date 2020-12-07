@@ -4,7 +4,7 @@ type Item = {
   id: number;
   title: string;
   Description: string;
-  image: { url: string };
+  image: { url: string; alternativeText: string };
   slug: string;
 };
 
