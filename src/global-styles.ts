@@ -64,10 +64,13 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
         text-transform:capitalize;
         font-family:'Open sans',sans-serif;
         line-height:1.6;
-        text-align:center;
+        text-align:left;
     }
     h1 {
         font-size:3.2rem;
+        text-align:center;
+        font-weight:300;
+        text-transform:uppercase;
     }
     h2 {
         font-size:2.8rem;
