@@ -1,7 +1,8 @@
 import React from 'react';
 import { useBusiness } from '../hooks';
 import { JumbotronContainer } from '../containers';
-import { Main } from '../components';
+import { Content } from '../components';
+import { PAGES } from '../constants';
 
 export const BusinessPage = () => {
   const { businesses } = useBusiness();
@@ -22,9 +23,11 @@ export const BusinessPage = () => {
       >
         <h1>Twój biznes</h1>
       </header>
-      <Main>
-        <JumbotronContainer list={businesses} />
-      </Main>
+      <Content page={PAGES.BUSINESSES_PAGE}>
+        <main>
+          <JumbotronContainer list={businesses} />
+        </main>
+      </Content>
     </React.Fragment>
   );
 };
