@@ -9,6 +9,7 @@ import { Spinner } from './spinner';
 import { Jumbotron } from './jumbotron';
 import { Content } from './content';
 import { Paragraph } from './paragraph';
+import { Hero } from './hero';
 export {
   Layout,
   List,
@@ -23,4 +24,5 @@ export {
   Content,
   Jumbotron,
   Paragraph,
+  Hero,
 };
