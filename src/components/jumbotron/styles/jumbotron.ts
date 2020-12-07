@@ -46,7 +46,7 @@ export const Pane = styled.div<{ background?: string }>`
     width: 50%;
   }
 `;
-export const Title = styled.h3`
+export const Title = styled.h2`
   width: 100%;
   text-transform: uppercase;
   font-weight: 500;
