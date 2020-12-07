@@ -3,8 +3,8 @@ import { Jumbotron } from '../components';
 import { ROUTES } from '../constants';
 
 export const JumbotronContainer: React.FC<{ page?: string; list: any[] }> = ({
-  page = 'business',
   list,
+  page,
 }) => {
   return list && list.length > 0 ? (
     <Jumbotron.Container page={page}>
