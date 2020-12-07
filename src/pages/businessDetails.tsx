@@ -1,8 +1,8 @@
 import React from 'react';
 import { ROUTES, MENU, PAGES } from '../constants';
-import { Content, List, Hero } from '../components';
+import { Content, List, Paragraph } from '../components';
+import { HeroContainer } from '../containers';
 import { useBusiness } from '../hooks';
-import { Paragraph } from '../components';
 import { withRouter } from 'react-router-dom';
 
 export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
@@ -20,17 +20,7 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
 
   return (
     <React.Fragment>
-      {business && (
-        <React.Fragment>
-          <Hero.Wrapper>
-            <Hero.Cover>
-              <Hero.Title>{business.title}</Hero.Title>
-              <Hero.SubTitle>{business.subtitle}</Hero.SubTitle>
-            </Hero.Cover>
-            <Hero background={business.image.url}></Hero>
-          </Hero.Wrapper>
-        </React.Fragment>
-      )}
+      <HeroContainer data={business} />
       {business && (
         <Content page={PAGES.BUSINESS_DETAILS_PAGE}>
           <Content.Main page={PAGES.BUSINESS_DETAILS_PAGE}>
