@@ -6,6 +6,7 @@ import { SidebarContainer, MemoizedSidebarContainer } from './sidebar';
 import { CompanyLogoContainer } from './companyLogo';
 import { SliderContainer } from './slider';
 import { JumbotronContainer } from './jumbotron';
+import { HeroContainer } from './hero';
 export {
   PageLinksContainer,
   UserLinksContainer,
@@ -16,4 +17,5 @@ export {
   CompanyLogoContainer,
   SliderContainer,
   JumbotronContainer,
+  HeroContainer,
 };
