@@ -3,9 +3,11 @@ import { PAGES } from '../../../constants';
 export const Container = styled.div<{ page?: string }>`
   width: 100%;
   ${({ page, theme }) =>
-    page === PAGES.BUSINESS_DETAILS_PAGE &&
+    page === PAGES.BUSINESSES_PAGE
+      ? `
+      background-color:#161616;
     `
-    `};
+      : `background-color:transparent;`};
 `;
 export const Inner = styled.div<{ page?: string }>`
   width: 100%;
