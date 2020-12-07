@@ -9,7 +9,7 @@ import {
 } from './styles/content';
 
 interface IContent {
-  Main: React.FC;
+  Main: React.FC<{ page?: string }>;
   Aside: React.FC;
   TitleLink: React.FC<{
     to: string;

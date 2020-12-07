@@ -30,12 +30,18 @@ export const Inner = styled.div<{ page?: string }>`
     `};
   }
 `;
-export const Main = styled.main`
+export const Main = styled.main<{ page?: string }>`
   ${({ theme }) => `
       border-right:1px solid ${theme.colors.light};
   `}
+  ${({ page, theme }) =>
+    page === PAGES.BUSINESS_DETAILS_PAGE &&
+    ` h2 {text-align:center};
+      
+  `};
 `;
 export const Aside = styled.aside`
+  align-self: start;
   ${({ theme }) => `
     background-color:${theme.colors.light};
     padding: ${theme.padding * 4}rem ${theme.padding * 3}rem;
