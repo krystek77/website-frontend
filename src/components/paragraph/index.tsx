@@ -7,7 +7,7 @@ const StyledParagraph = styled.p<{ light?: boolean }>`
   white-space: normal;
   line-height: 1.3;
   max-width: 600px;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   ${({ theme, light }) => `
     margin-bottom:${theme.margin * 3.2}rem;
     color:${theme.colors.dark};
