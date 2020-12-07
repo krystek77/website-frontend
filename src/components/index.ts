@@ -7,7 +7,7 @@ import { Slider } from './slider';
 import { Decorator } from './decorator';
 import { Spinner } from './spinner';
 import { Jumbotron } from './jumbotron';
-import { Main } from './main';
+import { Content } from './content';
 import { Paragraph } from './paragraph';
 export {
   Layout,
@@ -20,7 +20,7 @@ export {
   Slider,
   Decorator,
   Spinner,
-  Main,
+  Content,
   Jumbotron,
   Paragraph,
 };
