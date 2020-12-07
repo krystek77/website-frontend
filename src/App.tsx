@@ -5,7 +5,7 @@ import { Spinner, Layout } from './components';
 const HomePage = React.lazy(() => import('./pages/home'));
 const ProductsPage = React.lazy(() => import('./pages/products'));
 const TechnologyPage = React.lazy(() => import('./pages/technology'));
-const BusinessDetialsPage = React.lazy(() => import(`./pages/businessDetails`));
+const BusinessDetailsPage = React.lazy(() => import(`./pages/businessDetails`));
 const BusinessPage = React.lazy(() => import('./pages/business'));
 const SupportPage = React.lazy(() => import('./pages/support'));
 const FinancePage = React.lazy(() => import('./pages/finance'));
@@ -26,7 +26,7 @@ export const App = () => {
               <TechnologyPage />
             </Route>
             <Route path={ROUTES.YOUR_BUSINESS_SLUG}>
-              <BusinessDetialsPage />
+              <BusinessDetailsPage />
             </Route>
             <Route path={ROUTES.YOUR_BUSINESS}>
               <BusinessPage />
