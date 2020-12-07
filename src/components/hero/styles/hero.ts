@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-export const Wrapper = styled.div`
+export const Wrapper = styled.header`
   position: relative;
   z-index: 0;
   top: 0;
