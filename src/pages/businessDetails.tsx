@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink as Link } from 'react-router-dom';
-import { ROUTES } from '../constants';
+import { ROUTES, MENU, PAGES } from '../constants';
+import { Content, List, Hero } from '../components';
 import { useBusiness } from '../hooks';
 import { Paragraph } from '../components';
 import { withRouter } from 'react-router-dom';
@@ -20,25 +20,22 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
 
   return (
     <React.Fragment>
-      <header
-        style={{
-          marginTop: '45px',
-          padding: '2rem',
-          backgroundColor: '#33b2e8',
-          color: 'white',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '350px',
-        }}
-      >
-        <h1>Twój biznes</h1>
-      </header>
       {business && (
         <React.Fragment>
-          <main>
+          <Hero.Wrapper>
+            <Hero.Cover>
+              <Hero.Title>{business.title}</Hero.Title>
+              <Hero.SubTitle>{business.subtitle}</Hero.SubTitle>
+            </Hero.Cover>
+            <Hero background={business.image.url}></Hero>
+          </Hero.Wrapper>
+        </React.Fragment>
+      )}
+      {business && (
+        <Content page={PAGES.BUSINESS_DETAILS_PAGE}>
+          <Content.Main page={PAGES.BUSINESS_DETAILS_PAGE}>
             <h2>{business.title}</h2>
+
             <Paragraph>
               As experts in healthcare laundry solutions, Primus offers a
               uniquely comprehensive and innovative range of hygienic barrier
@@ -54,24 +51,40 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
               exquisite performance while being user-friendly, and facilitating
               easy control, monitoring and analysis.
             </Paragraph>
-          </main>
-          <aside>
-            <h3>
-              <Link to={ROUTES.YOUR_BUSINESS}>Twój bizness</Link>
-            </h3>
-            <ul>
-              {businesses.map((item) => {
-                return (
-                  <li key={item.id}>
-                    <Link to={`${ROUTES.YOUR_BUSINESS}/${item.slug}`}>
-                      {item.title}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </aside>
-        </React.Fragment>
+          </Content.Main>
+          <Content.Aside>
+            <Content.Label id='twoj_biznes'>Twój biznes</Content.Label>
+            <Content.TitleLink
+              to={ROUTES.YOUR_BUSINESS}
+              title='Twój biznes'
+              aria-label='Twój biznes'
+              aria-labelledby='twoj_biznes'
+            >
+              Twój biznes
+            </Content.TitleLink>
+            <List>
+              <List.Wrapper menu={MENU.MENU_V}>
+                {businesses.map((item) => {
+                  return (
+                    <List.Item key={item.id} menu={MENU.MENU_V}>
+                      <List.Label id={item.slug}>{item.title}</List.Label>
+                      <List.NavLink
+                        title={item.title}
+                        aria-label={item.title}
+                        aria-labelledby={item.slug}
+                        menu={MENU.MENU_V}
+                        activeClassName='active'
+                        to={`${ROUTES.YOUR_BUSINESS}/${item.slug}`}
+                      >
+                        {item.title}
+                      </List.NavLink>
+                    </List.Item>
+                  );
+                })}
+              </List.Wrapper>
+            </List>
+          </Content.Aside>
+        </Content>
       )}
     </React.Fragment>
   );
