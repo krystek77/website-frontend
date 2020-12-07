@@ -1,28 +1,10 @@
 import React from 'react';
+import { useBusiness } from '../hooks';
 import { JumbotronContainer } from '../containers';
 import { Main } from '../components';
-import BusinessDetailsPage from './businessDetails';
-
-type Item = {
-  id: number;
-  title: string;
-  Description: string;
-  image: { url: string };
-  slug: string;
-};
 
 export const BusinessPage = () => {
-  const [businesses, setBusinesses] = React.useState<Item[]>([]);
-
-  React.useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('/businesses');
-      const data = await response.json();
-      setBusinesses(data);
-    };
-    fetchData();
-    return () => {};
-  }, []);
+  const { businesses } = useBusiness();
   return (
     <React.Fragment>
       <header
