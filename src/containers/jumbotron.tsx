@@ -1,5 +1,5 @@
 import React from 'react';
-import { Jumbotron } from '../components';
+import { Jumbotron, Decorator } from '../components';
 import { ROUTES } from '../constants';
 
 export const JumbotronContainer: React.FC<{ page?: string; list: any[] }> = ({
@@ -34,9 +34,10 @@ export const JumbotronContainer: React.FC<{ page?: string; list: any[] }> = ({
                     Zobacz więcej
                   </Jumbotron.Button>
                 </Jumbotron.Pane>
-                <Jumbotron.Pane
-                  background={image && image.url}
-                ></Jumbotron.Pane>
+                <Jumbotron.Pane background={image && image.url}>
+                  <Decorator top='0px' left='0px' pattern='101010001' />
+                  <Decorator bottom='0px' right='0px' pattern='101010001' />
+                </Jumbotron.Pane>
               </Jumbotron>
             </React.Fragment>
           );

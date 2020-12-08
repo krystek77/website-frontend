@@ -20,7 +20,7 @@ export const Decorator: React.FC<{
   left = 'auto',
   right = 'auto',
   bottom = 'auto',
-  pattern = '000000000',
+  pattern = '010111010',
 }) => {
   return (
     <Container top={top} left={left} bottom={bottom} right={right}>

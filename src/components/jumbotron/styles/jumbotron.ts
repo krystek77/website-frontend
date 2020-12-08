@@ -25,6 +25,7 @@ export const WrapperLink = styled(ReactRouterLink)`
   }
 `;
 export const Pane = styled.div<{ background?: string }>`
+  position: relative;
   width: 100%;
   height: 400px;
   display: flex;
