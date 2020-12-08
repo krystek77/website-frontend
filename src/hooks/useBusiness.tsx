@@ -4,6 +4,10 @@ type BusinessList = {
   id: string;
   text: string;
 };
+type Paragraphs = {
+  id: string;
+  text: string;
+};
 
 type Item = {
   id: number;
@@ -12,6 +16,7 @@ type Item = {
   Description: string;
   image: { url: string; alternativeText: string };
   business_list: BusinessList[];
+  paragraph: Paragraphs[];
   slug: string;
 };
 
