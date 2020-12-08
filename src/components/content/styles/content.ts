@@ -15,13 +15,10 @@ export const Inner = styled.div<{ page?: string }>`
   width: 100%;
   margin: 0 auto;
   max-width: 1170px;
-  ${({ theme }) => `
-        padding:${theme.padding * 10}rem ${theme.padding * 5}rem;
-    `}
 
   ${({ page, theme }) =>
     page === PAGES.BUSINESS_DETAILS_PAGE &&
-    ` 
+    ` padding:${theme.padding * 10}rem ${theme.padding * 5}rem;
   `};
   @media (min-width: ${BREAKPOINT.LARGE}) {
     ${({ page, theme }) =>
