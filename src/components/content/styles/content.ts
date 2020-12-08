@@ -3,6 +3,7 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 import { PAGES, BREAKPOINT } from '../../../constants';
 export const Container = styled.div<{ page?: string }>`
   width: 100%;
+  min-height: 480px;
   ${({ page, theme }) =>
     page === PAGES.BUSINESSES_PAGE
       ? `
@@ -14,11 +15,13 @@ export const Inner = styled.div<{ page?: string }>`
   width: 100%;
   margin: 0 auto;
   max-width: 1170px;
+  ${({ theme }) => `
+        padding:${theme.padding * 10}rem ${theme.padding * 5}rem;
+    `}
 
   ${({ page, theme }) =>
     page === PAGES.BUSINESS_DETAILS_PAGE &&
-    ` padding: 4rem 1.5rem;
-      
+    ` 
   `};
   @media (min-width: ${BREAKPOINT.LARGE}) {
     ${({ page, theme }) =>

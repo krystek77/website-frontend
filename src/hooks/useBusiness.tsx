@@ -27,7 +27,6 @@ export const useBusiness = () => {
     const fetchData = async () => {
       const response = await fetch('/businesses');
       const data = await response.json();
-      console.log(data);
       setBusinesses(data);
     };
     fetchData();

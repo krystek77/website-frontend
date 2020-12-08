@@ -1,11 +1,23 @@
 import styled from 'styled-components/macro';
-import { PAGES } from '../../../constants';
+import { PAGES, BREAKPOINT } from '../../../constants';
 export const Wrapper = styled.div<{ page?: string }>`
   ${({ theme, page }) =>
     page === PAGES.BUSINESS_DETAILS_PAGE
       ? `
       section:nth-child(2){
-        background-color:${theme.colors.light_secondary};
+        
+      }
+      section:nth-child(6){
+        & >div:first-child {
+          
+          @media(min-width:${BREAKPOINT.LARGE}){
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows:auto;
+            justify-items:start;
+            align-items:center;
+        }
+        }
       }
       
   `

@@ -13,6 +13,7 @@ import { Hero } from './hero';
 import { RegularList } from './regularList';
 import { Section } from './section';
 import { SectionTitle } from './sectionTitle';
+import { BusinessCard } from './businessCard';
 export {
   Layout,
   List,
@@ -32,4 +33,5 @@ export {
   RegularList,
   Section,
   SectionTitle,
+  BusinessCard,
 };
