@@ -5,6 +5,7 @@ import {
   Article,
   Title,
   Description,
+  MarkDownDescription,
   Link,
   Label,
   Image,
@@ -14,6 +15,7 @@ interface IBusinessCard {
   Article: React.FC;
   Title: React.FC;
   Description: React.FC;
+  MarkDownDescription: React.FC<{ text: string }>;
   Link: React.FC<{
     title: string;
     ['aria-label']: string;
@@ -50,6 +52,15 @@ BusinessCard.Description = function BusinessCardDescription({
 }) {
   return <Description {...restProps}>{children}</Description>;
 };
+
+BusinessCard.MarkDownDescription = function BusinessCardMarkDownDescription({
+  children,
+  text,
+  ...restProps
+}) {
+  return <MarkDownDescription {...restProps}>{text}</MarkDownDescription>;
+};
+
 BusinessCard.Link = function BusinessCardLink({ children, to, ...restProps }) {
   return (
     <Link to={to} {...restProps}>

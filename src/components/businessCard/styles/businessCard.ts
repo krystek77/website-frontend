@@ -1,4 +1,6 @@
 import styled from 'styled-components/macro';
+import ReactMarkdown from 'react-markdown';
+
 import { Link as ReactRouterLink } from 'react-router-dom';
 export const Container = styled.div`
   /* max-width: 480px; */
@@ -115,7 +117,6 @@ export const Label = styled.span<{ id: string }>`
   display: none;
   visibility: hidden;
 `;
-
 export const Image = styled.div`
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
   max-width: 480px;
@@ -140,4 +141,15 @@ export const Image = styled.div`
       filter: grayscale(0%);
     }
   }
+`;
+export const MarkDownDescription = styled(ReactMarkdown)`
+  flex-grow: 1;
+  text-align: justify;
+  overflow: hidden;
+  ${({ theme }) => `
+    color: ${theme.colors.dark};
+    margin-bottom:${theme.margin * 4}rem;
+    border-bottom:1px solid ${theme.colors.primary};
+    padding-bottom:${theme.padding * 4}rem;
+  `};
 `;
