@@ -8,8 +8,9 @@ import { Decorator } from './decorator';
 import { Spinner } from './spinner';
 import { Jumbotron } from './jumbotron';
 import { Content } from './content';
-import { Paragraph } from './paragraph';
+import { Paragraph, MarkdownParagraph } from './paragraph';
 import { Hero } from './hero';
+import { RegularList } from './regularList';
 export {
   Layout,
   List,
@@ -24,5 +25,7 @@ export {
   Content,
   Jumbotron,
   Paragraph,
+  MarkdownParagraph,
   Hero,
+  RegularList,
 };
