@@ -11,6 +11,8 @@ import { Content } from './content';
 import { Paragraph, MarkdownParagraph } from './paragraph';
 import { Hero } from './hero';
 import { RegularList } from './regularList';
+import { Section } from './section';
+import { SectionTitle } from './sectionTitle';
 export {
   Layout,
   List,
@@ -28,4 +30,6 @@ export {
   MarkdownParagraph,
   Hero,
   RegularList,
+  Section,
+  SectionTitle,
 };
