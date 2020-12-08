@@ -127,9 +127,7 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
                       src={item.image.url}
                       alt={item.image.alternativeText}
                     />
-                    <BusinessCard.Description>
-                      {item.Description}
-                    </BusinessCard.Description>
+                    <BusinessCard.MarkDownDescription text={item.Description} />
                     <BusinessCard.Label id={item.slug}>
                       {item.title}
                     </BusinessCard.Label>
