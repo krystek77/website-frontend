@@ -7,6 +7,7 @@ import { CompanyLogoContainer } from './companyLogo';
 import { SliderContainer } from './slider';
 import { JumbotronContainer } from './jumbotron';
 import { HeroContainer } from './hero';
+import { ProductCardContainer } from './productCard';
 export {
   PageLinksContainer,
   UserLinksContainer,
@@ -18,4 +19,5 @@ export {
   SliderContainer,
   JumbotronContainer,
   HeroContainer,
+  ProductCardContainer,
 };
