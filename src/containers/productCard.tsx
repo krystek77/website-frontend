@@ -20,12 +20,14 @@ export const ProductCardContainer: React.FC<{ list: Line[] }> = ({ list }) => {
       {list.map((item: any) => {
         return (
           <ProductCard key={item.id}>
-            <ProductCard.Label id={item.line}>{item.line}</ProductCard.Label>
+            <ProductCard.Label id={item.line.replace(' ', '')}>
+              {item.line}
+            </ProductCard.Label>
             <ProductCard.Link
               to={''}
               title={item.line}
               aria-label={item.line}
-              aria-labelledby={item.line}
+              aria-labelledby={item.line.replace(' ', '')}
             >
               <ProductCard.Title>{item.line}</ProductCard.Title>
               <ProductCard.Frame
@@ -38,13 +40,13 @@ export const ProductCardContainer: React.FC<{ list: Line[] }> = ({ list }) => {
                 </ProductCard.Overlay>
               </ProductCard.Frame>
               <ProductCard.Label
-                id={`${item.line}_btn`}
+                id={`${item.line}_btn`.replace(' ', '')}
               >{`${item.line}_btn`}</ProductCard.Label>
               <ProductCard.Button
                 type='button'
                 title='Zobacz więcej'
                 aria-label={`${item.line}_btn`}
-                aria-labelledby={`${item.line}_btn`}
+                aria-labelledby={`${item.line}_btn`.replace(' ', '')}
               >
                 Zobacz więcej
               </ProductCard.Button>
