@@ -14,6 +14,7 @@ import { RegularList } from './regularList';
 import { Section } from './section';
 import { SectionTitle } from './sectionTitle';
 import { BusinessCard } from './businessCard';
+import { ProductCard } from './productCard';
 export {
   Layout,
   List,
@@ -34,4 +35,5 @@ export {
   Section,
   SectionTitle,
   BusinessCard,
+  ProductCard,
 };

@@ -17,9 +17,10 @@ export const Inner = styled.div<{ page?: string }>`
   max-width: 1170px;
 
   ${({ page, theme }) =>
-    page === PAGES.BUSINESS_DETAILS_PAGE &&
-    ` padding:${theme.padding * 10}rem ${theme.padding * 5}rem;
-  `};
+    page === PAGES.BUSINESS_DETAILS_PAGE || page === PAGES.PRODUCTS
+      ? ` padding:${theme.padding * 10}rem ${theme.padding * 5}rem;
+  `
+      : `padding:0;`};
   @media (min-width: ${BREAKPOINT.LARGE}) {
     ${({ page, theme }) =>
       page === PAGES.BUSINESS_DETAILS_PAGE &&
@@ -31,14 +32,43 @@ export const Inner = styled.div<{ page?: string }>`
   }
 `;
 export const Main = styled.main<{ page?: string }>`
-  ${({ theme }) => `
+  ${({ theme, page }) =>
+    page === PAGES.BUSINESS_DETAILS_PAGE &&
+    `
       border-right:1px solid ${theme.colors.light};
-  `}
+  `};
   ${({ page, theme }) =>
     page === PAGES.BUSINESS_DETAILS_PAGE &&
     ` h2 {text-align:center};
       
   `};
+  @media (min-width: ${BREAKPOINT.SMALL}) {
+    ${({ theme, page }) =>
+      page === PAGES.PRODUCTS &&
+      `
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      grid-gap:2rem;
+  `};
+  }
+  @media (min-width: ${BREAKPOINT.MEDIUM}) {
+    ${({ theme, page }) =>
+      page === PAGES.PRODUCTS &&
+      `
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      grid-gap:2rem;
+  `};
+  }
+  @media (min-width: ${BREAKPOINT.LARGE}) {
+    ${({ theme, page }) =>
+      page === PAGES.PRODUCTS &&
+      `
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      grid-gap:2rem;
+  `};
+  }
 `;
 export const Aside = styled.aside`
   align-self: start;
