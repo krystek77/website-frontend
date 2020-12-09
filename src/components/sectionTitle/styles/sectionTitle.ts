@@ -20,7 +20,9 @@ export const Inner = styled.div<{ page?: string }>`
 
       `
       : page === PAGES.PRODUCTS
-      ? `padding:${theme.padding * 10}rem ${theme.padding * 5}rem;`
+      ? `padding:${theme.padding * 10}rem ${theme.padding * 5}rem ${
+          theme.padding * 0
+        }rem;`
       : ``}
 `;
 export const Title = styled.h2<{ page?: string }>`
