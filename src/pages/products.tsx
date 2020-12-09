@@ -1,18 +1,24 @@
 import React from 'react';
-import { Content, SectionTitle, Paragraph } from '../components';
+import { Content, SectionTitle, FliterCard } from '../components';
 import { HeroContainer, ProductCardContainer } from '../containers';
 import { PAGES } from '../constants';
 
 type Category = {
+  name: string;
+  id: string;
   lines: any[];
 };
 export const ProductsPage = () => {
   const [categories, setCategories] = React.useState<Category[]>([]);
+  const [choosenCategory, setChoosenCategory] = React.useState<string>(
+    'Pralnicowirówki'
+  );
 
   React.useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('/categories');
       const data = await response.json();
+      console.log(data);
       setCategories(data);
     };
     fetchData();
@@ -55,6 +61,35 @@ export const ProductsPage = () => {
         </SectionTitle.SubTitle>
       </SectionTitle>
       <Content page={PAGES.PRODUCTS}>
+        {categories && categories.length > 0 && (
+          <FliterCard>
+            <FliterCard.Legend>Wybierz swoje urządzenie</FliterCard.Legend>
+            {categories.map((category) => {
+              return (
+                <FliterCard.GroupInput key={category.id}>
+                  <FliterCard.RadioInput
+                    type='radio'
+                    id={category.name}
+                    name={category.name}
+                    value={category.name}
+                    checked={choosenCategory === category.name}
+                    onChange={(e) => {
+                      console.log(e.currentTarget.value);
+                      setChoosenCategory(e.currentTarget.value);
+                    }}
+                  />
+                  <FliterCard.LabelInput
+                    htmlFor={category.name}
+                    active={choosenCategory === category.name}
+                  >
+                    {category.name}
+                  </FliterCard.LabelInput>
+                </FliterCard.GroupInput>
+              );
+            })}
+          </FliterCard>
+        )}
+
         <Content.Main page={PAGES.PRODUCTS}>
           <ProductCardContainer list={lines} />
         </Content.Main>
