@@ -2,7 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components/macro';
 
-const StyledParagraph = styled.p<{ light?: boolean }>`
+const StyledParagraph = styled.p<{ light?: boolean; page?: string }>`
   font-size: 1.6rem;
   font-weight: 300;
   white-space: normal;
@@ -16,7 +16,10 @@ const StyledParagraph = styled.p<{ light?: boolean }>`
   `}
 `;
 
-const StyledMarkdownParagraph = styled(ReactMarkdown)<{ light?: boolean }>`
+const StyledMarkdownParagraph = styled(ReactMarkdown)<{
+  light?: boolean;
+  page?: string;
+}>`
   font-size: 1.6rem;
   font-weight: 300;
   white-space: normal;
@@ -30,14 +33,14 @@ const StyledMarkdownParagraph = styled(ReactMarkdown)<{ light?: boolean }>`
   `}
 `;
 
-export const Paragraph: React.FC<{ light?: boolean }> = ({
+export const Paragraph: React.FC<{ light?: boolean; page?: string }> = ({
   children,
   ...restProps
 }) => {
   return <StyledParagraph {...restProps}>{children}</StyledParagraph>;
 };
 
-export const MarkdownParagraph: React.FC<{ text: string }> = ({
+export const MarkdownParagraph: React.FC<{ text: string; page?: string }> = ({
   text,
   ...restProps
 }) => {

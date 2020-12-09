@@ -1,5 +1,5 @@
 import React from 'react';
-import { Content } from '../components';
+import { Content, SectionTitle, Paragraph } from '../components';
 import { HeroContainer, ProductCardContainer } from '../containers';
 import { PAGES } from '../constants';
 
@@ -40,6 +40,20 @@ export const ProductsPage = () => {
           image: { url: '' },
         }}
       />
+      <SectionTitle page={PAGES.PRODUCTS}>
+        <SectionTitle.Title page={PAGES.PRODUCTS}>
+          Przemysłowe urządzenia oraz wyposażenie pralni wodnych
+        </SectionTitle.Title>
+        <SectionTitle.SubTitle page={PAGES.PRODUCTS}>
+          To achieve maximum throughput, you need maximum performance. Our full
+          line of heavy-duty industrial washing machines, tumble dryers, light
+          commercial laundry equipment, finishing ironers and other specialized
+          equipment offers design, construction and innovation like nothing else
+          on the market. With ultimate durability, cutting-edge technology and
+          unmatched efficiency, UniMac® delivers the absolute lowest cost of
+          ownership in the commercial laundry industry.
+        </SectionTitle.SubTitle>
+      </SectionTitle>
       <Content page={PAGES.PRODUCTS}>
         <Content.Main page={PAGES.PRODUCTS}>
           <ProductCardContainer list={lines} />
