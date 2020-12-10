@@ -1,5 +1,6 @@
 import React from 'react';
 import { Paragraph, ProductCard } from '../components';
+import { ROUTES } from '../constants';
 
 type Line = {
   id: string;
@@ -7,6 +8,7 @@ type Line = {
   kind: string;
   description: string;
   category: string;
+  slug: string;
   line_image: {
     id: string;
     alternativeText: string;
@@ -33,7 +35,7 @@ export const ProductCardContainer: React.FC<{
               {item.line}
             </ProductCard.Label>
             <ProductCard.Link
-              to={''}
+              to={`${ROUTES.PRODUCTS}/${item.slug}`}
               title={item.line}
               aria-label={item.line}
               aria-labelledby={item.line.replace(' ', '')}

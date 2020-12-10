@@ -16,7 +16,6 @@ export const ProductsPage = () => {
     const fetchData = async () => {
       const response = await fetch('/categories');
       const data = await response.json();
-      console.log(data);
       setCategories(data);
     };
     fetchData();
@@ -38,7 +37,6 @@ export const ProductsPage = () => {
         return acc.concat(element);
       }, []);
 
-  console.log(lines);
   return (
     <React.Fragment>
       <HeroContainer
@@ -73,7 +71,6 @@ export const ProductsPage = () => {
               <FilterCard.Clear
                 type='button'
                 onClick={() => {
-                  console.log('CLEAR');
                   setChoosenCategory('');
                 }}
                 active={choosenCategory === ''}

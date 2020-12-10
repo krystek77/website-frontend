@@ -1,4 +1,5 @@
 export const HOME = '/';
+export const PRODUCT_DETAILS = '/produkty/:slug';
 export const PRODUCTS = '/produkty';
 export const TECHNOLOGY = '/technologie';
 export const YOUR_BUSINESS_SLUG = '/twoj-biznes/:slug';

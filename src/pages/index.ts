@@ -1,4 +1,5 @@
 import { HomePage } from './home';
+import { ProductDetailsPage } from './productPage';
 import { ProductsPage } from './products';
 import { TechnologyPage } from './technology';
 import { BusinessDetailsPage } from './businessDetails';
@@ -10,6 +11,7 @@ import { AboutUsPage } from './about_us';
 import { ContactPage } from './contact';
 export {
   HomePage,
+  ProductDetailsPage,
   ProductsPage,
   TechnologyPage,
   BusinessDetailsPage,

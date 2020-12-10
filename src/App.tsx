@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ROUTES } from './constants';
 import { Spinner, Layout } from './components';
 const HomePage = React.lazy(() => import('./pages/home'));
+const ProductDetailsPage = React.lazy(() => import('./pages/productPage'));
 const ProductsPage = React.lazy(() => import('./pages/products'));
 const TechnologyPage = React.lazy(() => import('./pages/technology'));
 const BusinessDetailsPage = React.lazy(() => import(`./pages/businessDetails`));
@@ -19,6 +20,9 @@ export const App = () => {
       <React.Suspense fallback={<Spinner>Loading data ...</Spinner>}>
         <Layout>
           <Switch>
+            <Route path={ROUTES.PRODUCT_DETAILS}>
+              <ProductDetailsPage />
+            </Route>
             <Route path={ROUTES.PRODUCTS}>
               <ProductsPage />
             </Route>
