@@ -1,13 +1,38 @@
 import styled from 'styled-components/macro';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { BREAKPOINT } from '../../../constants';
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{
+  filtered: boolean;
+  category: string;
+}>`
   position: relative;
   max-width: 480px;
   border-radius: 0.4rem;
   overflow: hidden;
   margin: 0 auto;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 1);
+  &:after {
+    position: absolute;
+    display: none;
+    opacity: 0.99;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: all 0.3s ease-out;
+    ${({ theme }) => `background-color:${theme.colors.light}`};
+  }
+
+  ${({ filtered, category }) =>
+    !filtered &&
+    category !== '' &&
+    `
+    &:after {
+      display:block;
+    }
+  `}
+
   ${({ theme }) => `
     margin-bottom: ${theme.margin * 5}rem;
   `}
@@ -60,6 +85,18 @@ export const Frame = styled.div`
   ${({ theme }) => `
     background-color:${theme.colors.dark};
   `}
+  /* background: rgb(90, 89, 94);
+  background: linear-gradient(
+    135deg,
+    rgba(90, 89, 94, 1) 50%,
+    rgba(46, 46, 46, 1) 100%
+  ); */
+  background: rgb(90, 89, 94);
+  background: radial-gradient(
+    circle,
+    rgba(90, 89, 94, 1) 50%,
+    rgba(46, 46, 46, 1) 100%
+  );
   &:before {
     content: '';
     display: block;

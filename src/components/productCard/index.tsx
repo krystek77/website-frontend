@@ -37,10 +37,11 @@ interface IProductCard {
   }>;
 }
 
-export const ProductCard: React.FC & IProductCard = ({
-  children,
-  ...restProps
-}) => {
+export const ProductCard: React.FC<{
+  filtered: boolean;
+  category: string;
+}> &
+  IProductCard = ({ children, ...restProps }) => {
   return <Wrapper {...restProps}>{children}</Wrapper>;
 };
 

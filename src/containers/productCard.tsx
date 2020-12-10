@@ -5,6 +5,7 @@ type Line = {
   id: string;
   line: string;
   description: string;
+  category: string;
   line_image: {
     id: string;
     alternativeText: string;
@@ -14,12 +15,19 @@ type Line = {
   line_attr: { id: string; name: string; value: string }[];
 };
 
-export const ProductCardContainer: React.FC<{ list: Line[] }> = ({ list }) => {
+export const ProductCardContainer: React.FC<{
+  list: Line[];
+  filteredCategory: string;
+}> = ({ list, filteredCategory }) => {
   return list && list.length > 0 ? (
     <React.Fragment>
       {list.map((item: any) => {
         return (
-          <ProductCard key={item.id}>
+          <ProductCard
+            key={item.id}
+            filtered={filteredCategory === item.category}
+            category={filteredCategory}
+          >
             <ProductCard.Label id={item.line.replace(' ', '')}>
               {item.line}
             </ProductCard.Label>

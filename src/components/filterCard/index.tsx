@@ -1,14 +1,16 @@
 import React from 'react';
+import { GrPowerReset } from 'react-icons/gr';
 import {
   Container,
   Inner,
   GroupInput,
   RadioInput,
   LabelInput,
+  Clear,
   Legend,
 } from './styles/filterCard';
 
-interface IFliteredCard {
+interface IFilterCardCard {
   GroupInput: React.FC;
   RadioInput: React.FC<{
     type: 'radio';
@@ -20,32 +22,40 @@ interface IFliteredCard {
   }>;
   LabelInput: React.FC<{ htmlFor: string; active: boolean }>;
   Legend: React.FC;
+  Clear: React.FC<{ type: 'button'; onClick: () => void; active: boolean }>;
 }
 
-export const FliterCard: React.FC & IFliteredCard = ({ children }) => {
+export const FilterCard: React.FC & IFilterCardCard = ({ children }) => {
   return (
     <Container>
       <Inner>{children}</Inner>
     </Container>
   );
 };
-FliterCard.GroupInput = function FliterCardGroupInput({
+FilterCard.GroupInput = function FilterCardGroupInput({
   children,
   ...restProps
 }) {
   return <GroupInput {...restProps}>{children}</GroupInput>;
 };
-FliterCard.RadioInput = function FliterCardRadioInput({ ...restProps }) {
+FilterCard.RadioInput = function FilterCardRadioInput({ ...restProps }) {
   return <RadioInput {...restProps} />;
 };
-FliterCard.LabelInput = function FliterCardLabelInput({
+FilterCard.LabelInput = function FilterCardLabelInput({
   children,
   ...restProps
 }) {
   return <LabelInput {...restProps}>{children}</LabelInput>;
 };
-FliterCard.Legend = function FliterCardLegend({ children, ...restProps }) {
+FilterCard.Legend = function FilterCardLegend({ children, ...restProps }) {
   return <Legend {...restProps}>{children}</Legend>;
 };
+FilterCard.Clear = function FilterCardClear({ ...restProps }) {
+  return (
+    <Clear {...restProps}>
+      <GrPowerReset />
+    </Clear>
+  );
+};
 
-export default FliterCard;
+export default FilterCard;

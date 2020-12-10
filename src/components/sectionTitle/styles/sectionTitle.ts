@@ -26,6 +26,7 @@ export const Inner = styled.div<{ page?: string }>`
       : ``}
 `;
 export const Title = styled.h2<{ page?: string }>`
+  line-height: 1.2;
   ${({ theme, page }) =>
     page === PAGES.BUSINESS_DETAILS_PAGE
       ? `

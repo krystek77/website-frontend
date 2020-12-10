@@ -15,7 +15,7 @@ import { Section } from './section';
 import { SectionTitle } from './sectionTitle';
 import { BusinessCard } from './businessCard';
 import { ProductCard } from './productCard';
-import { FliterCard } from './filterCard';
+import { FilterCard } from './filterCard';
 export {
   Layout,
   List,
@@ -37,5 +37,5 @@ export {
   SectionTitle,
   BusinessCard,
   ProductCard,
-  FliterCard,
+  FilterCard,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Content, SectionTitle, FliterCard } from '../components';
+import { Content, SectionTitle, FilterCard } from '../components';
 import { HeroContainer, ProductCardContainer } from '../containers';
 import { PAGES } from '../constants';
 
@@ -10,9 +10,7 @@ type Category = {
 };
 export const ProductsPage = () => {
   const [categories, setCategories] = React.useState<Category[]>([]);
-  const [choosenCategory, setChoosenCategory] = React.useState<string>(
-    'Pralnicowirówki'
-  );
+  const [choosenCategory, setChoosenCategory] = React.useState<string>('');
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -29,14 +27,18 @@ export const ProductsPage = () => {
     categories &&
     categories
       .map((item) => {
+        const category = item.name;
         return item.lines.reduce((acc, element) => {
-          return acc.concat(element);
+          const copyElement = { ...element };
+          copyElement.category = category;
+          return acc.concat(copyElement);
         }, []);
       })
       .reduce((acc, element) => {
         return acc.concat(element);
       }, []);
 
+  console.log(lines);
   return (
     <React.Fragment>
       <HeroContainer
@@ -46,6 +48,7 @@ export const ProductsPage = () => {
           image: { url: '' },
         }}
       />
+      {/** page title */}
       <SectionTitle page={PAGES.PRODUCTS}>
         <SectionTitle.Title page={PAGES.PRODUCTS}>
           Przemysłowe urządzenia oraz wyposażenie pralni wodnych
@@ -60,38 +63,52 @@ export const ProductsPage = () => {
           ownership in the commercial laundry industry.
         </SectionTitle.SubTitle>
       </SectionTitle>
+      {/** page title */}
       <Content page={PAGES.PRODUCTS}>
+        {/** filter cards */}
         {categories && categories.length > 0 && (
-          <FliterCard>
-            <FliterCard.Legend>Wybierz swoje urządzenie</FliterCard.Legend>
+          <FilterCard>
+            <FilterCard.Legend>Odkryj swoje urządzenie</FilterCard.Legend>
+            <FilterCard.GroupInput>
+              <FilterCard.Clear
+                type='button'
+                onClick={() => {
+                  console.log('CLEAR');
+                  setChoosenCategory('');
+                }}
+                active={choosenCategory === ''}
+              />
+            </FilterCard.GroupInput>
             {categories.map((category) => {
               return (
-                <FliterCard.GroupInput key={category.id}>
-                  <FliterCard.RadioInput
+                <FilterCard.GroupInput key={category.id}>
+                  <FilterCard.RadioInput
                     type='radio'
                     id={category.name}
                     name={category.name}
                     value={category.name}
                     checked={choosenCategory === category.name}
                     onChange={(e) => {
-                      console.log(e.currentTarget.value);
                       setChoosenCategory(e.currentTarget.value);
                     }}
                   />
-                  <FliterCard.LabelInput
+                  <FilterCard.LabelInput
                     htmlFor={category.name}
                     active={choosenCategory === category.name}
                   >
                     {category.name}
-                  </FliterCard.LabelInput>
-                </FliterCard.GroupInput>
+                  </FilterCard.LabelInput>
+                </FilterCard.GroupInput>
               );
             })}
-          </FliterCard>
+          </FilterCard>
         )}
-
+        {/** filter cards */}
         <Content.Main page={PAGES.PRODUCTS}>
-          <ProductCardContainer list={lines} />
+          <ProductCardContainer
+            list={lines}
+            filteredCategory={choosenCategory}
+          />
         </Content.Main>
       </Content>
     </React.Fragment>
