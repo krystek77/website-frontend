@@ -66,11 +66,23 @@ export const Button = styled.button`
   }
 `;
 export const Description = styled.p``;
+export const OverlayTitle = styled.span`
+  font-size: 1.4rem;
+  white-space: normal;
+
+  font-size: 1.6rem;
+  ${({ theme }) => `
+    color:${theme.colors.light};
+    font-weight:${theme.bold_font};
+    margin-bottom: ${theme.margin * 3}rem;
+    `}
+`;
 export const Title = styled.h3`
   margin-bottom: 0;
   text-transform: capitalize;
   font-weight: 600;
   font-size: 1.4rem;
+  white-space: normal;
   ${({ theme }) => `
     background-color:${theme.colors.primary};
     color:${theme.colors.light};

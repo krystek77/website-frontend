@@ -4,6 +4,7 @@ import { Paragraph, ProductCard } from '../components';
 type Line = {
   id: string;
   line: string;
+  kind: string;
   description: string;
   category: string;
   line_image: {
@@ -44,6 +45,9 @@ export const ProductCardContainer: React.FC<{
               >
                 {/** overlay */}
                 <ProductCard.Overlay>
+                  <ProductCard.OverlayTitle>
+                    {item.kind}
+                  </ProductCard.OverlayTitle>
                   <Paragraph light>{item.description}</Paragraph>
                 </ProductCard.Overlay>
               </ProductCard.Frame>

@@ -12,6 +12,7 @@ import {
   Label,
   Overlay,
   Button,
+  OverlayTitle,
 } from './styles/productCard';
 
 interface IProductCard {
@@ -22,6 +23,7 @@ interface IProductCard {
     ['aria-labelledby']: string;
   }>;
   Title: React.FC;
+  OverlayTitle: React.FC;
   Frame: React.FC<{ src: string; alt: string }>;
   InforWrapper: React.FC;
   Info: React.FC;
@@ -54,6 +56,12 @@ ProductCard.Link = function ProductCardTitle({ children, to, ...restProps }) {
 };
 ProductCard.Title = function ProductCardTitle({ children, ...restProps }) {
   return <Title {...restProps}>{children}</Title>;
+};
+ProductCard.OverlayTitle = function ProductCardOverlayTitle({
+  children,
+  ...restProps
+}) {
+  return <OverlayTitle {...restProps}>{children}</OverlayTitle>;
 };
 ProductCard.Frame = function ProductCardFrame({
   src,
