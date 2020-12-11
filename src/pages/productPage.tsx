@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   CapacityTitle,
+  LineTitle,
   MarkdownParagraph,
   AvailableModels,
 } from '../components';
@@ -75,22 +76,26 @@ export const ProductDetailsPage = withRouter((props) => {
       />
 
       <main style={{ marginTop: '45px', padding: '2rem' }}>
-        <h2>Product Details Page</h2>
         {/** capacity title */}
         <CapacityTitle>
           <CapacityTitle.AttributeWrapper>
-            <CapacityTitle.Name>
-              {product?.product_attr[0]?.name}
-            </CapacityTitle.Name>
             <CapacityTitle.Value>
               {!!product?.product_attr[0]?.unit
-                ? `${product?.product_attr[0]?.value} ${product?.product_attr[0]?.unit}`
+                ? `${product?.product_attr[0]?.value}${product?.product_attr[0]?.unit}`
                 : `${product?.product_attr[0]?.value}`}
             </CapacityTitle.Value>
           </CapacityTitle.AttributeWrapper>
           <CapacityTitle.Title>{rangeProducts?.line_title}</CapacityTitle.Title>
         </CapacityTitle>
         {/** capacity title */}
+        {/** line title */}
+        <LineTitle>
+          <LineTitle.AttributeWrapper>
+            <LineTitle.Line>{rangeProducts?.line}</LineTitle.Line>
+          </LineTitle.AttributeWrapper>
+          <LineTitle.Title>{rangeProducts?.line_title}</LineTitle.Title>
+        </LineTitle>
+        {/** line title */}
         {/** line description */}
         {rangeProducts && rangeProducts.line_description && (
           <MarkdownParagraph
