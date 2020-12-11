@@ -17,6 +17,7 @@ import { BusinessCard } from './businessCard';
 import { ProductCard } from './productCard';
 import { FilterCard } from './filterCard';
 import { CapacityTitle } from './capacityTitle';
+import { LineTitle } from './lineTitle';
 import { AvailableModels } from './availableModels';
 export {
   Layout,
@@ -41,5 +42,6 @@ export {
   ProductCard,
   FilterCard,
   CapacityTitle,
+  LineTitle,
   AvailableModels,
 };
