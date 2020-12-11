@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { PAGES } from '../../constants';
 import styled from 'styled-components/macro';
 
 const StyledParagraph = styled.p<{ light?: boolean; page?: string }>`
@@ -26,6 +27,16 @@ const StyledMarkdownParagraph = styled(ReactMarkdown)<{
   line-height: 1.3;
   max-width: 600px;
   margin: 0 auto;
+  ${({ theme, page }) =>
+    page === PAGES.PRODUCT_PAGE &&
+    `
+  margin:auto;
+  max-width:100%;
+  p {
+
+    font-size: 1.8rem;
+  }
+  `}
   ${({ theme, light }) => `
     margin-bottom:${theme.margin * 3.2}rem;
     color:${theme.colors.dark};
