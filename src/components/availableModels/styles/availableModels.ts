@@ -43,7 +43,7 @@ export const ButtonWrapper = styled.div<{ horizontal?: boolean }>`
     transition: all 0.3s ease-out;
     font-weight: 400;
     ${({ theme }) =>
-      ` background-color:${theme.colors.secondary};
+      ` background-color:${theme.colors.dark_secondary};
         color:${theme.colors.light};
         `};
   }
