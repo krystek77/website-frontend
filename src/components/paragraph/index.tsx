@@ -40,10 +40,10 @@ export const Paragraph: React.FC<{ light?: boolean; page?: string }> = ({
   return <StyledParagraph {...restProps}>{children}</StyledParagraph>;
 };
 
-export const MarkdownParagraph: React.FC<{ text: string; page?: string }> = ({
-  text,
-  ...restProps
-}) => {
+export const MarkdownParagraph: React.FC<{
+  text: string | undefined;
+  page?: string;
+}> = ({ text, ...restProps }) => {
   return (
     <StyledMarkdownParagraph {...restProps}>{text}</StyledMarkdownParagraph>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
-import AvailableModels from '../components/availableModels';
+import { AvailableModels, MarkdownParagraph } from '../components';
+import { PAGES } from '../constants';
 import { withRouter } from 'react-router-dom';
 import { HeroContainer } from '../containers';
 type Attribute = {
@@ -19,6 +20,7 @@ type RangeProducts = {
   id: number;
   kind: string;
   line: string;
+  line_description: string | undefined;
   products: Product[];
 };
 
@@ -41,6 +43,7 @@ export const ProductDetailsPage = withRouter((props) => {
       const data = await response.json();
       const id = data.products.map((product: Product) => product.id)[0];
       setRangeProducts(data);
+      console.log('Line:', data);
       setCurrentProductID(id);
     };
     fetchData();
@@ -55,11 +58,7 @@ export const ProductDetailsPage = withRouter((props) => {
       product = products.find((product) => product.id === currentProductID);
     }
   }
-
-  console.log('ID', currentProductID);
-  console.log('products', products);
-  console.log('product', product);
-
+  console.log('Product', product);
   return (
     <React.Fragment>
       <HeroContainer
@@ -72,6 +71,14 @@ export const ProductDetailsPage = withRouter((props) => {
 
       <main style={{ marginTop: '45px', padding: '2rem' }}>
         <h1>Product Details Page</h1>
+        {/** line description */}
+        {rangeProducts && rangeProducts.line_description && (
+          <MarkdownParagraph
+            text={rangeProducts.line_description}
+            page={PAGES.PRODUCT_PAGE}
+          />
+        )}
+        {/** line description */}
         {/** horizontal available models */}
         {products && products.length > 0 && (
           <AvailableModels horizontal>
