@@ -16,6 +16,7 @@ import { SectionTitle } from './sectionTitle';
 import { BusinessCard } from './businessCard';
 import { ProductCard } from './productCard';
 import { FilterCard } from './filterCard';
+import { AvailableModels } from './availableModels';
 export {
   Layout,
   List,
@@ -38,4 +39,5 @@ export {
   BusinessCard,
   ProductCard,
   FilterCard,
+  AvailableModels,
 };

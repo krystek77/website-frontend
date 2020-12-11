@@ -1,9 +1,17 @@
 import React from 'react';
+import AvailableModels from '../components/availableModels';
 import { withRouter } from 'react-router-dom';
 import { HeroContainer } from '../containers';
+type Attribute = {
+  id: string;
+  name: string;
+  value: string;
+  unit: string;
+};
 type Product = {
   id: number;
   model: string;
+  product_attr: Attribute[];
 };
 type RangeProducts = {
   category: {};
@@ -61,28 +69,111 @@ export const ProductDetailsPage = withRouter((props) => {
           image: { url: '' },
         }}
       />
-      <div>
-        <div>
-          {products &&
-            products.length > 0 &&
-            products.map((product) => {
-              return (
-                <button
-                  key={product.id}
-                  onClick={() => setCurrentProductID(product.id)}
-                >
-                  {product.model}
-                </button>
-              );
-            })}
-        </div>
-      </div>
+
       <main style={{ marginTop: '45px', padding: '2rem' }}>
         <h1>Product Details Page</h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint nihil
-        adipisci voluptates modi architecto ratione eligendi provident aut
-        explicabo placeat, deserunt nisi, repellat accusamus ut sit soluta.
-        Minima, officiis voluptates.
+        {/** horizontal available models */}
+        {products && products.length > 0 && (
+          <AvailableModels horizontal>
+            {products.map((product) => {
+              let attributeName = '';
+              let attributeValue = '';
+              let attributeUnit = '';
+              if (product.product_attr && product.product_attr.length > 0) {
+                attributeName = product.product_attr[0].name;
+                attributeValue = product.product_attr[0].value;
+                attributeUnit = product.product_attr[0].unit;
+              }
+
+              return (
+                <AvailableModels.ButtonWrapper
+                  key={product.id}
+                  horizontal
+                  onClick={() => {
+                    console.log('CHOOSEN ID', product.id);
+                    setCurrentProductID(product.id);
+                  }}
+                >
+                  <AvailableModels.Label id={product.model}>
+                    {product.model}
+                  </AvailableModels.Label>
+                  <AvailableModels.Button
+                    type='button'
+                    title={product.model}
+                    aria-label={product.model}
+                    aria-labelledby={product.model}
+                  >
+                    <AvailableModels.AttributeWrapper>
+                      <AvailableModels.Name>
+                        {attributeName}
+                      </AvailableModels.Name>
+                      <AvailableModels.Value>
+                        {!!attributeUnit
+                          ? `${attributeValue} ${attributeUnit}`
+                          : `${attributeValue}`}
+                      </AvailableModels.Value>
+                    </AvailableModels.AttributeWrapper>
+                    <AvailableModels.AttributeWrapper>
+                      <AvailableModels.Model>
+                        {product.model}
+                      </AvailableModels.Model>
+                    </AvailableModels.AttributeWrapper>
+                  </AvailableModels.Button>
+                </AvailableModels.ButtonWrapper>
+              );
+            })}
+          </AvailableModels>
+        )}
+        {/** vertical available models */}
+        {products && products.length > 0 && (
+          <AvailableModels>
+            {products.map((product) => {
+              let attributeName = '';
+              let attributeValue = '';
+              let attributeUnit = '';
+              if (product.product_attr && product.product_attr.length > 0) {
+                attributeName = product.product_attr[0].name;
+                attributeValue = product.product_attr[0].value;
+                attributeUnit = product.product_attr[0].unit;
+              }
+              return (
+                <AvailableModels.ButtonWrapper
+                  key={product.id}
+                  onClick={() => {
+                    console.log('CHOOSEN ID', product.id);
+                    setCurrentProductID(product.id);
+                  }}
+                >
+                  <AvailableModels.Label id={product.model}>
+                    {product.model}
+                  </AvailableModels.Label>
+                  <AvailableModels.Button
+                    type='button'
+                    title={product.model}
+                    aria-label={product.model}
+                    aria-labelledby={product.model}
+                  >
+                    <AvailableModels.AttributeWrapper>
+                      <AvailableModels.Name>
+                        {attributeName}
+                      </AvailableModels.Name>
+                      <AvailableModels.Value>
+                        {!!attributeUnit
+                          ? `${attributeValue} ${attributeUnit}`
+                          : `${attributeValue}`}
+                      </AvailableModels.Value>
+                    </AvailableModels.AttributeWrapper>
+                    <AvailableModels.AttributeWrapper>
+                      <AvailableModels.Model>
+                        {product.model}
+                      </AvailableModels.Model>
+                    </AvailableModels.AttributeWrapper>
+                  </AvailableModels.Button>
+                </AvailableModels.ButtonWrapper>
+              );
+            })}
+          </AvailableModels>
+        )}
       </main>
     </React.Fragment>
   );
