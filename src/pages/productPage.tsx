@@ -1,5 +1,9 @@
 import React from 'react';
-import { AvailableModels, MarkdownParagraph } from '../components';
+import {
+  CapacityTitle,
+  MarkdownParagraph,
+  AvailableModels,
+} from '../components';
 import { PAGES } from '../constants';
 import { withRouter } from 'react-router-dom';
 import { HeroContainer } from '../containers';
@@ -21,6 +25,7 @@ type RangeProducts = {
   kind: string;
   line: string;
   line_description: string | undefined;
+  line_title: string | undefined;
   products: Product[];
 };
 
@@ -70,7 +75,22 @@ export const ProductDetailsPage = withRouter((props) => {
       />
 
       <main style={{ marginTop: '45px', padding: '2rem' }}>
-        <h1>Product Details Page</h1>
+        <h2>Product Details Page</h2>
+        {/** capacity title */}
+        <CapacityTitle>
+          <CapacityTitle.AttributeWrapper>
+            <CapacityTitle.Name>
+              {product?.product_attr[0]?.name}
+            </CapacityTitle.Name>
+            <CapacityTitle.Value>
+              {!!product?.product_attr[0]?.unit
+                ? `${product?.product_attr[0]?.value} ${product?.product_attr[0]?.unit}`
+                : `${product?.product_attr[0]?.value}`}
+            </CapacityTitle.Value>
+          </CapacityTitle.AttributeWrapper>
+          <CapacityTitle.Title>{rangeProducts?.line_title}</CapacityTitle.Title>
+        </CapacityTitle>
+        {/** capacity title */}
         {/** line description */}
         {rangeProducts && rangeProducts.line_description && (
           <MarkdownParagraph
