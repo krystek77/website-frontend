@@ -16,6 +16,7 @@ import { SectionTitle } from './sectionTitle';
 import { BusinessCard } from './businessCard';
 import { ProductCard } from './productCard';
 import { FilterCard } from './filterCard';
+import { ProductGallery } from './productGallery';
 import { CapacityTitle } from './capacityTitle';
 import { LineTitle } from './lineTitle';
 import { ProductLegend } from './prouctLegend';
@@ -42,6 +43,7 @@ export {
   BusinessCard,
   ProductCard,
   FilterCard,
+  ProductGallery,
   CapacityTitle,
   LineTitle,
   ProductLegend,
