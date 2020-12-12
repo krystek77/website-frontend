@@ -32,6 +32,8 @@ const StyledMarkdownParagraph = styled(ReactMarkdown)<{
     `
   margin:auto;
   max-width:100%;
+  margin-top:${theme.margin * 4}rem;
+  margin-bottom:${theme.margin * 4}rem;
   p {
 
     font-size: 1.8rem;

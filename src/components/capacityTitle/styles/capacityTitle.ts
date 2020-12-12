@@ -5,7 +5,10 @@ export const Inner = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  ${({ theme }) => `margin-bottom:${theme.margin * 6}rem;`}
+  ${({ theme }) =>
+    `margin-bottom:${theme.margin * 6}rem;
+     margin-top:${theme.margin * 6}rem;
+    `}
 `;
 export const AttributeWrapper = styled.div`
   display: flex;
