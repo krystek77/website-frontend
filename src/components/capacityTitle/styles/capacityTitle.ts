@@ -29,7 +29,7 @@ export const Value = styled.span`
   font-weight: 700;
 
   border-radius: 50%;
-  font-size: 3rem;
+  font-size: 2.5rem;
   width: 100px;
   height: 100px;
   display: flex;
