@@ -18,6 +18,7 @@ import { ProductCard } from './productCard';
 import { FilterCard } from './filterCard';
 import { CapacityTitle } from './capacityTitle';
 import { LineTitle } from './lineTitle';
+import { ProductLegend } from './prouctLegend';
 import { AvailableModels } from './availableModels';
 export {
   Layout,
@@ -43,5 +44,6 @@ export {
   FilterCard,
   CapacityTitle,
   LineTitle,
+  ProductLegend,
   AvailableModels,
 };
