@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Content,
+  ProductGallery,
   CapacityTitle,
   LineTitle,
   ProductLegend,
@@ -16,10 +17,17 @@ type Attribute = {
   value: string;
   unit: string;
 };
+type ProductImage = {
+  id: number;
+  url: string;
+  alternativeText: string;
+  formats: { thumbnail: { url: string } };
+};
 type Product = {
   id: number;
   model: string;
   product_attr: Attribute[];
+  product_images: ProductImage[];
 };
 type Controller = {
   id: string;
@@ -54,7 +62,7 @@ export const ProductDetailsPage = withRouter((props) => {
     const fetchData = async () => {
       const response = await fetch(`/lines/${slug}`);
       const data = await response.json();
-      const id = data.products.map((product: Product) => product.id)[0];
+      const id = data.products.map((product: Product) => product.id)[1];
       setRangeProducts(data);
       console.log('Line:', data);
       setCurrentProductID(id);
@@ -84,112 +92,145 @@ export const ProductDetailsPage = withRouter((props) => {
 
       <Content page={PAGES.PRODUCT_PAGE}>
         <Content.Main>
-          {/** capacity title */}
-          <CapacityTitle>
-            <CapacityTitle.Title>
-              {rangeProducts?.line_title}
-            </CapacityTitle.Title>
-            <CapacityTitle.Value>
-              {!!product?.product_attr[0]?.unit
-                ? `${product?.product_attr[0]?.value}${product?.product_attr[0]?.unit}`
-                : `${product?.product_attr[0]?.value}`}
-            </CapacityTitle.Value>
-          </CapacityTitle>
-          {/** capacity title */}
-          {/** line title */}
-          <LineTitle>
-            <LineTitle.AttributeWrapper>
-              <LineTitle.Line>{rangeProducts?.line}</LineTitle.Line>
-            </LineTitle.AttributeWrapper>
-            <LineTitle.Title>{rangeProducts?.line_title}</LineTitle.Title>
-          </LineTitle>
-          {/** line title */}
-          {/** product legend - model */}
-          <ProductLegend>
-            <ProductLegend.Name>Model:</ProductLegend.Name>
-            <ProductLegend.Value>{product?.model}</ProductLegend.Value>
-          </ProductLegend>
-          {/** product legend - model */}
-          {/** product legend - controllers */}
-          {rangeProducts?.controllers && rangeProducts.controllers.length > 0 && (
-            <ProductLegend>
-              <ProductLegend.Name>Sterowniki:</ProductLegend.Name>
-              {rangeProducts.controllers.map((controller) => {
-                return (
-                  <ProductLegend.Link
-                    to=''
-                    title=''
-                    aria-label=''
-                    aria-labelledby=''
-                    key={controller.id}
-                  >
-                    {controller.text}
-                  </ProductLegend.Link>
-                );
-              })}
-            </ProductLegend>
-          )}
-          {/** product legend - controllers */}
-          {/** line description */}
-          {rangeProducts && rangeProducts.line_description && (
-            <MarkdownParagraph
-              text={rangeProducts.line_description}
-              page={PAGES.PRODUCT_PAGE}
-            />
-          )}
-          {/** line description */}
-          {/** horizontal available models */}
-          {products && products.length > 0 && (
-            <AvailableModels horizontal>
-              {products.map((product) => {
-                let attributeName = '';
-                let attributeValue = '';
-                let attributeUnit = '';
-                if (product.product_attr && product.product_attr.length > 0) {
-                  attributeName = product.product_attr[0].name;
-                  attributeValue = product.product_attr[0].value;
-                  attributeUnit = product.product_attr[0].unit;
-                }
+          <div style={{ display: 'flex' }}>
+            <div style={{ flexShrink: 0, marginRight: '2.5rem' }}>
+              {/** product gallery */}
+              {product && product.product_images.length > 0 && (
+                <ProductGallery>
+                  <ProductGallery.ViewportImage
+                    src={product.product_images[0].url}
+                    alt='big picture'
+                  />
+                  <ProductGallery.ViewportThumbnails>
+                    {product.product_images.map((image) => {
+                      const thumbnail = image.formats.thumbnail.url;
+                      return (
+                        <ProductGallery.Thumbnail
+                          key={image.id}
+                          url={thumbnail}
+                          onClick={() => console.log('Choosen thumbnail')}
+                        />
+                      );
+                    })}
+                  </ProductGallery.ViewportThumbnails>
+                </ProductGallery>
+              )}
+              {/** product gallery */}
+            </div>
+            <div>
+              {/** capacity title */}
+              <CapacityTitle>
+                <CapacityTitle.Title>
+                  {rangeProducts?.line_title}
+                </CapacityTitle.Title>
+                <CapacityTitle.Value>
+                  {!!product?.product_attr[0]?.unit
+                    ? `${product?.product_attr[0]?.value}${product?.product_attr[0]?.unit}`
+                    : `${product?.product_attr[0]?.value}`}
+                </CapacityTitle.Value>
+              </CapacityTitle>
+              {/** capacity title */}
+              {/** line title */}
+              <LineTitle>
+                <LineTitle.AttributeWrapper>
+                  <LineTitle.Line>{rangeProducts?.line}</LineTitle.Line>
+                </LineTitle.AttributeWrapper>
+                <LineTitle.Title>{rangeProducts?.line_title}</LineTitle.Title>
+              </LineTitle>
+              {/** line title */}
+              {/** product legend - model */}
+              <ProductLegend>
+                <ProductLegend.Name>Model:</ProductLegend.Name>
+                <ProductLegend.Value>{product?.model}</ProductLegend.Value>
+              </ProductLegend>
+              {/** product legend - model */}
+              {/** product legend - controllers */}
+              {rangeProducts?.controllers &&
+                rangeProducts.controllers.length > 0 && (
+                  <ProductLegend>
+                    <ProductLegend.Name>Sterowniki:</ProductLegend.Name>
+                    {rangeProducts.controllers.map((controller) => {
+                      return (
+                        <ProductLegend.Link
+                          to=''
+                          title=''
+                          aria-label=''
+                          aria-labelledby=''
+                          key={controller.id}
+                        >
+                          {controller.text}
+                        </ProductLegend.Link>
+                      );
+                    })}
+                  </ProductLegend>
+                )}
+              {/** product legend - controllers */}
+              {/** line description */}
+              {rangeProducts && rangeProducts.line_description && (
+                <MarkdownParagraph
+                  text={rangeProducts.line_description}
+                  page={PAGES.PRODUCT_PAGE}
+                />
+              )}
+              {/** line description */}
+              {/** horizontal available models */}
+              {products && products.length > 0 && (
+                <AvailableModels horizontal>
+                  {products.map((product) => {
+                    let attributeName = '';
+                    let attributeValue = '';
+                    let attributeUnit = '';
+                    if (
+                      product.product_attr &&
+                      product.product_attr.length > 0
+                    ) {
+                      attributeName = product.product_attr[0].name;
+                      attributeValue = product.product_attr[0].value;
+                      attributeUnit = product.product_attr[0].unit;
+                    }
 
-                return (
-                  <AvailableModels.ButtonWrapper
-                    key={product.id}
-                    horizontal
-                    onClick={() => {
-                      console.log('CHOOSEN ID', product.id);
-                      setCurrentProductID(product.id);
-                    }}
-                  >
-                    <AvailableModels.Label id={product.model}>
-                      {product.model}
-                    </AvailableModels.Label>
-                    <AvailableModels.Button
-                      type='button'
-                      title={product.model}
-                      aria-label={product.model}
-                      aria-labelledby={product.model}
-                    >
-                      <AvailableModels.AttributeWrapper>
-                        <AvailableModels.Name>
-                          {attributeName}
-                        </AvailableModels.Name>
-                        <AvailableModels.Value>
-                          {!!attributeUnit
-                            ? `${attributeValue} ${attributeUnit}`
-                            : `${attributeValue}`}
-                        </AvailableModels.Value>
-                      </AvailableModels.AttributeWrapper>
-                      <AvailableModels.AttributeWrapper>
-                        <AvailableModels.Model>
+                    return (
+                      <AvailableModels.ButtonWrapper
+                        key={product.id}
+                        horizontal
+                        onClick={() => {
+                          console.log('CHOOSEN ID', product.id);
+                          setCurrentProductID(product.id);
+                        }}
+                      >
+                        <AvailableModels.Label id={product.model}>
                           {product.model}
-                        </AvailableModels.Model>
-                      </AvailableModels.AttributeWrapper>
-                    </AvailableModels.Button>
-                  </AvailableModels.ButtonWrapper>
-                );
-              })}
-            </AvailableModels>
-          )}
+                        </AvailableModels.Label>
+                        <AvailableModels.Button
+                          type='button'
+                          title={product.model}
+                          aria-label={product.model}
+                          aria-labelledby={product.model}
+                        >
+                          <AvailableModels.AttributeWrapper>
+                            <AvailableModels.Name>
+                              {attributeName}
+                            </AvailableModels.Name>
+                            <AvailableModels.Value>
+                              {!!attributeUnit
+                                ? `${attributeValue} ${attributeUnit}`
+                                : `${attributeValue}`}
+                            </AvailableModels.Value>
+                          </AvailableModels.AttributeWrapper>
+                          <AvailableModels.AttributeWrapper>
+                            <AvailableModels.Model>
+                              {product.model}
+                            </AvailableModels.Model>
+                          </AvailableModels.AttributeWrapper>
+                        </AvailableModels.Button>
+                      </AvailableModels.ButtonWrapper>
+                    );
+                  })}
+                </AvailableModels>
+              )}
+            </div>
+          </div>
+
           {/** vertical available models */}
           {products && products.length > 0 && (
             <AvailableModels>
