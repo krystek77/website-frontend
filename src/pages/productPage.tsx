@@ -1,7 +1,9 @@
 import React from 'react';
 import {
+  Content,
   CapacityTitle,
   LineTitle,
+  ProductLegend,
   MarkdownParagraph,
   AvailableModels,
 } from '../components';
@@ -74,139 +76,153 @@ export const ProductDetailsPage = withRouter((props) => {
           image: { url: '' },
         }}
       />
+      
+      <Content page={PAGES.PRODUCT_PAGE}>
+        <Content.Main>
+          {/** capacity title */}
+          <CapacityTitle>
+            <CapacityTitle.AttributeWrapper>
+              <CapacityTitle.Value>
+                {!!product?.product_attr[0]?.unit
+                  ? `${product?.product_attr[0]?.value}${product?.product_attr[0]?.unit}`
+                  : `${product?.product_attr[0]?.value}`}
+              </CapacityTitle.Value>
+            </CapacityTitle.AttributeWrapper>
+            <CapacityTitle.Title>
+              {rangeProducts?.line_title}
+            </CapacityTitle.Title>
+          </CapacityTitle>
+          {/** capacity title */}
+          {/** line title */}
+          <LineTitle>
+            <LineTitle.AttributeWrapper>
+              <LineTitle.Line>{rangeProducts?.line}</LineTitle.Line>
+            </LineTitle.AttributeWrapper>
+            <LineTitle.Title>{rangeProducts?.line_title}</LineTitle.Title>
+          </LineTitle>
+          {/** line title */}
+          {/** product legend */}
+          <ProductLegend>
+            <ProductLegend.Name>Model:</ProductLegend.Name>
+            <ProductLegend.Value>{product?.model}</ProductLegend.Value>
+          </ProductLegend>
+          <ProductLegend>
+            <ProductLegend.Name>Sterownik:</ProductLegend.Name>
+            <ProductLegend.Value>XControl</ProductLegend.Value>
+          </ProductLegend>
+          {/** product legend */}
+          {/** line description */}
+          {rangeProducts && rangeProducts.line_description && (
+            <MarkdownParagraph
+              text={rangeProducts.line_description}
+              page={PAGES.PRODUCT_PAGE}
+            />
+          )}
+          {/** line description */}
+          {/** horizontal available models */}
+          {products && products.length > 0 && (
+            <AvailableModels horizontal>
+              {products.map((product) => {
+                let attributeName = '';
+                let attributeValue = '';
+                let attributeUnit = '';
+                if (product.product_attr && product.product_attr.length > 0) {
+                  attributeName = product.product_attr[0].name;
+                  attributeValue = product.product_attr[0].value;
+                  attributeUnit = product.product_attr[0].unit;
+                }
 
-      <main style={{ marginTop: '45px', padding: '2rem' }}>
-        {/** capacity title */}
-        <CapacityTitle>
-          <CapacityTitle.AttributeWrapper>
-            <CapacityTitle.Value>
-              {!!product?.product_attr[0]?.unit
-                ? `${product?.product_attr[0]?.value}${product?.product_attr[0]?.unit}`
-                : `${product?.product_attr[0]?.value}`}
-            </CapacityTitle.Value>
-          </CapacityTitle.AttributeWrapper>
-          <CapacityTitle.Title>{rangeProducts?.line_title}</CapacityTitle.Title>
-        </CapacityTitle>
-        {/** capacity title */}
-        {/** line title */}
-        <LineTitle>
-          <LineTitle.AttributeWrapper>
-            <LineTitle.Line>{rangeProducts?.line}</LineTitle.Line>
-          </LineTitle.AttributeWrapper>
-          <LineTitle.Title>{rangeProducts?.line_title}</LineTitle.Title>
-        </LineTitle>
-        {/** line title */}
-        {/** line description */}
-        {rangeProducts && rangeProducts.line_description && (
-          <MarkdownParagraph
-            text={rangeProducts.line_description}
-            page={PAGES.PRODUCT_PAGE}
-          />
-        )}
-        {/** line description */}
-        {/** horizontal available models */}
-        {products && products.length > 0 && (
-          <AvailableModels horizontal>
-            {products.map((product) => {
-              let attributeName = '';
-              let attributeValue = '';
-              let attributeUnit = '';
-              if (product.product_attr && product.product_attr.length > 0) {
-                attributeName = product.product_attr[0].name;
-                attributeValue = product.product_attr[0].value;
-                attributeUnit = product.product_attr[0].unit;
-              }
-
-              return (
-                <AvailableModels.ButtonWrapper
-                  key={product.id}
-                  horizontal
-                  onClick={() => {
-                    console.log('CHOOSEN ID', product.id);
-                    setCurrentProductID(product.id);
-                  }}
-                >
-                  <AvailableModels.Label id={product.model}>
-                    {product.model}
-                  </AvailableModels.Label>
-                  <AvailableModels.Button
-                    type='button'
-                    title={product.model}
-                    aria-label={product.model}
-                    aria-labelledby={product.model}
+                return (
+                  <AvailableModels.ButtonWrapper
+                    key={product.id}
+                    horizontal
+                    onClick={() => {
+                      console.log('CHOOSEN ID', product.id);
+                      setCurrentProductID(product.id);
+                    }}
                   >
-                    <AvailableModels.AttributeWrapper>
-                      <AvailableModels.Name>
-                        {attributeName}
-                      </AvailableModels.Name>
-                      <AvailableModels.Value>
-                        {!!attributeUnit
-                          ? `${attributeValue} ${attributeUnit}`
-                          : `${attributeValue}`}
-                      </AvailableModels.Value>
-                    </AvailableModels.AttributeWrapper>
-                    <AvailableModels.AttributeWrapper>
-                      <AvailableModels.Model>
-                        {product.model}
-                      </AvailableModels.Model>
-                    </AvailableModels.AttributeWrapper>
-                  </AvailableModels.Button>
-                </AvailableModels.ButtonWrapper>
-              );
-            })}
-          </AvailableModels>
-        )}
-        {/** vertical available models */}
-        {products && products.length > 0 && (
-          <AvailableModels>
-            {products.map((product) => {
-              let attributeName = '';
-              let attributeValue = '';
-              let attributeUnit = '';
-              if (product.product_attr && product.product_attr.length > 0) {
-                attributeName = product.product_attr[0].name;
-                attributeValue = product.product_attr[0].value;
-                attributeUnit = product.product_attr[0].unit;
-              }
-              return (
-                <AvailableModels.ButtonWrapper
-                  key={product.id}
-                  onClick={() => {
-                    console.log('CHOOSEN ID', product.id);
-                    setCurrentProductID(product.id);
-                  }}
-                >
-                  <AvailableModels.Label id={product.model}>
-                    {product.model}
-                  </AvailableModels.Label>
-                  <AvailableModels.Button
-                    type='button'
-                    title={product.model}
-                    aria-label={product.model}
-                    aria-labelledby={product.model}
+                    <AvailableModels.Label id={product.model}>
+                      {product.model}
+                    </AvailableModels.Label>
+                    <AvailableModels.Button
+                      type='button'
+                      title={product.model}
+                      aria-label={product.model}
+                      aria-labelledby={product.model}
+                    >
+                      <AvailableModels.AttributeWrapper>
+                        <AvailableModels.Name>
+                          {attributeName}
+                        </AvailableModels.Name>
+                        <AvailableModels.Value>
+                          {!!attributeUnit
+                            ? `${attributeValue} ${attributeUnit}`
+                            : `${attributeValue}`}
+                        </AvailableModels.Value>
+                      </AvailableModels.AttributeWrapper>
+                      <AvailableModels.AttributeWrapper>
+                        <AvailableModels.Model>
+                          {product.model}
+                        </AvailableModels.Model>
+                      </AvailableModels.AttributeWrapper>
+                    </AvailableModels.Button>
+                  </AvailableModels.ButtonWrapper>
+                );
+              })}
+            </AvailableModels>
+          )}
+          {/** vertical available models */}
+          {products && products.length > 0 && (
+            <AvailableModels>
+              {products.map((product) => {
+                let attributeName = '';
+                let attributeValue = '';
+                let attributeUnit = '';
+                if (product.product_attr && product.product_attr.length > 0) {
+                  attributeName = product.product_attr[0].name;
+                  attributeValue = product.product_attr[0].value;
+                  attributeUnit = product.product_attr[0].unit;
+                }
+                return (
+                  <AvailableModels.ButtonWrapper
+                    key={product.id}
+                    onClick={() => {
+                      console.log('CHOOSEN ID', product.id);
+                      setCurrentProductID(product.id);
+                    }}
                   >
-                    <AvailableModels.AttributeWrapper>
-                      <AvailableModels.Name>
-                        {attributeName}
-                      </AvailableModels.Name>
-                      <AvailableModels.Value>
-                        {!!attributeUnit
-                          ? `${attributeValue} ${attributeUnit}`
-                          : `${attributeValue}`}
-                      </AvailableModels.Value>
-                    </AvailableModels.AttributeWrapper>
-                    <AvailableModels.AttributeWrapper>
-                      <AvailableModels.Model>
-                        {product.model}
-                      </AvailableModels.Model>
-                    </AvailableModels.AttributeWrapper>
-                  </AvailableModels.Button>
-                </AvailableModels.ButtonWrapper>
-              );
-            })}
-          </AvailableModels>
-        )}
-      </main>
+                    <AvailableModels.Label id={product.model}>
+                      {product.model}
+                    </AvailableModels.Label>
+                    <AvailableModels.Button
+                      type='button'
+                      title={product.model}
+                      aria-label={product.model}
+                      aria-labelledby={product.model}
+                    >
+                      <AvailableModels.AttributeWrapper>
+                        <AvailableModels.Name>
+                          {attributeName}
+                        </AvailableModels.Name>
+                        <AvailableModels.Value>
+                          {!!attributeUnit
+                            ? `${attributeValue} ${attributeUnit}`
+                            : `${attributeValue}`}
+                        </AvailableModels.Value>
+                      </AvailableModels.AttributeWrapper>
+                      <AvailableModels.AttributeWrapper>
+                        <AvailableModels.Model>
+                          {product.model}
+                        </AvailableModels.Model>
+                      </AvailableModels.AttributeWrapper>
+                    </AvailableModels.Button>
+                  </AvailableModels.ButtonWrapper>
+                );
+              })}
+            </AvailableModels>
+          )}
+        </Content.Main>
+      </Content>
     </React.Fragment>
   );
 });
