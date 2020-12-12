@@ -21,6 +21,10 @@ type Product = {
   model: string;
   product_attr: Attribute[];
 };
+type Controller = {
+  id: string;
+  text: string;
+};
 type RangeProducts = {
   category: {};
   description: string;
@@ -30,6 +34,7 @@ type RangeProducts = {
   line_description: string | undefined;
   line_title: string | undefined;
   products: Product[];
+  controllers: Controller[];
 };
 
 export const ProductDetailsPage = withRouter((props) => {
@@ -76,21 +81,19 @@ export const ProductDetailsPage = withRouter((props) => {
           image: { url: '' },
         }}
       />
-      
+
       <Content page={PAGES.PRODUCT_PAGE}>
         <Content.Main>
           {/** capacity title */}
           <CapacityTitle>
-            <CapacityTitle.AttributeWrapper>
-              <CapacityTitle.Value>
-                {!!product?.product_attr[0]?.unit
-                  ? `${product?.product_attr[0]?.value}${product?.product_attr[0]?.unit}`
-                  : `${product?.product_attr[0]?.value}`}
-              </CapacityTitle.Value>
-            </CapacityTitle.AttributeWrapper>
             <CapacityTitle.Title>
               {rangeProducts?.line_title}
             </CapacityTitle.Title>
+            <CapacityTitle.Value>
+              {!!product?.product_attr[0]?.unit
+                ? `${product?.product_attr[0]?.value}${product?.product_attr[0]?.unit}`
+                : `${product?.product_attr[0]?.value}`}
+            </CapacityTitle.Value>
           </CapacityTitle>
           {/** capacity title */}
           {/** line title */}
@@ -101,16 +104,32 @@ export const ProductDetailsPage = withRouter((props) => {
             <LineTitle.Title>{rangeProducts?.line_title}</LineTitle.Title>
           </LineTitle>
           {/** line title */}
-          {/** product legend */}
+          {/** product legend - model */}
           <ProductLegend>
             <ProductLegend.Name>Model:</ProductLegend.Name>
             <ProductLegend.Value>{product?.model}</ProductLegend.Value>
           </ProductLegend>
-          <ProductLegend>
-            <ProductLegend.Name>Sterownik:</ProductLegend.Name>
-            <ProductLegend.Value>XControl</ProductLegend.Value>
-          </ProductLegend>
-          {/** product legend */}
+          {/** product legend - model */}
+          {/** product legend - controllers */}
+          {rangeProducts?.controllers && rangeProducts.controllers.length > 0 && (
+            <ProductLegend>
+              <ProductLegend.Name>Sterowniki:</ProductLegend.Name>
+              {rangeProducts.controllers.map((controller) => {
+                return (
+                  <ProductLegend.Link
+                    to=''
+                    title=''
+                    aria-label=''
+                    aria-labelledby=''
+                    key={controller.id}
+                  >
+                    {controller.text}
+                  </ProductLegend.Link>
+                );
+              })}
+            </ProductLegend>
+          )}
+          {/** product legend - controllers */}
           {/** line description */}
           {rangeProducts && rangeProducts.line_description && (
             <MarkdownParagraph
