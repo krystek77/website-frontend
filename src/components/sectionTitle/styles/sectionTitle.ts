@@ -1,53 +1,40 @@
 import styled from 'styled-components/macro';
-import { PAGES } from '../../../constants';
+import { Link as ReactRouterLink } from 'react-router-dom';
+// import { PAGES } from '../../../constants';
 export const Container = styled.div<{ page?: string }>`
-  ${({ theme, page }) =>
-    page === PAGES.BUSINESS_DETAILS_PAGE
-      ? `
-    background-color:${theme.colors.dark};
-    padding:${theme.padding * 3}rem ${theme.padding * 5}rem;
-    
-  
-  `
-      : ``}
+  background-color: black;
+  ${({ theme }) => `
+    padding:${theme.padding * 8}rem ${theme.padding * 5}rem;
+    color:${theme.colors.light};
+  `}
 `;
 export const Inner = styled.div<{ page?: string }>`
   max-width: 1170px;
   margin: 0 auto;
-  ${({ theme, page }) =>
-    page === PAGES.BUSINESS_DETAILS_PAGE
-      ? `
-
-      `
-      : page === PAGES.PRODUCTS
-      ? `padding:${theme.padding * 10}rem ${theme.padding * 5}rem ${
-          theme.padding * 0
-        }rem;`
-      : ``}
 `;
 export const Title = styled.h2<{ page?: string }>`
-  line-height: 1.2;
-  ${({ theme, page }) =>
-    page === PAGES.BUSINESS_DETAILS_PAGE
-      ? `
-    text-align:center;
-    font-size:3rem;
-    margin-bottom:0;
-    color:${theme.colors.light};
-  `
-      : page === PAGES.PRODUCTS
-      ? `
-      text-align:left;
-      font-size:3rem;
-      font-weight:700;
-      `
-      : ``}
+  ${({ theme }) => `
+    margin-bottom:${theme.padding * 0}rem;
+  `}
 `;
 export const SubTitle = styled.p<{ page?: string }>`
-  ${({ theme, page }) =>
-    page === PAGES.PRODUCTS
-      ? `
-        font-size:2rem;
-      `
-      : ``}
+  line-height: 1.3;
+  font-size: 2rem;
+  ${({ theme }) => `
+    margin-top:${theme.padding * 1}rem;
+  `}
+`;
+export const Label = styled.span<{ id: string }>`
+  display: none;
+  visibility: hidden;
+`;
+export const Link = styled(ReactRouterLink)`
+  text-decoration: underline;
+  font-weight: 400;
+  text-transform: uppercase;
+  display: block;
+  ${({ theme }) => `
+    margin-top:${theme.padding * 1}rem;
+    color:${theme.colors.secondary};
+  `}
 `;
