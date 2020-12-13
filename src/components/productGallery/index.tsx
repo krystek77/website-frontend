@@ -9,7 +9,7 @@ import {
 interface IProductGallery {
   ViewportImage: React.FC<{ src: string; alt: string }>;
   ViewportThumbnails: React.FC;
-  Thumbnail: React.FC<{ url: string; onClick: () => void }>;
+  Thumbnail: React.FC<{ url: string; onClick: () => void; active: boolean }>;
 }
 export const ProductGallery: React.FC & IProductGallery = ({
   children,

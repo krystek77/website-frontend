@@ -6,7 +6,7 @@ export const Container = styled.div`
     `}
 `;
 export const Inner = styled.div`
-  max-width: 480px;
+  width: 480px;
   margin: 0 auto;
   ${({ theme }) => ``}
 `;
@@ -27,8 +27,6 @@ export const ViewportImage = styled.div`
     );
   }
   ${({ theme }) => `
-    // border:1px solid ${theme.colors.dark};
-    // background-color: ${theme.colors.primary};
   `}
 `;
 export const ViewportThumbnails = styled.div`
@@ -38,7 +36,8 @@ export const ViewportThumbnails = styled.div`
   flex-wrap: wrap;
   ${({ theme }) => ``}
 `;
-export const Thumbnail = styled.div<{ url: string }>`
+export const Thumbnail = styled.div<{ url: string; active: boolean }>`
+  position: relative;
   width: 120px;
   height: 120px;
   cursor: pointer;
@@ -46,14 +45,39 @@ export const Thumbnail = styled.div<{ url: string }>`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  filter: grayscale(100%);
-  &:hover {
-    filter: grayscale(0%);
-  }
 
   ${({ theme, url }) =>
     `   border:1px solid ${theme.colors.dark};
         margin:${theme.margin * 1}rem;
-        background-image:url(${url})
+        background-image:url(${url});
+    `};
+
+  &:after {
+    position: absolute;
+    display: none;
+    opacity: 0.98;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: 'oglądasz';
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+
+    ${({ theme }) => `
+      background:${theme.colors.primary};
+      color:${theme.colors.light};
     `}
+  }
+  ${({ theme, active }) =>
+    active &&
+    `
+    &:after {
+     display:flex;
+    }
+  `};
 `;
