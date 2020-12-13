@@ -55,14 +55,24 @@ export const ButtonWrapper = styled.div<{ horizontal?: boolean }>`
     transform: translateY(0%);
   }
 `;
-export const Button = styled.button`
+export const Button = styled.button<{ active: boolean }>`
   display: block;
   width: 100%;
   background-color: transparent;
   cursor: pointer;
   border: none;
   outline: none;
-  ${({ theme }) => `padding:${theme.padding}rem;`}
+  ${({ theme }) => `
+    padding:${theme.padding}rem;
+  `}
+  ${({ theme, active }) =>
+    active &&
+    `
+    background-color: ${theme.colors.primary};
+    span {
+      color:${theme.colors.light};
+    }
+  `}
 `;
 export const SeeMore = styled.span``;
 export const AttributeWrapper = styled.div`

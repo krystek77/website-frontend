@@ -20,6 +20,7 @@ interface IAvailableModels {
     ['aria-label']: string;
     ['aria-labelledby']: string;
     onClick?: () => void;
+    active: boolean;
   }>;
   SeeMore: React.FC;
   AttributeWrapper: React.FC;
