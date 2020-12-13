@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  SectionTitle,
   Content,
   ProductGallery,
   CapacityTitle,
@@ -8,7 +9,7 @@ import {
   MarkdownParagraph,
   AvailableModels,
 } from '../components';
-import { PAGES } from '../constants';
+import { PAGES, ROUTES } from '../constants';
 import { withRouter } from 'react-router-dom';
 import { HeroContainer } from '../containers';
 type Attribute = {
@@ -41,6 +42,7 @@ type RangeProducts = {
   line: string;
   line_description: string | undefined;
   line_title: string | undefined;
+  line_image: ProductImage;
   products: Product[];
   controllers: Controller[];
 };
@@ -50,7 +52,8 @@ export const ProductDetailsPage = withRouter((props) => {
     rangeProducts,
     setRangeProducts,
   ] = React.useState<RangeProducts | null>(null);
-  const [currentProductID, setCurrentProductID] = React.useState<number>();
+  const [product, setProduct] = React.useState<Product | null>(null);
+  const [mainImage, setMainImage] = React.useState<ProductImage | null>(null);
 
   const {
     match: {
@@ -63,23 +66,35 @@ export const ProductDetailsPage = withRouter((props) => {
       const response = await fetch(`/lines/${slug}`);
       const data = await response.json();
       const id = data.products.map((product: Product) => product.id)[1];
+      const product = data.products.find(
+        (product: Product) => product.id === id
+      );
+
+      /**
+       * Get image from product for instance FX65
+       *
+       */
+      const mainImage = product.product_images[0];
+
+      /**
+       * Get image from line of products for instance line_FX
+       * const mainImage = data.line_image;
+       */
+
       setRangeProducts(data);
-      console.log('Line:', data);
-      setCurrentProductID(id);
+      setProduct(product);
+      setMainImage(mainImage);
     };
     fetchData();
     return () => {};
   }, [slug]);
 
-  let products: Product[] | null = null;
-  let product: Product | undefined;
-  if (!!rangeProducts) {
-    products = rangeProducts?.products;
-    if (!!products) {
-      product = products.find((product) => product.id === currentProductID);
-    }
-  }
-  console.log('Product', product);
+  console.log('render');
+  console.log('Line:', rangeProducts);
+  console.log('Product:', product);
+  console.log('Image:', mainImage);
+  const currentProductID = product && product.id;
+
   return (
     <React.Fragment>
       <HeroContainer
@@ -89,32 +104,55 @@ export const ProductDetailsPage = withRouter((props) => {
           image: { url: '' },
         }}
       />
-
+      <SectionTitle page={PAGES.PRODUCT_PAGE}>
+        <SectionTitle.Title page={PAGES.PRODUCT_PAGE}>
+          {!!product?.product_attr[0]?.unit
+            ? `${product?.product_attr[0]?.value}${product?.product_attr[0]?.unit}`
+            : `${product?.product_attr[0]?.value}`}{' '}
+          {rangeProducts?.line_title}
+        </SectionTitle.Title>
+        <SectionTitle.Label id='Produkty'>Produkty</SectionTitle.Label>
+        <SectionTitle.Link
+          to={ROUTES.PRODUCTS}
+          title='Wróc do prouktów'
+          aria-label='Wróc do prouktów'
+          aria-labelledby='Produkty'
+        >
+          Wróc do Produkty
+        </SectionTitle.Link>
+      </SectionTitle>
       <Content page={PAGES.PRODUCT_PAGE}>
         <Content.Main>
           <div style={{ display: 'flex' }}>
             <div style={{ flexShrink: 0, marginRight: '2.5rem' }}>
               {/** product gallery */}
-              {product && product.product_images.length > 0 && (
-                <ProductGallery>
-                  <ProductGallery.ViewportImage
-                    src={product.product_images[0].url}
-                    alt='big picture'
-                  />
-                  <ProductGallery.ViewportThumbnails>
-                    {product.product_images.map((image) => {
-                      const thumbnail = image.formats.thumbnail.url;
-                      return (
-                        <ProductGallery.Thumbnail
-                          key={image.id}
-                          url={thumbnail}
-                          onClick={() => console.log('Choosen thumbnail')}
-                        />
-                      );
-                    })}
-                  </ProductGallery.ViewportThumbnails>
-                </ProductGallery>
-              )}
+              <ProductGallery>
+                {mainImage && (
+                  <React.Fragment>
+                    <ProductGallery.ViewportImage
+                      src={mainImage.url}
+                      alt={mainImage.alternativeText}
+                    />
+                    <ProductGallery.ViewportThumbnails>
+                      {product &&
+                        product.product_images.map((image) => {
+                          const thumbnail = image.url;
+
+                          return (
+                            <ProductGallery.Thumbnail
+                              key={image.id}
+                              url={thumbnail}
+                              active={thumbnail === mainImage.url}
+                              onClick={() => {
+                                setMainImage(image);
+                              }}
+                            />
+                          );
+                        })}
+                    </ProductGallery.ViewportThumbnails>
+                  </React.Fragment>
+                )}
+              </ProductGallery>
               {/** product gallery */}
             </div>
             <div>
@@ -174,9 +212,9 @@ export const ProductDetailsPage = withRouter((props) => {
               )}
               {/** line description */}
               {/** horizontal available models */}
-              {products && products.length > 0 && (
+              {rangeProducts?.products && rangeProducts?.products.length > 0 && (
                 <AvailableModels horizontal>
-                  {products.map((product) => {
+                  {rangeProducts.products.map((product) => {
                     let attributeName = '';
                     let attributeValue = '';
                     let attributeUnit = '';
@@ -194,8 +232,8 @@ export const ProductDetailsPage = withRouter((props) => {
                         key={product.id}
                         horizontal
                         onClick={() => {
-                          console.log('CHOOSEN ID', product.id);
-                          setCurrentProductID(product.id);
+                          setProduct(product);
+                          setMainImage(product.product_images[0]);
                         }}
                       >
                         <AvailableModels.Label id={product.model}>
@@ -206,6 +244,7 @@ export const ProductDetailsPage = withRouter((props) => {
                           title={product.model}
                           aria-label={product.model}
                           aria-labelledby={product.model}
+                          active={currentProductID === product.id}
                         >
                           <AvailableModels.AttributeWrapper>
                             <AvailableModels.Name>
@@ -232,9 +271,9 @@ export const ProductDetailsPage = withRouter((props) => {
           </div>
 
           {/** vertical available models */}
-          {products && products.length > 0 && (
+          {rangeProducts?.products && rangeProducts?.products.length > 0 && (
             <AvailableModels>
-              {products.map((product) => {
+              {rangeProducts?.products.map((product) => {
                 let attributeName = '';
                 let attributeValue = '';
                 let attributeUnit = '';
@@ -243,12 +282,12 @@ export const ProductDetailsPage = withRouter((props) => {
                   attributeValue = product.product_attr[0].value;
                   attributeUnit = product.product_attr[0].unit;
                 }
+
                 return (
                   <AvailableModels.ButtonWrapper
                     key={product.id}
                     onClick={() => {
-                      console.log('CHOOSEN ID', product.id);
-                      setCurrentProductID(product.id);
+                      setProduct(product);
                     }}
                   >
                     <AvailableModels.Label id={product.model}>
@@ -259,6 +298,7 @@ export const ProductDetailsPage = withRouter((props) => {
                       title={product.model}
                       aria-label={product.model}
                       aria-labelledby={product.model}
+                      active={currentProductID === product.id}
                     >
                       <AvailableModels.AttributeWrapper>
                         <AvailableModels.Name>
