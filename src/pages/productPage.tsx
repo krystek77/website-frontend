@@ -285,7 +285,7 @@ export const ProductDetailsPage = withRouter((props) => {
                   <ProductFeatures.ContentWrapper>
                     <ProductFeatures.Content
                       src=''
-                      alt='a'
+                      alt='ab'
                       text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
                     />
                     <ProductFeatures.Content
@@ -296,10 +296,10 @@ export const ProductDetailsPage = withRouter((props) => {
                   </ProductFeatures.ContentWrapper>
                 </ProductFeatures.ListItem>
                 <ProductFeatures.ListItem>
-                  <ProductFeatures.ListItemTitle active>
+                  <ProductFeatures.ListItemTitle>
                     Title list item 2
                   </ProductFeatures.ListItemTitle>
-                  <ProductFeatures.ContentWrapper active>
+                  <ProductFeatures.ContentWrapper>
                     <ProductFeatures.Content
                       src=''
                       alt='b'

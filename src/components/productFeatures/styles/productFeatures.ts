@@ -82,11 +82,21 @@ export const ListItemTitle = styled.div<{ active?: boolean }>`
         background-color:${theme.colors.primary};
         color:${theme.colors.light};
     }
+     &:hover {
+      button {
+        background-color:${theme.colors.primary};
+        color:${theme.colors.light};
+      }
+      h4 {
+        color:${theme.colors.medium};
+      }
+    }
   `}
 `;
 export const ContentWrapper = styled.div<{ active?: boolean }>`
+  display: block;
   overflow: hidden;
-  height: 0px;
+  max-height: 0px;
   visibility: hidden;
   transition: all 0.5s ease-out;
   ${({ theme }) => `
@@ -97,7 +107,7 @@ export const ContentWrapper = styled.div<{ active?: boolean }>`
     active &&
     `
     visibility:visible;
-    height:auto;
+    max-height:460px;
   `}
 `;
 export const Content = styled.div`
