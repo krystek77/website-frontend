@@ -22,13 +22,13 @@ export const TabLink = styled.li<{ active: boolean }>`
   transition: all 0.3s ease-out;
   position: relative;
   z-index: 0;
-  white-space:nowrap;
+  white-space: nowrap;
+  font-weight: 400;
   ${({ theme }) => `
     background-color:${theme.colors.light};
     border: 1px solid ${theme.colors.medium};
     border-bottom:none;
     color:${theme.colors.dark};
-    font-weight:${theme.normal_font};
     &:hover {
         background-color: ${theme.colors.dark_secondary};
         border: 1px solid ${theme.colors.secondary};
