@@ -10,6 +10,7 @@ import {
   Value,
   Model,
   Label,
+  TitleWrapper,
 } from './styles/availableModels';
 
 interface IAvailableModels {
@@ -27,6 +28,7 @@ interface IAvailableModels {
   Name: React.FC;
   Value: React.FC;
   Model: React.FC;
+  TitleWrapper: React.FC<{ id: string }>;
   Label: React.FC<{ id: string }>;
 }
 
@@ -88,4 +90,25 @@ AvailableModels.Label = function AvailableModelsLabel({
 }) {
   return <Label {...restProps}>{children}</Label>;
 };
+
+AvailableModels.TitleWrapper = function AvailableModelsTitleWrapper({
+  id,
+  ...restProps
+}) {
+  return (
+    <TitleWrapper {...restProps}>
+      <h3>Dostępne modele</h3>
+      <span id='available_models'>Dostępne modele</span>
+      <a
+        href={`#${id}`}
+        title='Dostępne modele'
+        aria-label='Dostępne modele'
+        aria-labelledby='available_models'
+      >
+        Specyfikacja
+      </a>
+    </TitleWrapper>
+  );
+};
+
 export default AvailableModels;

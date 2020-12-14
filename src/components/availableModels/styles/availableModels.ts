@@ -100,3 +100,36 @@ export const Label = styled.span<{ id: string }>`
   display: none;
   visibility: hidden;
 `;
+export const TitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  h3 {
+    margin: 0;
+    font-size: 2rem;
+    text-transform: uppercase;
+    line-height: 1;
+    ${({ theme }) => `
+      color:${theme.colors.dark};
+      font-weight:${theme.bold_font};
+    `}
+  }
+  span {
+    display: none;
+    visibility: hidden;
+  }
+  a {
+    text-decoration: underline;
+    font-weight: 400;
+    text-transform: uppercase;
+    display: block;
+    ${({ theme }) => `
+      color:${theme.colors.dark_secondary};
+      font-weight:${theme.normal_font};
+      margin-right:${theme.margin * 3}rem;
+    `}
+  }
+`;
