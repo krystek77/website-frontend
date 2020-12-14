@@ -214,6 +214,7 @@ export const ProductDetailsPage = withRouter((props) => {
               {/** horizontal available models */}
               {rangeProducts?.products && rangeProducts?.products.length > 0 && (
                 <AvailableModels horizontal>
+                  <AvailableModels.TitleWrapper id='specyfikacja' />
                   {rangeProducts.products.map((product) => {
                     let attributeName = '';
                     let attributeValue = '';
