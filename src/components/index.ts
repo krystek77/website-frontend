@@ -21,6 +21,7 @@ import { CapacityTitle } from './capacityTitle';
 import { LineTitle } from './lineTitle';
 import { ProductLegend } from './prouctLegend';
 import { AvailableModels } from './availableModels';
+import { ProductFeatures } from './productFeatures';
 export {
   Layout,
   List,
@@ -48,4 +49,5 @@ export {
   LineTitle,
   ProductLegend,
   AvailableModels,
+  ProductFeatures,
 };

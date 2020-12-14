@@ -8,6 +8,7 @@ import {
   ProductLegend,
   MarkdownParagraph,
   AvailableModels,
+  ProductFeatures,
 } from '../components';
 import { PAGES, ROUTES } from '../constants';
 import { withRouter } from 'react-router-dom';
@@ -123,7 +124,7 @@ export const ProductDetailsPage = withRouter((props) => {
       </SectionTitle>
       <Content page={PAGES.PRODUCT_PAGE}>
         <Content.Main>
-          <div style={{ display: 'flex' }}>
+          <section style={{ display: 'flex' }}>
             <div style={{ flexShrink: 0, marginRight: '2.5rem' }}>
               {/** product gallery */}
               <ProductGallery>
@@ -269,8 +270,71 @@ export const ProductDetailsPage = withRouter((props) => {
                 </AvailableModels>
               )}
             </div>
-          </div>
-
+          </section>
+          {/** product features */}
+          <section>
+            <ProductFeatures>
+              <ProductFeatures.Title>
+                20LB CAPACITY SOFTMOUNT COMMERCIAL WASHER EXTRACTOR FEATURES
+              </ProductFeatures.Title>
+              <ProductFeatures.List>
+                <ProductFeatures.ListItem>
+                  <ProductFeatures.ListItemTitle>
+                    Title list item 1
+                  </ProductFeatures.ListItemTitle>
+                  <ProductFeatures.ContentWrapper>
+                    <ProductFeatures.Content
+                      src=''
+                      alt='a'
+                      text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
+                    />
+                    <ProductFeatures.Content
+                      src=''
+                      alt='ab'
+                      text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
+                    />
+                  </ProductFeatures.ContentWrapper>
+                </ProductFeatures.ListItem>
+                <ProductFeatures.ListItem>
+                  <ProductFeatures.ListItemTitle active>
+                    Title list item 2
+                  </ProductFeatures.ListItemTitle>
+                  <ProductFeatures.ContentWrapper active>
+                    <ProductFeatures.Content
+                      src=''
+                      alt='b'
+                      text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
+                    />
+                  </ProductFeatures.ContentWrapper>
+                </ProductFeatures.ListItem>
+                <ProductFeatures.ListItem>
+                  <ProductFeatures.ListItemTitle>
+                    Title list item 3
+                  </ProductFeatures.ListItemTitle>
+                  <ProductFeatures.ContentWrapper>
+                    <ProductFeatures.Content
+                      src=''
+                      alt='b'
+                      text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
+                    />
+                  </ProductFeatures.ContentWrapper>
+                </ProductFeatures.ListItem>
+                <ProductFeatures.ListItem>
+                  <ProductFeatures.ListItemTitle>
+                    Title list item 4
+                  </ProductFeatures.ListItemTitle>
+                  <ProductFeatures.ContentWrapper>
+                    <ProductFeatures.Content
+                      src=''
+                      alt='b'
+                      text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
+                    />
+                  </ProductFeatures.ContentWrapper>
+                </ProductFeatures.ListItem>
+              </ProductFeatures.List>
+            </ProductFeatures>
+            {/** product features */}
+          </section>
           {/** vertical available models */}
           {rangeProducts?.products && rangeProducts?.products.length > 0 && (
             <AvailableModels>

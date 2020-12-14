@@ -1,5 +1,8 @@
 import styled from 'styled-components/macro';
-export const Container = styled.div``;
+export const Container = styled.div`
+  position: relative;
+  z-index: 0;
+`;
 export const Inner = styled.div<{ horizontal?: boolean }>`
   ${({ theme, horizontal }) =>
     horizontal &&
