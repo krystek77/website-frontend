@@ -22,6 +22,7 @@ import { LineTitle } from './lineTitle';
 import { ProductLegend } from './prouctLegend';
 import { AvailableModels } from './availableModels';
 import { ProductFeatures } from './productFeatures';
+import { Tabs } from './tabs';
 export {
   Layout,
   List,
@@ -50,4 +51,5 @@ export {
   ProductLegend,
   AvailableModels,
   ProductFeatures,
+  Tabs,
 };

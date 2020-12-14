@@ -9,6 +9,7 @@ import {
   MarkdownParagraph,
   AvailableModels,
   ProductFeatures,
+  Tabs,
 } from '../components';
 import { PAGES, ROUTES } from '../constants';
 import { withRouter } from 'react-router-dom';
@@ -336,7 +337,7 @@ export const ProductDetailsPage = withRouter((props) => {
             {/** product features */}
           </section>
           <section style={{ display: 'flex', padding: '2rem 2.5rem' }}>
-            <div style={{ flexShrink: 0, width: '320px' }}>
+            <div style={{ flexShrink: 0, width: '320px', marginRight: '25px' }}>
               {/** vertical available models */}
               {rangeProducts?.products && rangeProducts?.products.length > 0 && (
                 <AvailableModels>
@@ -392,7 +393,28 @@ export const ProductDetailsPage = withRouter((props) => {
                 </AvailableModels>
               )}
             </div>
-            <div style={{ flexShrink: 0 }}></div>
+            <div style={{ flexShrink: 1, width: '100%' }}>
+              {/** tabs */}
+              <Tabs>
+                <Tabs.TabLinksWrapper>
+                  <Tabs.TabLink tab={0}>Specyfikacja</Tabs.TabLink>
+                  <Tabs.TabLink tab={1}>Dokumentacja techniczna</Tabs.TabLink>
+                  <Tabs.TabLink tab={2}>Materiały informacyjne</Tabs.TabLink>
+                </Tabs.TabLinksWrapper>
+                <Tabs.TabContentWrapper>
+                  <Tabs.TabContent content={0}>
+                    Content specyfikacja
+                  </Tabs.TabContent>
+                  <Tabs.TabContent content={1}>
+                    Content dokumentacja techniczna
+                  </Tabs.TabContent>
+                  <Tabs.TabContent content={2}>
+                    Content materiały informacyjne
+                  </Tabs.TabContent>
+                </Tabs.TabContentWrapper>
+              </Tabs>
+              {/** tabs */}
+            </div>
           </section>
         </Content.Main>
       </Content>
