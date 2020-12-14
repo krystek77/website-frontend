@@ -28,7 +28,7 @@ interface IAvailableModels {
   Name: React.FC;
   Value: React.FC;
   Model: React.FC;
-  TitleWrapper: React.FC<{ id: string }>;
+  TitleWrapper: React.FC<{ href: string }>;
   Label: React.FC<{ id: string }>;
 }
 
@@ -92,7 +92,7 @@ AvailableModels.Label = function AvailableModelsLabel({
 };
 
 AvailableModels.TitleWrapper = function AvailableModelsTitleWrapper({
-  id,
+  href,
   ...restProps
 }) {
   return (
@@ -100,7 +100,7 @@ AvailableModels.TitleWrapper = function AvailableModelsTitleWrapper({
       <h3>Dostępne modele</h3>
       <span id='available_models'>Dostępne modele</span>
       <a
-        href={`#${id}`}
+        href={`#${href}`}
         title='Dostępne modele'
         aria-label='Dostępne modele'
         aria-labelledby='available_models'
