@@ -74,10 +74,11 @@ export const GroupInput = styled.div`
 `;
 export const Legend = styled.span`
   width: 100%;
-  font-family: 'Fira Code', sans-serif;
+  /* font-family: 'Fira Code', sans-serif; */
+  font-weight: 600;
   font-size: 1.4rem;
   /* margin-left: 1.5rem; */
   margin-bottom: 2rem;
   text-transform: uppercase;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 `;
