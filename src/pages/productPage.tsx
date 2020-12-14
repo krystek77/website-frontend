@@ -10,6 +10,7 @@ import {
   AvailableModels,
   ProductFeatures,
   Tabs,
+  AttributeWrapper,
 } from '../components';
 import { PAGES, ROUTES } from '../constants';
 import { withRouter } from 'react-router-dom';
@@ -216,7 +217,7 @@ export const ProductDetailsPage = withRouter((props) => {
               {/** horizontal available models */}
               {rangeProducts?.products && rangeProducts?.products.length > 0 && (
                 <AvailableModels horizontal>
-                  <AvailableModels.TitleWrapper id='specyfikacja' />
+                  <AvailableModels.TitleWrapper href='specyfikacja' />
                   {rangeProducts.products.map((product) => {
                     let attributeName = '';
                     let attributeValue = '';
@@ -336,7 +337,10 @@ export const ProductDetailsPage = withRouter((props) => {
             </ProductFeatures>
             {/** product features */}
           </section>
-          <section style={{ display: 'flex', padding: '2rem 2.5rem' }}>
+          <section
+            style={{ display: 'flex', padding: '2rem 2.5rem' }}
+            id='specyfikacja'
+          >
             <div style={{ flexShrink: 0, width: '320px', marginRight: '25px' }}>
               {/** vertical available models */}
               {rangeProducts?.products && rangeProducts?.products.length > 0 && (
@@ -403,7 +407,12 @@ export const ProductDetailsPage = withRouter((props) => {
                 </Tabs.TabLinksWrapper>
                 <Tabs.TabContentWrapper>
                   <Tabs.TabContent content={0}>
-                    Content specyfikacja
+                    {product &&
+                      product.product_attr.map((attr) => {
+                        return (
+                          <AttributeWrapper attribute={attr} key={attr.id} />
+                        );
+                      })}
                   </Tabs.TabContent>
                   <Tabs.TabContent content={1}>
                     Content dokumentacja techniczna
