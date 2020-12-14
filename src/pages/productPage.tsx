@@ -335,57 +335,65 @@ export const ProductDetailsPage = withRouter((props) => {
             </ProductFeatures>
             {/** product features */}
           </section>
-          {/** vertical available models */}
-          {rangeProducts?.products && rangeProducts?.products.length > 0 && (
-            <AvailableModels>
-              {rangeProducts?.products.map((product) => {
-                let attributeName = '';
-                let attributeValue = '';
-                let attributeUnit = '';
-                if (product.product_attr && product.product_attr.length > 0) {
-                  attributeName = product.product_attr[0].name;
-                  attributeValue = product.product_attr[0].value;
-                  attributeUnit = product.product_attr[0].unit;
-                }
+          <section style={{ display: 'flex', padding: '2rem 2.5rem' }}>
+            <div style={{ flexShrink: 0, width: '320px' }}>
+              {/** vertical available models */}
+              {rangeProducts?.products && rangeProducts?.products.length > 0 && (
+                <AvailableModels>
+                  {rangeProducts?.products.map((product) => {
+                    let attributeName = '';
+                    let attributeValue = '';
+                    let attributeUnit = '';
+                    if (
+                      product.product_attr &&
+                      product.product_attr.length > 0
+                    ) {
+                      attributeName = product.product_attr[0].name;
+                      attributeValue = product.product_attr[0].value;
+                      attributeUnit = product.product_attr[0].unit;
+                    }
 
-                return (
-                  <AvailableModels.ButtonWrapper
-                    key={product.id}
-                    onClick={() => {
-                      setProduct(product);
-                    }}
-                  >
-                    <AvailableModels.Label id={product.model}>
-                      {product.model}
-                    </AvailableModels.Label>
-                    <AvailableModels.Button
-                      type='button'
-                      title={product.model}
-                      aria-label={product.model}
-                      aria-labelledby={product.model}
-                      active={currentProductID === product.id}
-                    >
-                      <AvailableModels.AttributeWrapper>
-                        <AvailableModels.Name>
-                          {attributeName}
-                        </AvailableModels.Name>
-                        <AvailableModels.Value>
-                          {!!attributeUnit
-                            ? `${attributeValue} ${attributeUnit}`
-                            : `${attributeValue}`}
-                        </AvailableModels.Value>
-                      </AvailableModels.AttributeWrapper>
-                      <AvailableModels.AttributeWrapper>
-                        <AvailableModels.Model>
+                    return (
+                      <AvailableModels.ButtonWrapper
+                        key={product.id}
+                        onClick={() => {
+                          setProduct(product);
+                        }}
+                      >
+                        <AvailableModels.Label id={product.model}>
                           {product.model}
-                        </AvailableModels.Model>
-                      </AvailableModels.AttributeWrapper>
-                    </AvailableModels.Button>
-                  </AvailableModels.ButtonWrapper>
-                );
-              })}
-            </AvailableModels>
-          )}
+                        </AvailableModels.Label>
+                        <AvailableModels.Button
+                          type='button'
+                          title={product.model}
+                          aria-label={product.model}
+                          aria-labelledby={product.model}
+                          active={currentProductID === product.id}
+                        >
+                          <AvailableModels.AttributeWrapper>
+                            <AvailableModels.Name>
+                              {attributeName}
+                            </AvailableModels.Name>
+                            <AvailableModels.Value>
+                              {!!attributeUnit
+                                ? `${attributeValue} ${attributeUnit}`
+                                : `${attributeValue}`}
+                            </AvailableModels.Value>
+                          </AvailableModels.AttributeWrapper>
+                          <AvailableModels.AttributeWrapper>
+                            <AvailableModels.Model>
+                              {product.model}
+                            </AvailableModels.Model>
+                          </AvailableModels.AttributeWrapper>
+                        </AvailableModels.Button>
+                      </AvailableModels.ButtonWrapper>
+                    );
+                  })}
+                </AvailableModels>
+              )}
+            </div>
+            <div style={{ flexShrink: 0 }}></div>
+          </section>
         </Content.Main>
       </Content>
     </React.Fragment>
