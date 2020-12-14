@@ -23,6 +23,7 @@ import { ProductLegend } from './prouctLegend';
 import { AvailableModels } from './availableModels';
 import { ProductFeatures } from './productFeatures';
 import { Tabs } from './tabs';
+import { AttributeWrapper } from './attribute';
 export {
   Layout,
   List,
@@ -52,4 +53,5 @@ export {
   AvailableModels,
   ProductFeatures,
   Tabs,
+  AttributeWrapper,
 };
