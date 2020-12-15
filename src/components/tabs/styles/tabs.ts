@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import ReactMarkdown from 'react-markdown';
 export const Container = styled.div`
   width: 100%;
   ${({ theme }) => ``};
@@ -57,10 +58,37 @@ export const TabContentWrapper = styled.ul`
 `;
 export const TabContent = styled.li`
   width: 100%;
-  min-height: 480px;
-  height: 100%;
+  height: auto;
   padding: 1rem 2rem;
   ${({ theme }) => `
   
   `};
+`;
+export const ReactMarkdownContent = styled(ReactMarkdown)`
+  ul {
+    list-style-type: none;
+    ${({ theme }) => `
+        margin-bottom: ${theme.margin * 4}rem;
+      `}
+    & > li {
+      position: relative;
+      ${({ theme }) => `
+          padding-bottom: ${theme.padding * 0.5}rem;
+          padding-top: ${theme.padding * 0.5}rem;
+          padding-left: ${theme.padding * 4}rem;
+        `}
+      &:before {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        ${({ theme }) => `
+            background-color: ${theme.colors.secondary};
+          `}
+      }
+    }
+  }
 `;

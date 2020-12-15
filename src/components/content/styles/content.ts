@@ -2,6 +2,7 @@ import styled from 'styled-components/macro';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { PAGES, BREAKPOINT } from '../../../constants';
 export const Container = styled.div<{ page?: string }>`
+  border: 1px solid red;
   width: 100%;
   min-height: 480px;
   ${({ page, theme }) =>
@@ -15,7 +16,7 @@ export const Inner = styled.div<{ page?: string }>`
   width: 100%;
   margin: 0 auto;
   max-width: 1170px;
-
+  border: 1px solid green;
   ${({ page, theme }) =>
     page === PAGES.BUSINESS_DETAILS_PAGE || page === PAGES.PRODUCTS
       ? ` padding:${theme.padding * 10}rem ${theme.padding * 5}rem;
@@ -32,6 +33,7 @@ export const Inner = styled.div<{ page?: string }>`
   }
 `;
 export const Main = styled.main<{ page?: string }>`
+  border: 1px solid blue;
   ${({ theme, page }) =>
     page === PAGES.BUSINESS_DETAILS_PAGE &&
     `

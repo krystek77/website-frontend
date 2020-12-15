@@ -41,8 +41,8 @@ export const Thumbnail = styled.div<{
   active: boolean;
 }>`
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   cursor: pointer;
   border-radius: 0.4rem;
   background-size: contain;

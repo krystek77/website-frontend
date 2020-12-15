@@ -6,6 +6,7 @@ import {
   TabLink,
   TabContentWrapper,
   TabContent,
+  ReactMarkdownContent,
 } from './styles/tabs';
 
 interface ITabsContext {
@@ -34,6 +35,9 @@ interface ITabs {
   TabLink: React.FC<{ tab: number }>;
   TabContentWrapper: React.FC;
   TabContent: React.FC<{ content: number }>;
+  ReactMarkdownContent: React.FC<{
+    inner: { id: number; content: string | undefined } | null;
+  }>;
 }
 export const Tabs: React.FC & ITabs = ({ children }) => {
   return (
@@ -75,6 +79,11 @@ Tabs.TabContent = function TabsTabContent({ children, content, ...restProps }) {
   const { activeTab } = useTabContext();
   return content === activeTab ? (
     <TabContent {...restProps}>{children}</TabContent>
+  ) : null;
+};
+Tabs.ReactMarkdownContent = function TabsReactMarkdownContent({ inner }) {
+  return inner ? (
+    <ReactMarkdownContent>{inner.content}</ReactMarkdownContent>
   ) : null;
 };
 export default Tabs;

@@ -1,7 +1,5 @@
 import styled from 'styled-components/macro';
-export const Container = styled.div`
-  padding: 0.5rem 2rem;
-`;
+export const Container = styled.div``;
 export const Inner = styled.div``;
 export const Title = styled.h3`
   /* border: 1px solid gray; */
@@ -23,7 +21,6 @@ export const ListItemTitle = styled.div<{ active?: boolean }>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0.5rem 2rem;
   cursor: pointer;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
