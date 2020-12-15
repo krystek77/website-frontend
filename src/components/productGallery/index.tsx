@@ -7,9 +7,13 @@ import {
   Thumbnail,
 } from './styles/productGallery';
 interface IProductGallery {
-  ViewportImage: React.FC<{ src: string; alt: string }>;
+  ViewportImage: React.FC<{ src: string | undefined; alt: string | undefined }>;
   ViewportThumbnails: React.FC;
-  Thumbnail: React.FC<{ url: string; onClick: () => void; active: boolean }>;
+  Thumbnail: React.FC<{
+    url: string | undefined;
+    onClick: () => void;
+    active: boolean;
+  }>;
 }
 export const ProductGallery: React.FC & IProductGallery = ({
   children,

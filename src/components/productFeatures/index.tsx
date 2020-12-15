@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import {
   Container,
   Inner,
@@ -41,7 +42,11 @@ interface IProductFeatures {
   ListItem: React.FC;
   ListItemTitle: React.FC;
   ContentWrapper: React.FC;
-  Content: React.FC<{ src: string; alt: string; text: string }>;
+  Content: React.FC<{
+    src: string | undefined;
+    alt: string | undefined;
+    content: string;
+  }>;
 }
 export const ProductFeatures: React.FC & IProductFeatures = ({ children }) => {
   return (
@@ -104,15 +109,17 @@ ProductFeatures.ContentWrapper = function ProductFeaturesContentWrapper({
 ProductFeatures.Content = function ProductFeaturesContent({
   src,
   alt,
-  text,
+  content,
   ...restProps
 }) {
   return (
     <Content {...restProps}>
-      <div className='image-container'>
-        <img className='image-container__image' src={src} alt={alt} />
-      </div>
-      <p className='text'>{text}</p>
+      {src ? (
+        <div className='image-container'>
+          <img className='image-container__image' src={src} alt={alt} />
+        </div>
+      ) : null}
+      <ReactMarkdown className='content'>{content}</ReactMarkdown>
     </Content>
   );
 };

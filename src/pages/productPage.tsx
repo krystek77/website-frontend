@@ -21,21 +21,31 @@ type Attribute = {
   value: string;
   unit: string;
 };
-type ProductImage = {
+type Image = {
   id: number;
-  url: string;
-  alternativeText: string;
+  url: string | undefined;
+  alternativeText: string | undefined;
   formats: { thumbnail: { url: string } };
 };
 type Product = {
   id: number;
   model: string;
   product_attr: Attribute[];
-  product_images: ProductImage[];
+  product_images: Image[];
 };
 type Controller = {
-  id: string;
+  id: number;
   text: string;
+};
+type WholeFeature = {
+  id: number;
+  content: string;
+  image: Image | null;
+};
+type Feature = {
+  id: number;
+  title: string;
+  whole_feature: WholeFeature[];
 };
 type RangeProducts = {
   category: {};
@@ -45,9 +55,10 @@ type RangeProducts = {
   line: string;
   line_description: string | undefined;
   line_title: string | undefined;
-  line_image: ProductImage;
+  line_image: Image | null;
   products: Product[];
   controllers: Controller[];
+  productFeatures: Feature[];
 };
 
 export const ProductDetailsPage = withRouter((props) => {
@@ -56,7 +67,7 @@ export const ProductDetailsPage = withRouter((props) => {
     setRangeProducts,
   ] = React.useState<RangeProducts | null>(null);
   const [product, setProduct] = React.useState<Product | null>(null);
-  const [mainImage, setMainImage] = React.useState<ProductImage | null>(null);
+  const [mainImage, setMainImage] = React.useState<Image | null>(null);
 
   const {
     match: {
@@ -77,7 +88,10 @@ export const ProductDetailsPage = withRouter((props) => {
        * Get image from product for instance FX65
        *
        */
-      const mainImage = product.product_images[0];
+      const mainImage =
+        product &&
+        product.product_images.length > 0 &&
+        product.product_images[0];
 
       /**
        * Get image from line of products for instance line_FX
@@ -133,11 +147,12 @@ export const ProductDetailsPage = withRouter((props) => {
                 {mainImage && (
                   <React.Fragment>
                     <ProductGallery.ViewportImage
-                      src={mainImage.url}
-                      alt={mainImage.alternativeText}
+                      src={mainImage?.url}
+                      alt={mainImage?.alternativeText}
                     />
                     <ProductGallery.ViewportThumbnails>
                       {product &&
+                        product.product_images.length > 0 &&
                         product.product_images.map((image) => {
                           const thumbnail = image.url;
 
@@ -277,63 +292,44 @@ export const ProductDetailsPage = withRouter((props) => {
           <section>
             <ProductFeatures>
               <ProductFeatures.Title>
-                20LB CAPACITY SOFTMOUNT COMMERCIAL WASHER EXTRACTOR FEATURES
+                {!!product?.product_attr[0]?.unit
+                  ? `Cechy - ${product?.product_attr[0]?.value} ${product?.product_attr[0]?.unit}`
+                  : `Cechy - ${product?.product_attr[0]?.value}`}{' '}
+                {rangeProducts?.line_title}
               </ProductFeatures.Title>
-              <ProductFeatures.List>
-                <ProductFeatures.ListItem>
-                  <ProductFeatures.ListItemTitle>
-                    Title list item 1
-                  </ProductFeatures.ListItemTitle>
-                  <ProductFeatures.ContentWrapper>
-                    <ProductFeatures.Content
-                      src=''
-                      alt='ab'
-                      text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
-                    />
-                    <ProductFeatures.Content
-                      src=''
-                      alt='ab'
-                      text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
-                    />
-                  </ProductFeatures.ContentWrapper>
-                </ProductFeatures.ListItem>
-                <ProductFeatures.ListItem>
-                  <ProductFeatures.ListItemTitle>
-                    Title list item 2
-                  </ProductFeatures.ListItemTitle>
-                  <ProductFeatures.ContentWrapper>
-                    <ProductFeatures.Content
-                      src=''
-                      alt='b'
-                      text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
-                    />
-                  </ProductFeatures.ContentWrapper>
-                </ProductFeatures.ListItem>
-                <ProductFeatures.ListItem>
-                  <ProductFeatures.ListItemTitle>
-                    Title list item 3
-                  </ProductFeatures.ListItemTitle>
-                  <ProductFeatures.ContentWrapper>
-                    <ProductFeatures.Content
-                      src=''
-                      alt='b'
-                      text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
-                    />
-                  </ProductFeatures.ContentWrapper>
-                </ProductFeatures.ListItem>
-                <ProductFeatures.ListItem>
-                  <ProductFeatures.ListItemTitle>
-                    Title list item 4
-                  </ProductFeatures.ListItemTitle>
-                  <ProductFeatures.ContentWrapper>
-                    <ProductFeatures.Content
-                      src=''
-                      alt='b'
-                      text='Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada.'
-                    />
-                  </ProductFeatures.ContentWrapper>
-                </ProductFeatures.ListItem>
-              </ProductFeatures.List>
+              {rangeProducts && rangeProducts.productFeatures.length > 0 && (
+                <ProductFeatures.List>
+                  {rangeProducts.productFeatures.map((feature) => {
+                    const featureID = feature.id;
+                    const title = feature.title;
+                    const whole_feature = feature.whole_feature;
+                    return (
+                      <ProductFeatures.ListItem key={featureID}>
+                        <ProductFeatures.ListItemTitle>
+                          {title}
+                        </ProductFeatures.ListItemTitle>
+                        <ProductFeatures.ContentWrapper>
+                          {whole_feature &&
+                            whole_feature.length > 0 &&
+                            whole_feature.map((item) => {
+                              const wholeFeatureID = item.id;
+                              const content = item.content;
+                              const image = item.image;
+                              return (
+                                <ProductFeatures.Content
+                                  key={wholeFeatureID}
+                                  src={image?.url}
+                                  alt={image?.alternativeText}
+                                  content={content}
+                                />
+                              );
+                            })}
+                        </ProductFeatures.ContentWrapper>
+                      </ProductFeatures.ListItem>
+                    );
+                  })}
+                </ProductFeatures.List>
+              )}
             </ProductFeatures>
             {/** product features */}
           </section>

@@ -36,7 +36,10 @@ export const ViewportThumbnails = styled.div`
   flex-wrap: wrap;
   ${({ theme }) => ``}
 `;
-export const Thumbnail = styled.div<{ url: string; active: boolean }>`
+export const Thumbnail = styled.div<{
+  url: string | undefined;
+  active: boolean;
+}>`
   position: relative;
   width: 120px;
   height: 120px;

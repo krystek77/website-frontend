@@ -128,11 +128,27 @@ export const TitleWrapper = styled.div`
     text-decoration: underline;
     font-weight: 400;
     text-transform: uppercase;
-    display: block;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+
     ${({ theme }) => `
-      color:${theme.colors.dark_secondary};
+      color:${theme.colors.dark};
       font-weight:${theme.normal_font};
-      margin-right:${theme.margin * 3}rem;
+      
     `}
+    span {
+      ${({ theme }) => `
+        color:${theme.colors.dark};
+        margin-right:${theme.margin * 3}rem;
+        margin-left:${theme.margin * 1}rem;
+      `}
+      display: block;
+      visibility: visible;
+      font-size: 1.4rem;
+      &:hover {
+        ${({ theme }) => `color: ${theme.colors.secondary};`}
+      }
+    }
   }
 `;

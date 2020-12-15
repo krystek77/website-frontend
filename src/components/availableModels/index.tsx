@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoMdDocument } from 'react-icons/io';
 import {
   Container,
   Inner,
@@ -105,7 +106,8 @@ AvailableModels.TitleWrapper = function AvailableModelsTitleWrapper({
         aria-label='Dostępne modele'
         aria-labelledby='available_models'
       >
-        Specyfikacja
+        <IoMdDocument />
+        <span>Specyfikacja</span>
       </a>
     </TitleWrapper>
   );
