@@ -11,7 +11,7 @@ import {
 } from './styles/list';
 interface IList {
   Wrapper: React.FC<{ menu: string }>;
-  Item: React.FC<{ menu: string }>;
+  Item: React.FC<{ menu: string; active?: boolean }>;
   Link: React.FC<{
     title: string;
     ['aria-label']: string;
@@ -25,7 +25,7 @@ interface IList {
     ['aria-labelledby']: string;
     to: string;
     menu: string;
-    activeClassName: string;
+    activeClassName?: string;
   }>;
   RegularLink: React.FC<{
     title: string;

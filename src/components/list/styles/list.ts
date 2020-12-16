@@ -37,7 +37,7 @@ export const Wrapper = styled.ul<{ menu: string }>`
   `}
 `;
 
-export const Item = styled.li<{ menu: string }>`
+export const Item = styled.li<{ menu: string; active?: boolean }>`
   ${({ menu, theme }) =>
     menu === MENU.MENU_H &&
     `
@@ -56,6 +56,14 @@ export const Item = styled.li<{ menu: string }>`
       menu === MENU.MENU_USER_V) &&
     `
     width:100%;
+  `}
+  ${({ theme, active }) =>
+    active &&
+    `
+    background-color:${theme.colors.light};
+    & > a {
+      color:${theme.colors.dark_primary};
+    }
   `}
 `;
 

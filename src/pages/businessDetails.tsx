@@ -75,14 +75,17 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
                 <List.Wrapper menu={MENU.MENU_V}>
                   {businesses.map((item) => {
                     return (
-                      <List.Item key={item.id} menu={MENU.MENU_V}>
+                      <List.Item
+                        key={item.id}
+                        menu={MENU.MENU_V}
+                        active={item.slug === slug}
+                      >
                         <List.Label id={item.slug}>{item.title}</List.Label>
                         <List.NavLink
                           title={item.title}
                           aria-label={item.title}
                           aria-labelledby={item.slug}
                           menu={MENU.MENU_V}
-                          activeClassName='active'
                           to={`${ROUTES.YOUR_BUSINESS}/${item.slug}`}
                         >
                           {item.title}
