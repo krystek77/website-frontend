@@ -39,62 +39,79 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
     <React.Fragment>
       <HeroContainer data={business} />
       {business && (
-        <Content page={PAGES.BUSINESS_DETAILS_PAGE}>
-          <Content.Main page={PAGES.BUSINESS_DETAILS_PAGE}>
-            <h2>{business.title}</h2>
-            {/** Regular items list */}
-            <RegularList>
-              <RegularList.List>
-                {business.business_list.map((item) => {
-                  return (
-                    <RegularList.Item key={item.id}>
-                      {item.text}
-                    </RegularList.Item>
-                  );
-                })}
-              </RegularList.List>
-            </RegularList>
-            {/** Regular items list */}
-            {/** paragraphs */}
-            {business.paragraph.map((item) => {
-              return <MarkdownParagraph key={item.id} text={item.text} />;
-            })}
-            {/** paragraphs */}
-          </Content.Main>
-
-          <Content.Aside>
-            <Content.Label id='twoj_biznes'>Twój biznes</Content.Label>
-            <Content.TitleLink
+        <React.Fragment>
+          {/** section title */}
+          <SectionTitle page={PAGES.BUSINESS_DETAILS_PAGE}>
+            <SectionTitle.Title page={PAGES.BUSINESS_DETAILS_PAGE}>
+              {business.title}
+            </SectionTitle.Title>
+            <SectionTitle.Label id='Businesses'>Twój biznes</SectionTitle.Label>
+            <SectionTitle.Link
               to={ROUTES.YOUR_BUSINESS}
-              title='Twój biznes'
-              aria-label='Twój biznes'
-              aria-labelledby='twoj_biznes'
+              title='Wróc przeglądu segmentów pralni'
+              aria-label='Wróc przeglądu segmentów pralni'
+              aria-labelledby='Businesses'
             >
-              Twój biznes
-            </Content.TitleLink>
-            <List>
-              <List.Wrapper menu={MENU.MENU_V}>
-                {businesses.map((item) => {
-                  return (
-                    <List.Item key={item.id} menu={MENU.MENU_V}>
-                      <List.Label id={item.slug}>{item.title}</List.Label>
-                      <List.NavLink
-                        title={item.title}
-                        aria-label={item.title}
-                        aria-labelledby={item.slug}
-                        menu={MENU.MENU_V}
-                        activeClassName='active'
-                        to={`${ROUTES.YOUR_BUSINESS}/${item.slug}`}
-                      >
-                        {item.title}
-                      </List.NavLink>
-                    </List.Item>
-                  );
-                })}
-              </List.Wrapper>
-            </List>
-          </Content.Aside>
-        </Content>
+              Wróc do przeglądania segmentów pralni
+            </SectionTitle.Link>
+          </SectionTitle>
+          {/** section title */}
+          <Content page={PAGES.BUSINESS_DETAILS_PAGE}>
+            <Content.Main page={PAGES.BUSINESS_DETAILS_PAGE}>
+              {/** Regular items list */}
+              <RegularList>
+                <RegularList.List>
+                  {business.business_list.map((item) => {
+                    return (
+                      <RegularList.Item key={item.id}>
+                        {item.text}
+                      </RegularList.Item>
+                    );
+                  })}
+                </RegularList.List>
+              </RegularList>
+              {/** Regular items list */}
+              {/** paragraphs */}
+              {business.paragraph.map((item) => {
+                return <MarkdownParagraph key={item.id} text={item.text} />;
+              })}
+              {/** paragraphs */}
+            </Content.Main>
+
+            <Content.Aside>
+              <Content.Label id='twoj_biznes'>Twój biznes</Content.Label>
+              <Content.TitleLink
+                to={ROUTES.YOUR_BUSINESS}
+                title='Twój biznes'
+                aria-label='Twój biznes'
+                aria-labelledby='twoj_biznes'
+              >
+                Twój biznes
+              </Content.TitleLink>
+              <List>
+                <List.Wrapper menu={MENU.MENU_V}>
+                  {businesses.map((item) => {
+                    return (
+                      <List.Item key={item.id} menu={MENU.MENU_V}>
+                        <List.Label id={item.slug}>{item.title}</List.Label>
+                        <List.NavLink
+                          title={item.title}
+                          aria-label={item.title}
+                          aria-labelledby={item.slug}
+                          menu={MENU.MENU_V}
+                          activeClassName='active'
+                          to={`${ROUTES.YOUR_BUSINESS}/${item.slug}`}
+                        >
+                          {item.title}
+                        </List.NavLink>
+                      </List.Item>
+                    );
+                  })}
+                </List.Wrapper>
+              </List>
+            </Content.Aside>
+          </Content>
+        </React.Fragment>
       )}
       {/** sections */}
       <Section.Wrapper page={PAGES.BUSINESS_DETAILS_PAGE}>

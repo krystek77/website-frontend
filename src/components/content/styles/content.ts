@@ -4,12 +4,40 @@ import { PAGES, BREAKPOINT } from '../../../constants';
 export const Container = styled.div<{ page?: string }>`
   width: 100%;
   border: 1px solid red;
-  ${({ theme }) => `
+
+  ${({ theme, page }) =>
+    page === PAGES.BUSINESS_DETAILS_PAGE &&
+    `
+    padding: ${theme.padding * 10}rem ${theme.padding * 5}rem;
+    @media(min-width:${BREAKPOINT.LARGE}){
+
+    }
+    
   `}
 `;
-export const Inner = styled.div<{ page?: string }>``;
+export const Inner = styled.div<{ page?: string }>`
+  border: 1px solid green;
+  height: 100%;
+  ${({ theme, page }) =>
+    page === PAGES.BUSINESS_DETAILS_PAGE &&
+    `
+    max-width:1170px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column-reverse;
+    justify-content:flex-start;
+    align-items:center;
+    @media(min-width:${BREAKPOINT.LARGE}){
+      flex-direction:row;
+      align-items:flex-start;
+    }
+    
+  `}
+`;
 export const Main = styled.main<{ page?: string }>`
   border: 1px solid blue;
+  width: 100%;
+  height: 100%;
 
   ${({ theme, page }) =>
     page === PAGES.PRODUCTS &&
@@ -27,8 +55,25 @@ export const Main = styled.main<{ page?: string }>`
     ;
   `}
 `;
-export const Aside = styled.aside``;
-export const TitleLink = styled(ReactRouterLink)``;
+export const Aside = styled.aside`
+  width: 100%;
+  max-width: 320px;
+  ${({ theme }) => `
+  @media (min-width: ${BREAKPOINT.LARGE}) {
+    padding-left: ${theme.margin * 5}rem;
+    border-left:1px solid ${theme.colors.medium};
+  }
+  `}
+`;
+export const TitleLink = styled(ReactRouterLink)`
+  display: block;
+  text-transform: lowercase;
+  ${({ theme }) => `
+      color:${theme.colors.dark};
+      margin-bottom: ${theme.margin * 2}rem;
+      font-weight:${theme.bold_font};
+  `}
+`;
 export const Label = styled.span<{ id: string }>`
   display: none;
   visibility: hidden;
