@@ -34,7 +34,7 @@ export const Wrapper = styled.div<{
   `}
 
   ${({ theme }) => `
-    margin-bottom: ${theme.margin * 5}rem;
+    
   `}
   @media(min-width:${BREAKPOINT.LARGE}) {
     max-width: 260px;

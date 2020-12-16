@@ -1,22 +1,24 @@
 import styled from 'styled-components/macro';
 import { BREAKPOINT } from '../../../constants';
-export const Container = styled.div``;
+export const Container = styled.div`
+  ${({ theme }) => `
+    padding:${theme.padding * 10}rem ${theme.padding * 5}rem;
+  `}
+`;
 export const Inner = styled.div`
-  max-width: 1170px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
 
-  @media (min-width: ${BREAKPOINT.LARGE}) {
+  @media (min-width: ${BREAKPOINT.SMALL}) {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
   }
   ${({ theme }) => `
-    padding-bottom:${theme.padding * 10}rem;
+    
   `};
 `;
 export const RadioInput = styled.input`
@@ -24,15 +26,15 @@ export const RadioInput = styled.input`
 `;
 export const LabelInput = styled.label<{ active: boolean }>`
   border-radius: 0.4rem;
-  ${({ theme }) => `
-    padding:${theme.padding * 1}rem ${theme.padding * 2}rem;
-    color:${theme.colors.dark};
-  `};
-
   font-size: 1.6rem;
   margin-right: 0.5rem;
-  /* font-weight: 600; */
   cursor: pointer;
+  ${({ theme }) => `
+    padding:${theme.padding * 2}rem ${theme.padding * 2}rem;
+    background-color:${theme.colors.medium};
+    color:${theme.colors.dark};
+    font-weight:${theme.bold_font};
+  `};
   ${({ theme, active }) =>
     active &&
     `   background-color:${theme.colors.light};
@@ -45,21 +47,14 @@ export const Clear = styled.button<{ active: boolean }>`
   display: flex;
   align-items: center;
   border: none;
-
-  ${({ theme }) => `
-    background-color:transparent;
-    padding:${theme.padding * 1}rem;
-    color:${theme.colors.light};
-  `};
-
   font-size: 1.6rem;
   margin-right: 0.5rem;
-  /* font-weight: 600; */
   cursor: pointer;
-  ${({ theme, active }) =>
-    active &&
-    ` background-color:${theme.colors.light};
-      font-weight:${theme.bold_font}`};
+  ${({ theme }) => `
+    background-color:${theme.colors.medium};
+    padding:${theme.padding * 2}rem;
+    color:${theme.colors.dark};
+  `};
 `;
 
 export const GroupInput = styled.div`
@@ -72,13 +67,10 @@ export const GroupInput = styled.div`
     margin-bottom: 0;
   }
 `;
-export const Legend = styled.span`
+export const Legend = styled.h3`
   width: 100%;
-  /* font-family: 'Fira Code', sans-serif; */
   font-weight: 600;
-  font-size: 1.4rem;
-  /* margin-left: 1.5rem; */
+  font-size: 2.2rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
-  /* text-decoration: underline; */
 `;
