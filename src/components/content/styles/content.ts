@@ -3,7 +3,7 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 import { PAGES, BREAKPOINT } from '../../../constants';
 export const Container = styled.div<{ page?: string }>`
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 
   ${({ theme, page }) =>
     page === PAGES.BUSINESS_DETAILS_PAGE &&
@@ -16,7 +16,7 @@ export const Container = styled.div<{ page?: string }>`
   `}
 `;
 export const Inner = styled.div<{ page?: string }>`
-  border: 1px solid green;
+  /* border: 1px solid green; */
   height: 100%;
   ${({ theme, page }) =>
     page === PAGES.BUSINESS_DETAILS_PAGE &&
@@ -35,7 +35,7 @@ export const Inner = styled.div<{ page?: string }>`
   `}
 `;
 export const Main = styled.main<{ page?: string }>`
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   width: 100%;
   height: 100%;
 
@@ -53,6 +53,12 @@ export const Main = styled.main<{ page?: string }>`
         grid-row-gap:20px;
     }
     ;
+  `}
+  ${({ theme, page }) =>
+    page === PAGES.PRODUCT_PAGE &&
+    `
+      max-width:1170px;
+      margin:0 auto;
   `}
 `;
 export const Aside = styled.aside`

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Container,
   Inner,
+  Title,
   TabLinksWrapper,
   TabLink,
   TabContentWrapper,
@@ -38,6 +39,7 @@ interface ITabs {
   ReactMarkdownContent: React.FC<{
     inner: { id: number; content: string | undefined } | null;
   }>;
+  Title: React.FC<{ text: string }>;
 }
 export const Tabs: React.FC & ITabs = ({ children }) => {
   return (
@@ -61,7 +63,6 @@ Tabs.TabLink = function TabsTabLink({ children, tab, ...restProps }) {
       {...restProps}
       active={activeTab === tab}
       onClick={() => {
-        console.log(tab);
         setActiveTab(tab);
       }}
     >
@@ -84,6 +85,15 @@ Tabs.TabContent = function TabsTabContent({ children, content, ...restProps }) {
 Tabs.ReactMarkdownContent = function TabsReactMarkdownContent({ inner }) {
   return inner ? (
     <ReactMarkdownContent>{inner.content}</ReactMarkdownContent>
+  ) : null;
+};
+
+Tabs.Title = function TabsTitle({ children, text, ...restProps }) {
+  return text ? (
+    <Title {...restProps}>
+      <span className='title'>{text}</span>
+      {children ? <div className='wrapper'>{children}</div> : null}
+    </Title>
   ) : null;
 };
 export default Tabs;

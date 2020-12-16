@@ -63,9 +63,6 @@ export const GroupInput = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: ${({ theme }) => `${theme.margin * 2}rem`};
-  @media (min-width: ${BREAKPOINT.LARGE}) {
-    margin-bottom: 0;
-  }
 `;
 export const Legend = styled.h3`
   width: 100%;

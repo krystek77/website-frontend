@@ -32,6 +32,7 @@ type Product = {
   model: string;
   product_attr: Attribute[];
   product_images: Image[];
+  product_title: string;
 };
 type Controller = {
   id: number;
@@ -113,6 +114,12 @@ export const ProductDetailsPage = withRouter((props) => {
   console.log('Product:', product);
   console.log('Image:', mainProductImage);
   const currentProductID = product && product.id;
+  const titleProduct =
+    product && product.product_attr.length > 0
+      ? `${product && product.product_attr[0]?.value} ${
+          product.product_attr[0]?.unit
+        }`
+      : product && product.product_attr[0]?.value;
 
   return (
     <React.Fragment>
@@ -130,7 +137,7 @@ export const ProductDetailsPage = withRouter((props) => {
               {!!product?.product_attr[0]?.unit
                 ? `${product?.product_attr[0]?.value}${product?.product_attr[0]?.unit}`
                 : `${product?.product_attr[0]?.value}`}{' '}
-              {line?.line_title}
+              {product?.product_title}
             </SectionTitle.Title>
             <SectionTitle.Label id='Produkty'>Produkty</SectionTitle.Label>
             <SectionTitle.Link
@@ -143,7 +150,7 @@ export const ProductDetailsPage = withRouter((props) => {
             </SectionTitle.Link>
           </SectionTitle>
           <Content page={PAGES.PRODUCT_PAGE}>
-            <Content.Main>
+            <Content.Main page={PAGES.PRODUCT_PAGE}>
               <section style={{ display: 'flex' }}>
                 <div style={{ flexShrink: 0, marginRight: '2.5rem' }}>
                   {/** product gallery */}
@@ -193,7 +200,7 @@ export const ProductDetailsPage = withRouter((props) => {
                     <LineTitle.AttributeWrapper>
                       <LineTitle.Line>{line?.line}</LineTitle.Line>
                     </LineTitle.AttributeWrapper>
-                    <LineTitle.Title>{line?.line_title}</LineTitle.Title>
+                    <LineTitle.Title>{product?.product_title}</LineTitle.Title>
                   </LineTitle>
                   {/** line title */}
                   {/** product legend - model */}
@@ -292,16 +299,11 @@ export const ProductDetailsPage = withRouter((props) => {
 
               <section>
                 {/** tabs - wyposażenie */}
-                {product && product.product_attr.length > 0 && (
-                  <h3 style={{ textTransform: 'uppercase' }}>
-                    {product.product_attr[0]?.unit
-                      ? `Wyposażenie - ${product.product_attr[0]?.value} ${product.product_attr[0]?.unit}`
-                      : `Wyposażenie - ${product.product_attr[0]?.value}`}{' '}
-                    {line?.line_title}
-                  </h3>
-                )}
                 {line && line.standard && (
                   <Tabs>
+                    <Tabs.Title
+                      text={`Wyposażenie - ${titleProduct} ${product?.product_title}`}
+                    />
                     <Tabs.TabLinksWrapper>
                       <Tabs.TabLink tab={0}>Standard</Tabs.TabLink>
                       <Tabs.TabLink tab={1}>Opcje</Tabs.TabLink>
@@ -325,16 +327,16 @@ export const ProductDetailsPage = withRouter((props) => {
               </section>
               {/** product features */}
               <section>
-                <ProductFeatures>
-                  {product && product.product_attr.length > 0 && (
-                    <ProductFeatures.Title>
-                      {product.product_attr[0]?.unit
-                        ? `Cechy - ${product.product_attr[0]?.value} ${product?.product_attr[0]?.unit}`
-                        : `Cechy - ${product.product_attr[0]?.value}`}{' '}
-                      {line?.line_title}
-                    </ProductFeatures.Title>
-                  )}
-                  {line && line.productFeatures.length > 0 && (
+                {line && line.productFeatures.length > 0 ? (
+                  <ProductFeatures>
+                    {product && product.product_attr.length > 0 && (
+                      <ProductFeatures.Title>
+                        {product.product_attr[0]?.unit
+                          ? `Cechy - ${product.product_attr[0]?.value} ${product?.product_attr[0]?.unit}`
+                          : `Cechy - ${product.product_attr[0]?.value}`}{' '}
+                        {product?.product_title}
+                      </ProductFeatures.Title>
+                    )}
                     <ProductFeatures.List>
                       {line.productFeatures.map((feature) => {
                         const featureID = feature.id;
@@ -366,8 +368,9 @@ export const ProductDetailsPage = withRouter((props) => {
                         );
                       })}
                     </ProductFeatures.List>
-                  )}
-                </ProductFeatures>
+                  </ProductFeatures>
+                ) : null}
+
                 {/** product features */}
               </section>
               <section
@@ -378,9 +381,7 @@ export const ProductDetailsPage = withRouter((props) => {
                 }}
                 id='specyfikacja'
               >
-                <div
-                  style={{ flexShrink: 0, width: '320px', marginRight: '25px' }}
-                >
+                <div style={{ flexShrink: 0, width: '320px' }}>
                   {/** vertical available models */}
                   {line?.products && line?.products.length > 0 && (
                     <AvailableModels>

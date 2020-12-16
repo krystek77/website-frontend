@@ -108,8 +108,10 @@ export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  ${({ theme }) => `
+    margin-top:${theme.margin * 6}rem;
+    margin-bottom:${theme.margin * 6}rem;
+  `}
   h3 {
     margin: 0;
     font-size: 2rem;

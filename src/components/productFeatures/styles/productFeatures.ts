@@ -1,10 +1,17 @@
 import styled from 'styled-components/macro';
-export const Container = styled.div``;
+export const Container = styled.div`
+  ${({ theme }) => `
+    padding: 0rem ${theme.padding * 5}rem;
+  `};
+`;
 export const Inner = styled.div``;
 export const Title = styled.h3`
   /* border: 1px solid gray; */
   text-transform: uppercase;
-  ${({ theme }) => ``};
+  ${({ theme }) => `
+    margin-top:${theme.margin * 6}rem;
+    margin-bottom:${theme.margin * 6}rem;
+  `}
 `;
 export const List = styled.ul`
   /* border: 1px solid gray; */

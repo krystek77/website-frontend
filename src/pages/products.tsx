@@ -10,13 +10,16 @@ type Category = {
 };
 export const ProductsPage = () => {
   const [categories, setCategories] = React.useState<Category[]>([]);
-  const [choosenCategory, setChoosenCategory] = React.useState<string>('');
+  const [choosenCategory, setChoosenCategory] = React.useState<string>(
+    'Pralnicowirówki'
+  );
 
   React.useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('/categories');
       const data = await response.json();
       setCategories(data);
+      console.log('Categories', data);
     };
     fetchData();
     return () => {};
@@ -35,7 +38,13 @@ export const ProductsPage = () => {
       })
       .reduce((acc, element) => {
         return acc.concat(element);
-      }, []);
+      }, [])
+      .filter((item: any) => {
+        if (choosenCategory === '') return item;
+        return item.category === choosenCategory;
+      });
+  console.log('Lines', lines);
+  console.log('choosenCategory', choosenCategory);
 
   return (
     <React.Fragment>
@@ -101,12 +110,14 @@ export const ProductsPage = () => {
           </FilterCard>
         )}
         {/** filter cards */}
-        <Content.Main page={PAGES.PRODUCTS}>
-          <ProductCardContainer
-            list={lines}
-            filteredCategory={choosenCategory}
-          />
-        </Content.Main>
+        {lines.length > 0 ? (
+          <Content.Main page={PAGES.PRODUCTS}>
+            <ProductCardContainer
+              list={lines}
+              filteredCategory={choosenCategory}
+            />
+          </Content.Main>
+        ) : null}
       </Content>
     </React.Fragment>
   );

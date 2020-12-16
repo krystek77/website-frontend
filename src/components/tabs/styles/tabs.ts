@@ -2,7 +2,9 @@ import styled from 'styled-components/macro';
 import ReactMarkdown from 'react-markdown';
 export const Container = styled.div`
   width: 100%;
-  ${({ theme }) => ``};
+  ${({ theme }) => `
+    padding:0rem ${theme.padding * 5}rem;
+  `};
 `;
 export const Inner = styled.div`
   ${({ theme }) => ``};
@@ -90,5 +92,23 @@ export const ReactMarkdownContent = styled(ReactMarkdown)`
           `}
       }
     }
+  }
+`;
+export const Title = styled.h3`
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  line-height: 1;
+  ${({ theme }) => `
+    margin-top:${theme.margin * 6}rem;
+    margin-bottom:${theme.margin * 6}rem;
+  `}
+  .title {
+    ${({ theme }) => `
+      color:${theme.colors.dark};
+    `};
+  }
+  .wrapper {
   }
 `;
