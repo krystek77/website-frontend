@@ -6,7 +6,7 @@ export const Container = styled.section`
   width: 100%;
 `;
 export const Inner = styled.div`
-  max-width: 1140px;
+  max-width: 1170px;
   margin: 0 auto;
 `;
 export const WrapperLink = styled(ReactRouterLink)`
