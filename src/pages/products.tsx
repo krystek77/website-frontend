@@ -10,9 +10,10 @@ type Category = {
 };
 export const ProductsPage = () => {
   const [categories, setCategories] = React.useState<Category[]>([]);
-  const [choosenCategory, setChoosenCategory] = React.useState<string>(
-    'Pralnicowirówki'
-  );
+  const [choosenCategory, setChoosenCategory] = React.useState(() => {
+    const category = localStorage.getItem('choosenCategory');
+    return category ? category : 'Pralnicowirówki';
+  });
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -81,6 +82,7 @@ export const ProductsPage = () => {
                 type='button'
                 onClick={() => {
                   setChoosenCategory('');
+                  localStorage.setItem('choosenCategory', '');
                 }}
                 active={choosenCategory === ''}
               />
@@ -96,6 +98,10 @@ export const ProductsPage = () => {
                     checked={choosenCategory === category.name}
                     onChange={(e) => {
                       setChoosenCategory(e.currentTarget.value);
+                      localStorage.setItem(
+                        'choosenCategory',
+                        e.currentTarget.value
+                      );
                     }}
                   />
                   <FilterCard.LabelInput
