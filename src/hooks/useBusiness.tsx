@@ -1,22 +1,12 @@
 import React from 'react';
 
-type BusinessList = {
-  id: string;
-  text: string;
-};
-type Paragraphs = {
-  id: string;
-  text: string;
-};
-
 type Item = {
   id: number;
   title: string;
   subtitle: string;
   Description: string;
   image: { url: string; alternativeText: string };
-  business_list: BusinessList[];
-  paragraph: Paragraphs[];
+  introduction: string;
   slug: string;
 };
 

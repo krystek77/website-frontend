@@ -24,6 +24,7 @@ import { AvailableModels } from './availableModels';
 import { ProductFeatures } from './productFeatures';
 import { Tabs } from './tabs';
 import { AttributeWrapper } from './attribute';
+import { MarkdownContent } from './markdownContent';
 export {
   Layout,
   List,
@@ -54,4 +55,5 @@ export {
   ProductFeatures,
   Tabs,
   AttributeWrapper,
+  MarkdownContent,
 };

@@ -3,8 +3,7 @@ import { ROUTES, MENU, PAGES } from '../constants';
 import {
   Content,
   List,
-  MarkdownParagraph,
-  RegularList,
+  MarkdownContent,
   Section,
   SectionTitle,
   BusinessCard,
@@ -34,7 +33,7 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
       unListen();
     };
   }, [history]);
-
+  console.log(business);
   return (
     <React.Fragment>
       <HeroContainer data={business} />
@@ -56,26 +55,10 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
             </SectionTitle.Link>
           </SectionTitle>
           {/** section title */}
+          {/** main section */}
           <Content page={PAGES.BUSINESS_DETAILS_PAGE}>
             <Content.Main page={PAGES.BUSINESS_DETAILS_PAGE}>
-              {/** Regular items list */}
-              <RegularList>
-                <RegularList.List>
-                  {business.business_list.map((item) => {
-                    return (
-                      <RegularList.Item key={item.id}>
-                        {item.text}
-                      </RegularList.Item>
-                    );
-                  })}
-                </RegularList.List>
-              </RegularList>
-              {/** Regular items list */}
-              {/** paragraphs */}
-              {business.paragraph.map((item) => {
-                return <MarkdownParagraph key={item.id} text={item.text} />;
-              })}
-              {/** paragraphs */}
+              <MarkdownContent content={business.introduction} />
             </Content.Main>
 
             <Content.Aside>
@@ -111,13 +94,15 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
               </List>
             </Content.Aside>
           </Content>
+          {/** main section */}
         </React.Fragment>
       )}
+
       {/** sections */}
       <Section.Wrapper page={PAGES.BUSINESS_DETAILS_PAGE}>
         <SectionTitle page={PAGES.BUSINESS_DETAILS_PAGE}>
           <SectionTitle.Title page={PAGES.BUSINESS_DETAILS_PAGE}>
-            Najlepsze rozwiązania dla Twojego biznesu
+            Najlepsze rozwiązania dla Twojegj pralni
           </SectionTitle.Title>
         </SectionTitle>
         <Section>Sekcja 1</Section>
@@ -129,7 +114,7 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
         <Section>Sekcja 2</Section>
         <SectionTitle page={PAGES.BUSINESS_DETAILS_PAGE}>
           <SectionTitle.Title page={PAGES.BUSINESS_DETAILS_PAGE}>
-            Pozostałe biznesy
+            Pozostałe segmenty pralni
           </SectionTitle.Title>
         </SectionTitle>
         <Section>
