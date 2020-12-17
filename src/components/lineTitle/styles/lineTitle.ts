@@ -13,8 +13,8 @@ export const AttributeWrapper = styled.div`
 `;
 export const Line = styled.span`
   display: block;
-  font-size: 2.6rem;
-  text-transform: capitalize;
+  font-size: 2.4rem;
+  text-transform: uppercase;
   border-radius: 0.4rem;
   ${({ theme }) =>
     ` margin-right:${theme.margin * 1}rem;
@@ -26,7 +26,7 @@ export const Line = styled.span`
      `}
 `;
 export const Title = styled.h3`
-  font-size: 2.6rem;
+  font-size: 2.2rem;
   /* white-space: nowrap; */
   text-transform: uppercase;
   margin-bottom: 0;

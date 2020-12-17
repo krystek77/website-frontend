@@ -79,7 +79,7 @@ export const OverlayTitle = styled.span`
 `;
 export const Title = styled.h3`
   margin-bottom: 0;
-  text-transform: capitalize;
+  text-transform: uppercase;
   font-weight: 600;
   font-size: 1.4rem;
   white-space: normal;
