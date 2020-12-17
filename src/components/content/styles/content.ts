@@ -63,11 +63,12 @@ export const Main = styled.main<{ page?: string }>`
 `;
 export const Aside = styled.aside`
   width: 100%;
-  max-width: 320px;
+
   ${({ theme }) => `
   @media (min-width: ${BREAKPOINT.LARGE}) {
     padding-left: ${theme.margin * 5}rem;
     border-left:1px solid ${theme.colors.medium};
+    max-width: 320px;
   }
   `}
 `;

@@ -8,7 +8,6 @@ import {
 } from './styles/laundryProjectCard';
 import { FaBed, FaClock } from 'react-icons/fa';
 import { GiSleevelessJacket } from 'react-icons/gi';
-
 interface ILaundryProjectCard {
   Title: React.FC<{ title: string }>;
   Requirments: React.FC<{

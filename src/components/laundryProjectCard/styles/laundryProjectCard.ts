@@ -68,8 +68,14 @@ export const Solutions = styled.div`
     justify-content: space-between;
     align-items: center;
     &-icon {
-      font-size: 3rem;
+      font-size: 2rem;
       white-space: nowrap;
+      width: 48px;
+      height: auto;
+      img {
+        display: block;
+        max-width: 100%;
+      }
     }
     .parameters-wrapper {
       display: flex;
