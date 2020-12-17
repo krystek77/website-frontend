@@ -7,6 +7,7 @@ import {
   Section,
   SectionTitle,
   BusinessCard,
+  LaundryProjectCard,
 } from '../components';
 import { HeroContainer } from '../containers';
 import { useBusiness } from '../hooks';
@@ -22,9 +23,12 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
   } = restProps;
 
   let business = null;
+  let laundry_projects = null;
   if (businesses && businesses.length > 0) {
     business = businesses.find((item) => item.slug === slug);
+    laundry_projects = business && business.laundryprojects;
   }
+
   React.useEffect(() => {
     const unListen = history.listen(() => {
       window.scrollTo(0, 0);
@@ -33,7 +37,7 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
       unListen();
     };
   }, [history]);
-  console.log(business);
+  console.log(laundry_projects);
   return (
     <React.Fragment>
       <HeroContainer data={business} />
@@ -108,7 +112,18 @@ export const BusinessDetailsPage = withRouter(({ ...restProps }) => {
             Najlepsze rozwiązania dla Twojegj pralni
           </SectionTitle.Title>
         </SectionTitle>
-        <Section>Sekcja 1</Section>
+        <Section>
+          {laundry_projects?.map((project) => {
+            return (
+              <LaundryProjectCard key={project.id}>
+                <LaundryProjectCard.Title title={project.title} />
+                <LaundryProjectCard.Requirments project={project} />
+                <LaundryProjectCard.Title title='Rozwiązania' />
+                <LaundryProjectCard.Solutions project={project} />
+              </LaundryProjectCard>
+            );
+          })}
+        </Section>
         <SectionTitle page={PAGES.BUSINESS_DETAILS_PAGE}>
           <SectionTitle.Title page={PAGES.BUSINESS_DETAILS_PAGE}>
             Rekomendowanie serie urządzeń

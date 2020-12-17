@@ -16,7 +16,6 @@ export const BusinessPage = withRouter(({ history }) => {
       unListen();
     };
   }, [history]);
-
   return (
     <React.Fragment>
       <HeroContainer

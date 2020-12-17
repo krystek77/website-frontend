@@ -8,6 +8,14 @@ type Item = {
   image: { url: string; alternativeText: string };
   introduction: string;
   slug: string;
+  laundryprojects: {
+    id: number;
+    title: string;
+    needs: { id: number; name: string; value: string }[];
+    dryers: { id: number; name: string; value: string }[];
+    ironers: { id: number; name: string; value: string }[];
+    washers: { id: number; name: string; value: string }[];
+  }[];
 };
 
 export const useBusiness = () => {

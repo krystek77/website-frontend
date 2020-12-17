@@ -25,6 +25,7 @@ import { ProductFeatures } from './productFeatures';
 import { Tabs } from './tabs';
 import { AttributeWrapper } from './attribute';
 import { MarkdownContent } from './markdownContent';
+import { LaundryProjectCard } from './laundryProjectCard';
 export {
   Layout,
   List,
@@ -56,4 +57,5 @@ export {
   Tabs,
   AttributeWrapper,
   MarkdownContent,
+  LaundryProjectCard,
 };
