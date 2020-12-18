@@ -67,15 +67,24 @@ export const Solutions = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    ${({ theme }) => `
+        margin-bottom:${theme.padding * 2}rem;
+    `}
     &-icon {
       font-size: 2rem;
       white-space: nowrap;
-      width: 48px;
+      width: 32px;
       height: auto;
       img {
         display: block;
         max-width: 100%;
       }
+    }
+    &-icon.ironer {
+      width: 64px;
+    }
+    &-icon.dryer {
+      width: 28px;
     }
     .parameters-wrapper {
       display: flex;

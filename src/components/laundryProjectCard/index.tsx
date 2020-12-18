@@ -1,4 +1,7 @@
 import React from 'react';
+import Washer from '../../images/washer.svg';
+import Dryer from '../../images/dryer.svg';
+import Ironer from '../../images/ironer.svg';
 import {
   Container,
   Inner,
@@ -67,7 +70,9 @@ LaundryProjectCard.Solutions = function LaundryProjectCardSolutions({
   return (
     <Solutions>
       <div className='solution'>
-        <span className='solution-icon'>ICON A</span>
+        <span className='solution-icon'>
+          <img src={Washer} alt='Washers' />
+        </span>
         <div className='parameters-wrapper'>
           {project.washers.map((item) => {
             return (
@@ -80,7 +85,9 @@ LaundryProjectCard.Solutions = function LaundryProjectCardSolutions({
         </div>
       </div>
       <div className='solution'>
-        <span className='solution-icon'>ICON B</span>
+        <span className='solution-icon dryer'>
+          <img src={Dryer} alt='Dryers' />
+        </span>
         <div className='parameters-wrapper'>
           {project.dryers.map((item) => {
             return (
@@ -93,7 +100,9 @@ LaundryProjectCard.Solutions = function LaundryProjectCardSolutions({
         </div>
       </div>
       <div className='solution'>
-        <span className='solution-icon'>ICON C</span>
+        <span className='solution-icon ironer'>
+          <img src={Ironer} alt='Ironers' />
+        </span>
         <div className='parameters-wrapper'>
           {project.ironers.map((item) => {
             return (
