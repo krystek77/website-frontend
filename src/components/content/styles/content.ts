@@ -14,6 +14,12 @@ export const Container = styled.div<{ page?: string }>`
     }
     
   `}
+  ${({ theme, page }) =>
+    page === PAGES.TECHNOLOGIES_PAGE &&
+    `
+      padding: ${theme.padding * 10}rem ${theme.padding * 0}rem;
+    
+  `}
 `;
 export const Inner = styled.div<{ page?: string }>`
   /* border: 1px solid green; */
@@ -37,7 +43,7 @@ export const Inner = styled.div<{ page?: string }>`
 export const Main = styled.main<{ page?: string }>`
   /* border: 1px solid blue; */
   width: 100%;
-  height: 100%;
+  /* min-height: 480px; */
 
   ${({ theme, page }) =>
     page === PAGES.PRODUCTS &&
