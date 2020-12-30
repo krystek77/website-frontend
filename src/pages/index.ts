@@ -1,7 +1,7 @@
 import { HomePage } from './home';
 import { ProductDetailsPage } from './productPage';
 import { ProductsPage } from './products';
-import { TechnologyPage } from './technology';
+import { TechnologiesPage } from './technologies';
 import { BusinessDetailsPage } from './businessDetails';
 import { BusinessPage } from './business';
 import { SupportPage } from './support';
@@ -13,7 +13,7 @@ export {
   HomePage,
   ProductDetailsPage,
   ProductsPage,
-  TechnologyPage,
+  TechnologiesPage,
   BusinessDetailsPage,
   BusinessPage,
   SupportPage,

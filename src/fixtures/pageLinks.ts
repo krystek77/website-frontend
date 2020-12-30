@@ -2,7 +2,12 @@ import { ROUTES } from '../constants';
 
 export const pageLinks = [
   { id: 1, url: ROUTES.PRODUCTS, text: 'Produkty', label: 'Produkty' },
-  { id: 2, url: ROUTES.TECHNOLOGY, text: 'Technologie', label: 'Technologie' },
+  {
+    id: 2,
+    url: ROUTES.TECHNOLOGIES,
+    text: 'Technologie',
+    label: 'Technologie',
+  },
   {
     id: 3,
     url: ROUTES.YOUR_BUSINESS,
