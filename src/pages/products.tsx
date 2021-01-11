@@ -17,7 +17,9 @@ export const ProductsPage = () => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/categories');
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/categories`
+      );
       const data = await response.json();
       setCategories(data);
       console.log('Categories', data);

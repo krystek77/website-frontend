@@ -1,5 +1,4 @@
 import React from 'react';
-require('dotenv').config();
 
 type Item = {
   id: number;
@@ -26,7 +25,7 @@ export const useBusiness = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://pralma-strapi.herokuapp.com/businesses`
+        `${process.env.REACT_APP_BACKEND_URL}/businesses`
       );
       const data = await response.json();
       setBusinesses(data);

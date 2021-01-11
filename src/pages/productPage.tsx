@@ -79,7 +79,9 @@ export const ProductDetailsPage = withRouter((props) => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`/lines/${slug}`);
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/lines/${slug}`
+      );
       const data = await response.json();
       setLine(data);
 
