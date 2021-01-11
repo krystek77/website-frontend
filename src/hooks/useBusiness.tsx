@@ -23,7 +23,9 @@ export const useBusiness = () => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/businesses');
+      const response = await fetch(
+        'https://pralma-strapi.herokuapp.com/businesses'
+      );
       const data = await response.json();
       setBusinesses(data);
     };

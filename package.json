@@ -61,5 +61,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://pralma-strapi.herokuapp.com"
+  "proxy": "http://localhost:1337"
 }
