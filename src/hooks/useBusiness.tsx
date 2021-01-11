@@ -23,7 +23,9 @@ export const useBusiness = () => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/businesses');
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/businesses`
+      );
       const data = await response.json();
       setBusinesses(data);
     };
