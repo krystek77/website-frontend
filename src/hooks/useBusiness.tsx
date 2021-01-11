@@ -1,4 +1,5 @@
 import React from 'react';
+require('dotenv').config();
 
 type Item = {
   id: number;
@@ -20,7 +21,8 @@ type Item = {
 
 export const useBusiness = () => {
   const [businesses, setBusinesses] = React.useState<Item[]>([]);
-
+  console.log(process.env.REACT_APP_BACKEND_URL);
+  console.log(process.env.NODE_ENV);
   React.useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
